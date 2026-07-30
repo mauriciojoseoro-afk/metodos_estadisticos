@@ -1,5 +1,5 @@
 --- 
-title: "Consumo de las Drogas"
+title: "Analisis Exploratorio"
 author: "Mauricio Orozco y Karla Paredes"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
