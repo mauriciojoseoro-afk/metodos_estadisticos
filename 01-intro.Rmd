@@ -1,21 +1,1262 @@
-# Introduction {#intro}
+#  EDA {#intro}
+El **Análisis Exploratorio de Datos** o **EDA** (**Exploratory Data Analysis**) es una etapa fundamental dentro del proceso de análisis estadístico, cuyo propósito es examinar, resumir y comprender las características principales de un conjunto de datos antes de aplicar técnicas de modelado o inferencia formal.
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+La base de datos utilizada en el presente informe corresponde al conjunto de datos **California Housing (housing.csv)**, el cual contiene información socioeconómica y geográfica recopilada a partir del censo de California de 1990. El conjunto está compuesto por 20,640 observaciones y 10 variables, que describen tanto características demográficas de la población como atributos de las viviendas en cada zona.
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+El propósito de este trabajo es realizar un Análisis Exploratorio de Datos (EDA) sobre esta base, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
+
+
+### Cargar las librerias
+```{r Librerias, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(Amelia)
+library(moments)
+library(ggplot2)
+library(patchwork)
+library(GGally)
+library(reshape)
+library(ggpubr)
+options(scipen = 999)
+
 ```
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
+### Leer dataset
+```{r Leer housing.csv}
+data <- read_csv("data/housing.csv")
 ```
 
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+### Mostrar las 5 primeras filas
+```{r Filas iniciales}
+head(data,n=5)
+```
+
+## Estructura de los datos (Variables existentes, tipo de variable, etc...)
+```{r Estructura de variables}
+str(data)
+```
+
+### Verificar si hay datos faltantes
+```{r Datos faltantes}
+data %>% 
+  summarise(across(everything(), ~ sum(is.na(.)),.names="NA_{.col}"))
+
+```
+
+#### Otra forma de detectar valores faltantes:
+```{r otra forma (libreria Amelia)}
+missmap(data)
+
+```
+
+### Imputacion de datos faltantes
+```{r Rellenar}
+ data %>%  #datos
+  mutate(across( #columnas
+    where(is.numeric), #seleccionar variables numericas
+    ~ ifelse(is.na(.),mean(.,na.rm=TRUE), .) #si hay un na, reemplazar, si no, dejar la variable
+  )) -> df #data limpiada
+```
+
+### Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame
+```{r datos faltantes2}
+df %>% 
+  summarise(across(everything(), ~ sum(is.na(.)),.names="NA_{.col}"))
+
+```
+
+### Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor
+```{r factorocean}
+df$ocean_proximity<- factor(df$ocean_proximity)
+```
+
+# Analisis exploratorio de median_hose_value (target)
+
+### Realicemos el resumen estadistico de la variable:
+```{r resumen median_house_value}
+df %>%  summarise(n=length(median_house_value),
+                  media=mean(median_house_value),
+                  sd=sd(median_house_value),
+                  mediana=median(median_house_value),
+                  RIC=IQR(median_house_value),
+                  Q1=quantile(median_house_value,0.25),
+                  Q3=quantile(median_house_value,0.75),
+                  minimo=min(median_house_value),
+                  maximo=max(median_house_value),
+                  asim=skewness(median_house_value),
+                  curtosis=kurtosis(median_house_value))
+```
+
+#### Podemos clasificar cada una de estas medidas según su tipo: [¡Terminar esta seccion!]
+
+**1. Medidas de tendencia central:**
+Media = 206,855.8 | Mediana = 179,700
+
+Esto básicamente responde a la pregunta de cuál es el valor "típico" de los 
+datos, el número que mejor representa al conjunto. Acá ya se nota algo raro: 
+la media es bastante más alta que la mediana, y eso de una vez nos está 
+avisando que la distribución no es simétrica.
+
+**2. Medidas de dispersión:**
+SD = 115,395.6 | RIC = 145,125
+
+Con la tendencia central sola no alcanza, porque dos distribuciones pueden 
+tener la misma media y comportarse totalmente distinto. Acá la desviación 
+estándar es enorme, más de la mitad del valor de la media, así que ya sabemos 
+que los precios de las viviendas varían muchísimo entre sí.
+
+**3. Medidas de posición:**
+Q1 = 119,600 | Q3 = 264,725 | Mínimo = 14,999 | Máximo = 500,001 (Mediana = Q2)
+
+Esto nos dice dónde queda ubicado un dato específico respecto al resto, 
+dividiendo el conjunto ordenado en partes. La mediana en realidad también es 
+una medida de posición (Q2), por eso la repetimos acá: es el punto donde 
+queda el 50% de los datos por debajo y el 50% por encima.
+
+**4. Medidas de forma:**
+Asimetría = 0.9776 | Curtosis = 3.3275
+
+Esto habla de qué forma tiene la distribución, no de dónde está el centro 
+ni de cuánto se dispersa, sino de cómo se reparten los datos alrededor de 
+ese centro.
+Asimetría (0.9776): es positiva y bastante notoria, o sea que hay una cola 
+larga hacia la derecha, lo cual concuerda con lo que ya vimos de que la 
+media es mayor que la mediana.
+Curtosis (3.3275): está casi pegada al 3, que es el valor de una distribución 
+normal. Esto es curioso porque contradice un poco lo que dice la asimetría: 
+aunque la distribución no es simétrica, lo "puntiaguda" o "aplanada" que es 
+se parece bastante a la de una normal.
+
+### Gráfico tipo histograma de 'median_house_value'
+```{r Histograma, message=FALSE}
+df %>% 
+  ggplot(aes(x=median_house_value))+
+geom_histogram(aes(y=after_stat(density)),
+                binwidth=25000,
+                fill="#797bb0",
+                color="white",
+                alpha=0.6,)+
+  geom_density(color="darkblue",linewidth=1.2)+
+  labs(title='Distribucion del valor medio de las viviendas',
+       x='valor medio de la casa (USD)',
+       y='densidad')+
+  theme_bw()
+  
+```
+La mayoría de las viviendas están entre 100K y 250K USD, con una 
+concentración cerca de los 150K, y después se ve una cola larga hacia la 
+derecha que confirma lo que ya habíamos visto en la tabla (media 206,855 > 
+mediana 179,700, asimetría de 0.97). También se nota una acumulación rara 
+cerca de los 500K, lo que probablemente sea un tope que le pusieron a los 
+datos originales, y coincide justo con el máximo de 500,001 que vimos antes.
+
+## Gráfico de cajas y bigotes de 'median_house_value'
+```{r Boxplot, message=FALSE}
+df %>% 
+  ggplot(aes(x =" ",y = median_house_value))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20, size=3, color='green')+ #colocar un punto en la media
+  theme_bw()
+
+
+```
+El boxplot confirma la asimetría que veníamos viendo: la mediana (línea azul) 
+está más pegada al Q1 que al Q3, y el bigote de arriba es más largo que el de 
+abajo, o sea que hay cola hacia la derecha. Los puntos rojos que se ven arriba 
+(entre 480K y 500K aprox) son outliers, y coinciden con el tope de 500,001 que 
+ya habíamos detectado. El punto verde marca la media (unos 207K), y se ve 
+claramente por encima de la mediana.
+
+# Variables independientes (caracteristicas)
+```{r Variables independientes}
+df %>%  #Guardo este conjunto de datos 
+  select(where(is.numeric),-median_house_value) %>% 
+  pivot_longer(
+    cols=everything(), #llaves y valores
+    names_to='variable',
+    values_to='valor'
+    )  %>%
+  
+  group_by(variable) %>% 
+  summarise(n=length(valor),
+            media=mean(valor),
+            sd=sd(valor),
+            mediana=median(valor),
+            RIC=IQR(valor),
+            Q1=quantile(valor,0.25),
+            Q3=quantile(valor,0.75),
+            minimo=min(valor),
+            maximo=max(valor),
+            asim=skewness(valor),
+            curtosis=kurtosis(valor))
+
+
+```
+
+## Veamos el análisis de cada variable independiente
+
+
+-households
+Media 499.5 y mediana 409. La media está por encima de la mediana, así que 
+hay asimetría positiva: deben haber sectores con muchos hogares que suben 
+el promedio.
+
+-housing_median_age
+Media 28.6 y mediana 29, prácticamente iguales. Esto ya nos dice que la 
+distribución es bastante simétrica, sin inclinarse mucho hacia edades muy 
+altas ni muy bajas.
+
+-latitude
+Es una variable geográfica, no económica. El sd de 2.13 solo nos habla del 
+rango de ubicación que cubren los datos, no hay que interpretarlo como 
+asimetría o dispersión de un fenómeno real.
+
+-longitude
+Igual que la latitud, es una coordenada. Su dispersión (sd 2.0) muestra el 
+rango geográfico del estudio, no algo estadístico relevante en sí mismo.
+
+-median_income
+Media 3.87 y mediana 3.53, bastante cercanas, o sea que la distribución es 
+más o menos simétrica, aunque con una leve inclinación hacia valores más 
+altos.
+
+-population
+Media 1425.5 y mediana 1166. La diferencia entre ambas y una desviación 
+estándar alta (1132.5) confirman que hay asimetría positiva, probablemente 
+por sectores con población bastante superior al resto.
+
+-total_bedrooms
+Media 537.9 y mediana 438. Igual que con households, la media supera 
+claramente a la mediana, lo que muestra asimetría positiva por viviendas 
+con cantidades de habitaciones muy por encima del promedio.
+
+-total_rooms
+Media 2635.8 y mediana 2127, y tiene la desviación estándar más alta de 
+todas (2181.6). Esto indica que hay mucha dispersión y asimetría positiva, 
+con sectores que concentran bastantes más habitaciones que el resto.
+
+## Graficos de las variables independientes
+```{r Graficos V.I}
+  
+# 'households'
+  df %>% 
+  ggplot(aes(x =" ",y = households))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+
+  theme_bw()->p1
+
+# 'housing_median_age'
+  df %>% 
+  ggplot(aes(x =" ",y = housing_median_age))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p2
+
+  
+# 'latitude'
+  df %>% 
+  ggplot(aes(x =" ",y = latitude))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p3
+  
+# 'longitude'
+  df %>% 
+  ggplot(aes(x =" ",y = longitude))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p4
+
+# 'median_income'
+  df %>% 
+  ggplot(aes(x =" ",y = median_income))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p5
+
+# 'population'
+  df %>% 
+  ggplot(aes(x =" ",y = population))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p6
+
+# 'total_rooms'
+  df %>% 
+  ggplot(aes(x =" ",y = total_rooms))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p7
+  
+# 'total_bedrooms'
+  df %>% 
+  ggplot(aes(x =" ",y = total_bedrooms))+
+  geom_boxplot(fill="#797bb0",color="darkblue",
+               outlier.color='darkred')+
+  stat_summary(fun=mean, geom='point', shape=20,
+               size=3, color='darkgreen')+ 
+  theme_bw()->p8
+  
+p1+p2+p3+p4+p5+p6+p7+p8
+```
+
+
+-households
+La caja está bien comprimida cerca de cero y hay un montón de outliers 
+(puntos rojos) hasta los 6000. Esto confirma la asimetría positiva que ya 
+habíamos visto: la mayoría de los valores son bajos, pero hay sectores con 
+households muy altos que se disparan como atípicos.
+
+-housing_median_age
+Caja bien proporcionada, casi sin outliers, y bigotes parejos entre 0 y 50. 
+Es la variable más equilibrada de todas, lo cual coincide con lo de la 
+media y mediana casi iguales.
+
+-latitude
+Caja compacta entre 32.5 y 40, sin outliers visibles. Como es una coordenada 
+geográfica, esa dispersión solo refleja el rango de ubicación de los datos, 
+no algo que haya que interpretar de fondo.
+
+-longitude
+Parecido a latitude: caja simétrica sin outliers, mostrando el rango 
+geográfico que cubren los datos (-124 a -115 aprox), sin mayor relevancia 
+estadística.
+
+-median_income
+Caja chica y comprimida en valores bajos, con bastantes outliers rojos que 
+llegan hasta 15. Confirma la asimetría positiva leve que ya habíamos visto: 
+la mayoría de ingresos son moderados pero hay sectores con ingresos bastante 
+más altos.
+
+-population
+Caja súper comprimida cerca de cero, con outliers que llegan hasta más de 
+30,000. Es la variable con la asimetría más marcada de todas visualmente: 
+la mayoría de sectores tienen poblaciones bajas, y unos pocos se disparan 
+con valores extremos.
+
+-total_rooms
+Mismo patrón que population: caja pegada a cero con hartos outliers hasta 
+40,000. Confirma la fuerte dispersión y asimetría positiva que ya habíamos 
+visto en la tabla.
+
+-total_bedrooms
+Parecido a total_rooms y households: caja comprimida cerca de cero con 
+outliers hasta 6000, mostrando que unos pocos sectores tienen cantidades 
+de habitaciones muy por encima del resto.
+
+# Analisis exploratorio bivariado
+Realizaremos un análisis entre nuestra variable respuesta 'median_house_value' y las demás variales numéricas.
+
+## Veamos los gráficos.
+
+**Relación entre variables 'households' y 'median_hose_value'** 
+```{r valorvsunidadfamiliares}
+df %>% 
+  ggplot(aes(x=households,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Unidades familiares',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre las unidades de familiares/domésticas y el valor medio de la vivienda')
+```
+
+La mayoría de los datos se concentran en unidades familiares bajas (menos 
+de 1000), abarcando todo el rango de valores de vivienda, o sea que la 
+cantidad de hogares no parece determinar el precio. También se ve una línea 
+horizontal bien densa en 5e+05, confirmando otra vez el tope de 500,001 que 
+ya habíamos visto antes en el valor de vivienda. A medida que suben las 
+unidades familiares (más de 2000) los puntos se dispersan y bajan en 
+cantidad, así que ahí se ve poca o nula correlación entre las dos variables.
+
+ **Relación entre variables 'housing_median_age' y 'median_hose_value'** 
+```{r valorvseaños}
+df %>% 
+  ggplot(aes(x=housing_median_age,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Edad media de la vivienda',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre la edad media de la vivienda y el valor medio de la vivienda')
+```
+Los puntos se distribuyen en columnas verticales a lo largo de todo el 
+rango de edad (0 a 50 años), abarcando casi todos los valores de vivienda 
+posibles en cada edad, o sea que no hay una relación clara entre la 
+antigüedad de la vivienda y su valor. También se ve la línea densa en 
+5e+05, confirmando otra vez el tope de 500,001, y hay una acumulación 
+notable de puntos en la edad 52, probablemente porque esa categoría agrupa 
+"52 años o más".
+
+
+
+ **Relación entre variables 'latitude' y 'median_hose_value'** 
+```{r valorvslatitud}
+  df %>% 
+  ggplot(aes(x=latitude,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Latitud',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre latitud y el valor medio de la vivienda')
+```
+Los valores de vivienda no se reparten parejo en todas las latitudes, sino 
+que se concentran en franjas específicas (cerca de 34, 37.5 y en menor 
+medida 33.9), que probablemente corresponden a zonas urbanas importantes 
+de California. También se nota que a partir de la latitud 38 los precios 
+tienden a bajar en general, y se mantiene la línea densa en 5e+05, 
+concentrada sobre todo en esas zonas de mayor densidad (34 y 37.5).
+
+
+
+ **Relación entre variables 'longitude' y 'median_hose_value'** 
+```{r valorvslongitud}
+
+  df %>% 
+  ggplot(aes(x=longitude,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Longitud',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre longitud y el valor medio de la vivienda')
+```
+
+
+De igual modo que en el grafico anterior, tampoco se reparten parejo los valores de vivienda por longitud, se 
+concentran en dos franjas principales (cerca de -122.3 y entre -118 y -117), 
+que coinciden con las zonas de alta latitud que vimos antes, así que en 
+conjunto probablemente sean las mismas ciudades importantes (San Francisco 
+y Los Ángeles). Se mantiene otra vez la línea densa en 500,000, concentrada 
+justo en esas dos franjas de mayor densidad urbana, mientras que en 
+longitudes más alejadas (-115) tanto los precios como la cantidad de datos 
+bajan bastante.
+
+
+
+**Relación entre variables 'median_income' y 'median_hose_value'** 
+```{r valorvsingreso}
+df %>% 
+  ggplot(aes(x=median_income,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Ingreso medio',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre ingreso medio y el valor medio de la vivienda')
+```
+
+
+
+Se observa una relación clara y positiva: a medida que sube el ingreso 
+medio, el valor de la vivienda también sube, formando una nube de puntos 
+con una tendencia ascendente bien marcada. Esto sugiere que el ingreso 
+medio es de las variables más importantes para explicar el precio de las 
+viviendas. También se mantiene la línea densa en 500,000 en casi todo el 
+rango de ingresos, o sea que ese límite artificial afecta tanto a viviendas 
+de ingresos bajos como altos.
+
+ 
+ **Relación entre variables 'population' y 'median_hose_value'** 
+```{r valorvspoblacion}
+df %>% 
+  ggplot(aes(x=population,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Poblacion',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre cantidad de habitantes censados por bloque (población) y el valor medio de la vivienda')
+```
+
+
+En este grafico la mayoría de los datos están en poblaciones 
+bajas (menos de 5000), abarcando todo el rango de valores de vivienda, así 
+que la cantidad de habitantes por bloque no parece determinar el precio. Se 
+mantiene la línea densa en 500,000, y a medida que sube la población los 
+puntos se dispersan y bajan bastante en cantidad, con algunos valores 
+extremos aislados cerca de los 30,000 habitantes que confirman la fuerte 
+asimetría de esta variable que ya habíamos visto en el boxplot.
+
+ 
+ **Relación entre variables 'total_bedrooms' y 'median_hose_value'** 
+```{r valorvscuartos}
+df %>% 
+  ggplot(aes(x=total_bedrooms,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Cntidad de dormitorios',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre la cantidad de dormitorios y el valor medio de la vivienda')
+```
+
+
+
+Se observa que la mayoría de los datos se concentran en cantidades bajas de dormitorios 
+(menos de 1000), abarcando todo el rango de valores de vivienda, así que la 
+cantidad de dormitorios sola no parece determinar el precio. Se mantiene la 
+línea densa en 500,000, y a partir de las 2000 habitaciones los puntos se 
+dispersan bastante y bajan en cantidad, confirmando la fuerte asimetría 
+positiva que ya habíamos visto en el boxplot.
+ 
+
+
+ **Relación entre variables 'total_rooms' y 'median_hose_value'** 
+```{r valorvsespacis}
+df %>% 
+  ggplot(aes(x=total_rooms,y=median_house_value))+
+  geom_point(alpha=0.4,color='darkblue')+
+  labs(x='Cantidad de espacios',y='Valor medio de la vivienda')+
+  theme_bw()+
+  facet_grid(.~'Dispersión entre la cantidad de espacios del hogar y el valor medio de la vivienda')
+```
+
+
+
+De mismo modo que con las otras variables de cantidad (dormitorios, habitaciones, 
+población), la mayoría de los datos están en valores bajos, con menos de 
+5000 espacios, abarcando todo el rango de precios, así que la cantidad de 
+espacios sola tampoco determina el precio. Se mantiene la línea densa en 
+500,000, y a partir de los 10,000 espacios los puntos se dispersan y bajan 
+notablemente, con algunos valores extremos aislados cerca de los 40,000 que 
+confirman la asimetría positiva que ya habíamos visto en el boxplot.
+ 
+ 
+ 
+# Variable categórica 'ocean_proximity' (convertida en factor)
+```{r variableoceano}
+df %>% 
+  count(ocean_proximity,name="n") %>% 
+  mutate(Porcentaje=round((n/sum(n))*100,2),
+         variable='ocean_proximity',
+         categoria=as.character(ocean_proximity))%>% select(variable,categoria,n,Porcentaje)-> tabla_ocean
+
+tabla_ocean
+```
+
+
+
+El gráfico de barras muestra que la mayoría de las viviendas (44.3%) están 
+a menos de una hora del océano, seguidas por las del interior (INLAND, 
+31.7%). Las categorías NEAR OCEAN (12.9%) y NEAR BAY (11.1%) tienen una 
+proporción bastante menor, y ISLAND casi ni aparece en el dataset (solo 5 
+registros, 0%), así que esta última categoría probablemente no aporte 
+mucho al análisis por lo chiquita que es la muestra.
+### Diagrama de barras para variable numérica x variable categórica 
+[Que significa n?]
+```{r tabla ocean_proximity }
+tabla_ocean_b <- df %>% 
+  count(ocean_proximity,name="n") %>% 
+  mutate(Porcentaje=round((n/sum(n))*100,1),
+         Etiqueta= paste0(n,"(",Porcentaje,"%)"))
+tabla_ocean_b %>% 
+  ggplot(aes(x=ocean_proximity,y=n))+
+  geom_col(fill="#008b8b",width=0.6)+
+  geom_text(aes(label=Etiqueta),vjust=-0.5,size=4.5)+
+  facet_wrap(~'Distribución de la variable ocean_proximity')+
+  scale_y_continuous(expand=expansion(mult=c(0,0.15)))+
+  theme_bw()
+```
+
+
+
+El gráfico de barras muestra que la mayoría de las viviendas (44.3%) están 
+a menos de una hora del océano, seguidas por las del interior (INLAND, 
+31.7%). Las categorías NEAR OCEAN (12.9%) y NEAR BAY (11.1%) tienen una 
+proporción bastante menor, y ISLAND casi ni aparece en el dataset (solo 5 
+registros, 0%), así que esta última categoría probablemente no aporte 
+mucho al análisis por lo chiquita que es la muestra.
+
+
+## Ahora comparemos el valor medio de la vivienda según la proximidad al oceano
+Compararemos nuestra variable respuesta con una variable categórica.
+```{r bivaloresoceano}
+df %>% 
+  group_by(ocean_proximity) %>% 
+  summarise(n=length(median_house_value),
+                 media=mean(median_house_value),
+                 sd=sd(median_house_value),
+                 mediana=median(median_house_value),
+                 RIC=IQR(median_house_value),
+                 Q1=quantile(median_house_value,0.25),
+                 Q3=quantile(median_house_value,0.75),
+                 minimo=min(median_house_value),
+                 maximo=max(median_house_value),
+                 asimetria=skewness(median_house_value),
+                 curtosis=kurtosis(median_house_value))
+  
+
+```
+
+### Grafico de cajas y bigotes para comparar 'median_house_value' y 'ocean_proximity'
+```{r biboxplot}
+df %>% 
+ggplot(aes(x=ocean_proximity, y=median_house_value))+
+  geom_boxplot(fill="#797bb0", color="black",outlier.color="darkred")+
+  stat_summary(fun=mean, geom='point', shape=20, size=3, color="darkgreen")+
+  theme_bw()
+```
+
+
+
+Este boxplot compara el valor de vivienda según qué tan cerca está del 
+océano y se ven diferencias claaras entre categorías. INLAND tiene los 
+precios más bajos y menos dispersión, aunque con varios outliers hacia 
+arriba. ISLAND, a pesar de tener solo 5 registros, tiene la mediana más 
+alta, cerca de los 425,000, aunque no es muy representativa por lo pequeña 
+que es la muestra. Las categorías <1H OCEAN, NEAR BAY y NEAR OCEAN tienen 
+medianas y dispersiones parecidas entre sí, entre 200,000 y 230,000 
+aproximadamente, lo que sugiere que estar cerca del mar directamente no 
+marca tanta diferencia como la que sí hay entre estar en el interior 
+(INLAND) o no.
+
+#Analisis de variables independientes x variables independientes
+[Breve descripcion de las variables que vamos analizar]
+
+## Paquete GGally
+```{r Paquete GGally, message=FALSE}
+df %>% 
+  ggpairs()+
+  theme_bw()
+```
+
+
+### Graficos de variables independientes vs variables independientes
+[decir cuales estamos analizando y por qué]
+
+```{r relaciones existentes, echo=FALSE, message=FALSE}
+# --- total_bedrooms vs households ---
+p1 <- df %>%
+  ggplot(aes(x = total_bedrooms, y = households)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de dormitorios', y = 'Número de hogares') +
+  theme_bw()
+
+# --- total_rooms vs population ---
+p7 <- df %>%
+  ggplot(aes(x = total_rooms, y = population)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones', y = 'Población') +
+  theme_bw()
+
+# --- longitude vs latitude ---
+p3 <- df %>%
+  ggplot(aes(x = longitude, y = latitude)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Latitud') +
+  theme_bw()
+
+# --- housing_median_age vs total_rooms ---
+p8 <- df %>%
+  ggplot(aes(x = housing_median_age, y = total_rooms)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Edad mediana de la vivienda', y = 'Total de habitaciones') +
+  theme_bw()
+
+# ---  total_rooms vs median_income ---
+p12 <- df %>%
+  ggplot(aes(x = median_income, y = total_rooms)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Ingreso medio', y = 'Total de habitaciones') +
+  theme_bw()
+
+# --- total_rooms vs total_bedrooms   ---
+p2 <- df %>%
+  ggplot(aes(x = total_rooms , y =total_bedrooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones', y = 'Total de dormitorios') +
+  theme_bw()
+
+# --- total_rooms vs households ---
+p4 <- df %>%
+  ggplot(aes(x = total_rooms , y = households)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones ', y = 'Unidades familiares') +
+  theme_bw()
+
+# --- population vs households ---
+p5 <- df %>%
+  ggplot(aes(x = population , y = households )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Poblacion censada', y = 'Unidades familiares') +
+  theme_bw()
+
+# --- total_bedrooms vs population ---
+p6 <- df %>%
+  ggplot(aes(x = total_bedrooms , y =population )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones', y = 'Poblacion censada') +
+  theme_bw()
+
+# --- latitude vs total_bedrooms ---
+p9 <- df %>%
+  ggplot(aes(x = latitude , y =total_bedrooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Total de dormitorios') +
+  theme_bw()
+
+# --- housing_median_age vs households ---
+p10 <- df %>%
+  ggplot(aes(x = housing_median_age, y = households)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Edad media del hogar', y = 'Unidades familiares') +
+  theme_bw()
+
+# --- housing_median_age vs population ---
+p11 <- df %>%
+  ggplot(aes(x = housing_median_age, y = population )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Edad media del hogar', y = 'Poblacion censada') +
+  theme_bw()
+
+# --- total_rooms vs median_income ---
+p12 <- df %>%
+  ggplot(aes(x = total_rooms, y = median_income )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- housing_median_age vs median_income ---
+p13 <- df %>%
+  ggplot(aes(x = housing_median_age , y = median_income)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Edad media del hogar', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- latitude vs population ---
+p14 <- df %>%
+  ggplot(aes(x = latitude, y = population )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Poblacion censada') +
+  theme_bw()
+
+# --- longitude vs housing_median_age ---
+p15 <- df %>%
+  ggplot(aes(x = longitude, y = housing_median_age)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Edad media del hogar') +
+  theme_bw()
+
+# --- longitude vs population ---
+p16 <- df %>%
+  ggplot(aes(x = longitude, y = population)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Poblacion censada') +
+  theme_bw()
+
+# --- latitude vs median_income ---
+p17 <- df %>%
+  ggplot(aes(x = latitude, y = median_income)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- latitude vs households ---
+p18 <- df %>%
+  ggplot(aes(x = latitude, y = households)) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Unidades familiares') +
+  theme_bw()
+
+# --- longitude vs total_bedrooms ---
+p19 <- df %>%
+  ggplot(aes(x =longitude , y = total_bedrooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Total de dormitorios') +
+  theme_bw()
+
+# --- latitude vs total_bedrooms ---
+p20 <- df %>%
+  ggplot(aes(x = latitude, y = total_bedrooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Total de dormitorios') +
+  theme_bw()
+
+# --- longitude vs households ---
+p21 <- df %>%
+  ggplot(aes(x = longitude, y = households )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Unidades familiares') +
+  theme_bw()
+
+# --- longitude vs total_rooms ---
+p22 <- df %>%
+  ggplot(aes(x = longitude , y = total_rooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Total de habitaciones') +
+  theme_bw()
+
+# --- latitude vs total_rooms ---
+p23 <- df %>%
+  ggplot(aes(x = latitude , y = total_rooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Total de habitaciones') +
+  theme_bw()
+
+# --- longitude vs median_income ---
+p24 <- df %>%
+  ggplot(aes(x = longitude , y = median_income )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- households vs median_income ---
+p25 <- df %>%
+  ggplot(aes(x = households, y = median_income )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Unidad familiar', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- latitude vs housing_median_age ---
+p26 <- df %>%
+  ggplot(aes(x = latitude, y = housing_median_age  )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Latitud', y = 'Edad media del hogar') +
+  theme_bw()
+
+# --- total_bedrooms vs median_income ---
+p27 <- df %>%
+  ggplot(aes(x = total_bedrooms, y = median_income )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de dormitorios', y = 'Ingreso medio') +
+  theme_bw()
+
+# --- population vs median_income ---
+p28 <- df %>%
+  ggplot(aes(x = population, y = median_income )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Poblacion Censada', y = 'Ingreso medio') +
+  theme_bw()
+
+```
+
+```{r bloque 1, echo=FALSE, message=FALSE}
+p1+p2+p3+p4+p5+p6
+
+```
+```{r bloque 2, echo=FALSE, message=FALSE}
+p7+p8+p9+p10+p11+p12
+```
+
+```{r bloque 3, echo=FALSE, message=FALSE}
+p13+p14+p15+p16+p17+p18
+```
+
+```{r bloque 4, echo=FALSE, message=FALSE}
+p19+p20+p21+p22+p23+p24
+```
+
+```{r bloque 5, echo=FALSE, message=FALSE}
+p25+p26+p27+p28
+```
+
+
+
+# Ingeniería de Caracterización (feature engineering)
+
+La ingeniería de características (feature engineering) es el proceso de 
+crear nuevas variables a partir de las que ya tenemos, con el fin de que 
+representen mejor la información del dataset. Esto es útil porque, como se 
+vio en la sección anterior, varias variables (total_rooms, total_bedrooms, 
+population y households) se mueven de forma muy parecida entre sí, ya que 
+en el fondo todas miden el tamaño del bloque censal desde distintos 
+ángulos. Usarlas tal cual en un modelo puede generar redundancia, así que 
+en este caso la vamos a utilizar para crear variables de razón (ratios) 
+que combinen esta información y que aporten un dato más claro, como por 
+ejemplo cuántas habitaciones tiene un hogar en promedio, en lugar de 
+manejar los totales por separado.
+
+
+## Graficos de variables para realizar la "Ingenieria de caracterizacion"
+
+Elegimos estas gráficas guiándonos por lo que se observó en las 28 gráficas 
+de la sección anterior, donde se comparó cada variable independiente contra 
+las demás. De ahí seleccionamos las relaciones que mostraban el patrón más 
+marcado entre sí (total_bedrooms, total_rooms, households y population), ya 
+que son las que presentan mayor riesgo de estar midiendo lo mismo. También 
+incluimos longitude vs latitude, aunque no tiene que ver con el tamaño del 
+bloque, porque nos ayuda a entender la ubicación geográfica de los datos. 
+Esto nos sirve como base para justificar por qué vamos a crear variables 
+nuevas en lugar de usar los totales originales. Es posible que falten 
+algunas combinaciones por revisar más adelante.
+
+```{r v.i vs v.i elegidas , message = FALSE}
+# ---'total_bedrooms' vs 'households'---
+
+g1<- df %>%
+  ggplot(aes(x = total_bedrooms, y = households)) +
+  geom_point(alpha = 0.3, color = 'purple') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de dormitorios',
+       y = 'Unidades Familiares/domesticas',
+       title = "'total_bedrooms' vs 'households'") +
+  theme_bw()
+
+
+# ---'total_rooms' vs 'total_bedrooms'---
+
+g2 <- df %>%
+  ggplot(aes(x =total_rooms , y = total_bedrooms )) +
+  geom_point(alpha = 0.3, color = 'darkblue') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Total de habitaciones',
+       y = 'Total de dormitorios',
+       title = " 'total_rooms' vs 'total_bedrooms' ") +
+  theme_bw()
+
+
+# ---'households' vs 'population' ---
+
+g3 <- df %>%
+  ggplot(aes(x = households , y = population )) +
+  geom_point(alpha = 0.3, color = 'gold3') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Unidades familiares/domésticas',
+       y = 'Población total por bloque censado',
+       title = "'households' vs 'totalbedrooms' ") +
+  theme_bw()
+
+
+# ---'total_rooms' vs 'households'---
+
+g4 <- df %>%
+  ggplot(aes(x = total_rooms , y = households )) +
+  geom_point(alpha = 0.3, color = 'darkgreen') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Cantidad de habitaciones',
+       y = 'Unidades familiares',
+       title = " 'total_rooms' vs 'households' ") +
+  theme_bw()
+
+
+# ---'total_bedrooms' vs 'population'---
+
+g5 <- df %>%
+  ggplot(aes(x =total_bedrooms , y = population)) +
+  geom_point(alpha = 0.3, color = 'darkorange') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Cantidad de dormitorios',
+       y = 'Poblacion censada',
+       title = " 'total_bedrooms' vs 'population' ") +
+  theme_bw()
+
+# ---'total_rooms' vs 'population'---
+
+g6 <- df %>% 
+  ggplot(aes(x=total_rooms,y=population))+
+  geom_point(alpha=0.3, color='brown')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Cantidad de habitaciones',y='Poblacion censada', tittle="'total_rooms' vs 'population'")+
+  theme_bw()
+
+
+# ---'longitude' vs 'latitude'---
+
+g7 <- df %>%
+  ggplot(aes(x =longitude , y =latitude )) +
+  geom_point(alpha = 0.3, color = 'magenta3') +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(x = 'Longitud',
+       y = 'Latitud',
+       title = " 'longitude' vs 'latitude' ") +
+  theme_bw()
+
+```
+
+```{r block 1, echo=FALSE, message=FALSE}
+g1+g2
+```
+
+
+
+total_bedrooms vs households
+
+De la grafica podemos observar que la cercania de los puntos  pueden llegar a formar una linea recta. Sin embargo, también se debe recalcar el pequeño 
+conjunto de puntos apilados verticalmente entre los 500-750 dormitorios. Podemos decir que este diagrama de dispersión nos señala que la relación es notoriamente creciente.
+ 
+total_rooms vs total_bedrooms
+
+Acá también se aprecia una tendencia ascendente clara, aunque los puntos 
+ya no se ajustan tanto a la línea como en el caso anterior; se van 
+dispersando más a medida que aumentan los valores, formando algo así como 
+un abanico. De todas formas, la tendencia de fondo se mantiene: a más 
+habitaciones en total, más dormitorios, lo cual es coherente ya que los 
+dormitorios forman parte de esas habitaciones.
+
+```{r block 2, echo=FALSE, message=FALSE}
+g3+g4
+```
+
+
+households vs population
+
+La gráfica muestra una tendencia ascendente, aunque con más dispersión que 
+en g1, los puntos se van alejando de la línea conforme aumentan los 
+valores, y se distinguen un par de casos que se despegan bastante del 
+patrón general (bloques con una población muy alta en relación a su 
+cantidad de hogares, cerca de los 30,000-35,000). Aun con eso, se mantiene 
+la idea de que a más hogares corresponde mayor población.
+
+total_rooms vs households
+
+En este grafico la tendencia es ascendente, pero la dispersión aumenta hacia los valores más altos.
+Esto va en línea con lo esperado, ya que un mayor número de hogares suele venir 
+acompañado de un mayor número de habitaciones en total, siguiendo el mismo 
+patrón de "tamaño del bloque" que se ha visto en las variables anteriores.
+
+```{r block 3, echo=FALSE, message=FALSE}
+g5+g6
+```
+
+
+total_bedrooms vs population
+
+Se observa una tendencia ascendente, con un comportamiento similar 
+al de g3 y g4 en cuanto a la dispersión creciente, además de algunos 
+valores atípicos aislados en la parte superior (bloques con una población 
+considerablemente alta respecto a su cantidad de dormitorios). En términos 
+generales, la tendencia sigue apuntando a que más dormitorios se asocian 
+con mayor población.
+
+total_rooms vs population
+
+Esta grafica muestra la dispersión aumentando de forma más notoria en los valores altos y un par de outliers 
+que se alejan bastante de la línea (puntos con población cercana a los 
+30,000-35,000). Esto confirma que esta variable también sigue el mismo 
+patrón de tamaño y densidad del bloque censal, aunque en este caso la 
+relación se ve algo menos ajustada que en g1.
+```{r block 4, echo=FALSE, message=FALSE}
+g7
+```
+
+
+longitude vs latitude
+
+Esta gráfica es diferente porque no habla del "tamaño" del bloque, sino de 
+dónde está ubicado. Se ve que a medida que la longitud aumenta, la latitud 
+baja, así que hay una relación inversa entre las dos. También se notan dos 
+zonas donde se juntan más puntos: una arriba a la izquierda y otra abajo a 
+la derecha, lo que muestra que los datos no están repartidos parejo, sino 
+que se concentran en un par de zonas. 
+
+## Realizamos el procedimiento de ingenieria de caracterizacion 
+```{r ingenieria de caracterizacion}
+df_nuevo <- df %>%
+  mutate(
+    bedroom_ratio = total_bedrooms / total_rooms,         #proporcion de dormitorios sobre la cantidad de habitaciones
+    rooms_per_household = total_rooms / households,       #habitaciones promedio por hogar (tamaño de vivienda)
+    population_per_household = population / households,   #promedio de personas por hogar
+    population_per_room = population / total_rooms,        #densidad de personas por habitación (hacinamiento)
+    bedrooms_per_household = total_bedrooms / households, #dormitorios promedio por hogar
+    
+    
+    
+  )
+
+# revisar que se crearon correctamente
+df_nuevo %>% 
+  select(rooms_per_household, bedrooms_per_household, bedroom_ratio, 
+         population_per_household, population_per_room) %>% 
+  summary()
+```
+
+
+## Verificar el éxito de la ingenieria de caracterizacion
+Comparamos las nuevas variables con respecto a nuestra variable respuesta 'median_house_value'
+
+
+### Diagramas de dispersión de las nuevas variables vs 'median_house_value'
+```{r p_1,message=FALSE}
+
+p_1<- df_nuevo %>%   
+  ggplot(aes(x=rooms_per_household,y=median_house_value))+
+  geom_point(alpha=0.3, color='springgreen4')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Habitaciones promedio por hogar',y='Valor medio de la vivienda', tittle=" '' vs 'median_house_value' ")+
+  theme_bw()
+p_1
+
+```
+
+
+Al revisar el resumen estadístico de `rooms_per_household` se confirma lo 
+que se veía en la gráfica, la mitad de los datos está entre 4.4 y 6 
+habitaciones promedio por hogar, y la media (5.43) y la mediana (5.23) 
+están bastante cerca, así que el comportamiento normal es bien estable. Sin 
+embargo, el máximo (141.9) está muy lejos de ese rango, lo que confirma que 
+hay outliers extremos, y probablemente son esos los que están inflando la 
+línea de tendencia en el gráfico de dispersión.
+
+
+
+```{r p_2,message=FALSE}
+
+p_2<- df_nuevo %>% 
+  ggplot(aes(x=bedrooms_per_household,y=median_house_value))+
+  geom_point(alpha=0.3, color='goldenrod2')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Dormitorios promedio por hogar',y='Valor medio de la vivienda', tittle="'bedrooms_per_household' vs 'median_house_value'")+
+  theme_bw()
+
+p_2
+```
+
+
+
+La mayoría de los puntos están entre 0 y 5 en el eje X, con una fila 
+pegada arriba cerca de 500,000 (el mismo tope visto antes). De ahí para 
+arriba casi no hay datos, solo unos pocos puntos sueltos hasta 30-34. La 
+línea roja baja de forma marcada y hacia el final llega a valores 
+negativos, lo cual no tiene sentido real para el precio de una vivienda, 
+así que esa parte de la línea la están empujando muy pocos puntos 
+extremos y no el comportamiento general de los datos.
+
+
+```{r p_3,message=FALSE}
+
+p_3<- df_nuevo %>% 
+  ggplot(aes(x=bedroom_ratio,y=median_house_value))+
+  geom_point(alpha=0.3, color='mediumorchid3')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Proporción de dormitorios sobre habitaciones',y='Valor medio de la vivienda', tittle=" 'bedroom_ratio' vs 'median_house_value' ")+
+  theme_bw()
+p_3
+```
+
+
+En esta gráfica casi todo se concentra entre 0 y 0.5 en el eje X, y de ahí 
+en adelante los datos prácticamente desaparecen, quedando solo unos pocos 
+puntos aislados hasta 3.5. A diferencia de las anteriores, acá no hay una 
+fila de puntos pegada arriba en el tope de 500,000, sino que la nube se ve 
+más dispersa en distintos valores de vivienda. La línea roja cae de forma 
+pronunciada y termina en valores negativos, algo que no es posible en la 
+realidad, lo que confirma que en esa zona (proporción mayor a 1) hay tan 
+pocos datos que la línea deja de representar el comportamiento real de la 
+variable.
+
+
+```{r p_4,message=FALSE}
+p_4<-df_nuevo %>% 
+  ggplot(aes(x=population_per_household,y=median_house_value))+
+  geom_point(alpha=0.3, color='darkblue')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Promedio de habitantes por hogar',y='Valor medio de la vivienda', tittle=" 'population_per_household' vs 'median_house_value' ")+
+  theme_bw()
+p_4
+```
+
+
+Casi todos los puntos están pegados al 0 en el eje X, formando una franja 
+vertical densa, y solo hay unos cuantos puntos sueltos  hasta 1200. La línea 
+roja baja de forma suave, pero como casi no hay datos fuera de esa franja, 
+no es muy confiable para el resto del rango. La banda gris se abre bastante 
+hacia la derecha, confirmando que ahí casi no hay información.
+
+```{r p_5,message=FALSE}
+
+p_5<- df_nuevo %>% 
+  ggplot(aes(x=population_per_room,y=median_house_value))+
+  geom_point(alpha=0.3, color='lightsalmon')+
+  geom_smooth(method = "lm",color = "red", se=TRUE)+
+  labs(x='Densidad de personas por habitación',y='Valor medio de la vivienda', tittle=" 'population_per_room' vs 'median_house_value' ")+
+  theme_bw()
+p_5
+
+
+```
+
+
+Los puntos están pegados al 0 en el eje X, con solo un par de casos 
+aislados que llegan hasta 400. La línea roja baja de forma pronunciada y 
+termina en valores negativos, algo que no es posible en la realidad. Igual 
+que en las anteriores, esto pasa porque hay muy pocos datos fuera de esa 
+franja inicial, así que la tendencia que muestra la línea no refleja bien 
+el comportamiento general de los datos.
+
+[Conclusiones]
+
+# Conclusiones generales
+
+Este análisis exploratorio permitió entender cómo se comporta el dataset 
+de California Housing antes de pasar a una posible etapa de modelado.
+
+Se encontró que median_house_value no se distribuye de forma pareja, sino 
+que tiene más casos concentrados en valores bajos y pocos casos con 
+valores muy altos, formando una cola hacia la derecha. Además, se detectó 
+un tope en 500,001 que se repite en varias gráficas del trabajo, algo 
+importante a tener en cuenta más adelante.
+
+Entre las variables independientes, la mayoría mostró ese mismo patrón de 
+cola hacia la derecha, mientras que housing_median_age fue la más pareja 
+de todas. Al comparar con el precio de la vivienda, median_income fue la 
+que mostró la relación más clara, mientras que las demás no mostraron una 
+relación fuerte por sí solas.
+
+También se notó que varias variables (total_rooms, total_bedrooms, 
+population, households) se mueven de forma muy parecida entre sí, porque 
+en el fondo todas están midiendo el tamaño del sector, solo que desde 
+ángulos distintos. Por eso se crearon nuevas variables (como habitaciones 
+promedio por hogar o personas por habitación) que buscan mostrar mejor esa 
+información sin repetir lo mismo varias veces. Al comparar estas nuevas 
+variables con el precio de la vivienda, se vio que varias tendencias 
+estaban influenciadas por valores atípicos, aunque dos de ellas 
+(bedroom_ratio y population_per_room) mostraron un comportamiento más 
+claro que el resto.
+
+En general, este trabajo permitió entender mejor la estructura de los 
+datos y dejar variables más útiles preparadas para una posible siguiente 
+etapa de modelado.
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
