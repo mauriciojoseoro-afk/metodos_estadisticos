@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 4. Medidas de forma: | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
+  <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 4. Medidas de forma: | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 4. Medidas de forma: | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  
+  <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  
+
+<meta name="author" content="Karla Paredes y Mauricio Orozco" />
+
+
+<meta name="date" content="2026-08-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="medidas-de-dispersión.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> EDA</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="intro.html"><a href="intro.html#cargar-las-librerias"><i class="fa fa-check"></i><b>2.0.1</b> Cargar las librerias</a></li>
+<li class="chapter" data-level="2.0.2" data-path="intro.html"><a href="intro.html#leer-dataset"><i class="fa fa-check"></i><b>2.0.2</b> Leer dataset</a></li>
+<li class="chapter" data-level="2.0.3" data-path="intro.html"><a href="intro.html#mostrar-las-5-primeras-filas"><i class="fa fa-check"></i><b>2.0.3</b> Mostrar las 5 primeras filas</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#aalisis-exploratorio-de-median_hose_valur-target"><i class="fa fa-check"></i><b>2.1</b> Aalisis exploratorio de median_hose_valur (target)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html"><i class="fa fa-check"></i><b>3</b> 1. Medidas de tendencia central:</a></li>
+<li class="chapter" data-level="4" data-path="medidas-de-dispersión.html"><a href="medidas-de-dispersión.html"><i class="fa fa-check"></i><b>4</b> 2. Medidas de dispersión:</a></li>
+<li class="chapter" data-level="5" data-path="medidas-de-forma.html"><a href="medidas-de-forma.html"><i class="fa fa-check"></i><b>5</b> 4. Medidas de forma:</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="medidas-de-forma.html"><a href="medidas-de-forma.html#an%C3%A1lisis-de-las-variables-independientes-caracteristicas"><i class="fa fa-check"></i><b>5.1</b> Análisis de las variables independientes (caracteristicas)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
+<li class="chapter" data-level="7" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>7</b> Methods</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>7.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>8</b> Applications</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>8.1</b> Example one</a></li>
+<li class="chapter" data-level="8.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>8.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>9</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Exploratorio de Datos: Valor de Viviendas en California</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="medidas-de-forma" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> 4. Medidas de forma:<a href="medidas-de-forma.html#medidas-de-forma" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>-Asimetría.
+-Curtosis.</p>
+<p>Histograma</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="medidas-de-forma.html#cb16-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="medidas-de-forma.html#cb16-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>median_house_value))<span class="sc">+</span></span>
+<span id="cb16-3"><a href="medidas-de-forma.html#cb16-3" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">after_stat</span>(density)),</span>
+<span id="cb16-4"><a href="medidas-de-forma.html#cb16-4" tabindex="-1"></a>                <span class="at">binwidth=</span><span class="dv">25000</span>,</span>
+<span id="cb16-5"><a href="medidas-de-forma.html#cb16-5" tabindex="-1"></a>                <span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,</span>
+<span id="cb16-6"><a href="medidas-de-forma.html#cb16-6" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb16-7"><a href="medidas-de-forma.html#cb16-7" tabindex="-1"></a>                <span class="at">alpha=</span><span class="fl">0.6</span>,)<span class="sc">+</span></span>
+<span id="cb16-8"><a href="medidas-de-forma.html#cb16-8" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,<span class="at">linewidth=</span><span class="fl">1.2</span>)<span class="sc">+</span></span>
+<span id="cb16-9"><a href="medidas-de-forma.html#cb16-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&#39;Distribucion del valor medio de las viviendas&#39;</span>,</span>
+<span id="cb16-10"><a href="medidas-de-forma.html#cb16-10" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&#39;valor medio de la casa (USD)&#39;</span>,</span>
+<span id="cb16-11"><a href="medidas-de-forma.html#cb16-11" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&#39;densidad&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/grafica-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="medidas-de-forma.html#cb17-1" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## &lt;theme&gt; List of 144
+##  $ line                            : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ lineend      : chr &quot;butt&quot;
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;black&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ rect                            : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ text                            : &lt;ggplot2::element_text&gt;
+##   ..@ family       : chr &quot;&quot;
+##   ..@ face         : chr &quot;plain&quot;
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ size         : num 11
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : num 0.5
+##   ..@ angle        : num 0
+##   ..@ lineheight   : num 0.9
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 0
+##   ..@ debug        : logi FALSE
+##   ..@ inherit.blank: logi TRUE
+##  $ title                           : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ point                           : &lt;ggplot2::element_point&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ shape        : num 19
+##   ..@ size         : num 1.5
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ stroke       : num 0.5
+##   ..@ inherit.blank: logi TRUE
+##  $ polygon                         : &lt;ggplot2::element_polygon&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ geom                            : &lt;ggplot2::element_geom&gt;
+##   ..@ ink        : chr &quot;black&quot;
+##   ..@ paper      : chr &quot;white&quot;
+##   ..@ accent     : chr &quot;#3366FF&quot;
+##   ..@ linewidth  : num 0.5
+##   ..@ borderwidth: num 0.5
+##   ..@ linetype   : int 1
+##   ..@ bordertype : int 1
+##   ..@ family     : chr &quot;&quot;
+##   ..@ fontsize   : num 3.87
+##   ..@ pointsize  : num 1.5
+##   ..@ pointshape : num 19
+##   ..@ colour     : NULL
+##   ..@ fill       : NULL
+##  $ spacing                         : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ margins                         : &lt;ggplot2::margin&gt; num [1:4] 5.5 5.5 5.5 5.5
+##  $ aspect.ratio                    : NULL
+##  $ axis.title                      : NULL
+##  $ axis.title.x                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.75 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.top                : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.75 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.bottom             : NULL
+##  $ axis.title.y                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num 90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.75 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.y.left               : NULL
+##  $ axis.title.y.right              : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num -90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.75
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text                       : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;#4D4D4DFF&quot;
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.2 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.top                 : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.2 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.bottom              : NULL
+##  $ axis.text.y                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 1
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.y.left                : NULL
+##  $ axis.text.y.right               : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.theta                 : NULL
+##  $ axis.text.r                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks                      : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;#333333FF&quot;
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ lineend      : NULL
+##   ..@ linejoin     : NULL
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;#333333FF&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks.x                    : NULL
+##  $ axis.ticks.x.top                : NULL
+##  $ axis.ticks.x.bottom             : NULL
+##  $ axis.ticks.y                    : NULL
+##  $ axis.ticks.y.left               : NULL
+##  $ axis.ticks.y.right              : NULL
+##  $ axis.ticks.theta                : NULL
+##  $ axis.ticks.r                    : NULL
+##  $ axis.minor.ticks.x.top          : NULL
+##  $ axis.minor.ticks.x.bottom       : NULL
+##  $ axis.minor.ticks.y.left         : NULL
+##  $ axis.minor.ticks.y.right        : NULL
+##  $ axis.minor.ticks.theta          : NULL
+##  $ axis.minor.ticks.r              : NULL
+##  $ axis.ticks.length               : &#39;rel&#39; num 0.5
+##  $ axis.ticks.length.x             : NULL
+##  $ axis.ticks.length.x.top         : NULL
+##  $ axis.ticks.length.x.bottom      : NULL
+##  $ axis.ticks.length.y             : NULL
+##  $ axis.ticks.length.y.left        : NULL
+##  $ axis.ticks.length.y.right       : NULL
+##  $ axis.ticks.length.theta         : NULL
+##  $ axis.ticks.length.r             : NULL
+##  $ axis.minor.ticks.length         : &#39;rel&#39; num 0.75
+##  $ axis.minor.ticks.length.x       : NULL
+##  $ axis.minor.ticks.length.x.top   : NULL
+##  $ axis.minor.ticks.length.x.bottom: NULL
+##  $ axis.minor.ticks.length.y       : NULL
+##  $ axis.minor.ticks.length.y.left  : NULL
+##  $ axis.minor.ticks.length.y.right : NULL
+##  $ axis.minor.ticks.length.theta   : NULL
+##  $ axis.minor.ticks.length.r       : NULL
+##  $ axis.line                       : &lt;ggplot2::element_blank&gt;
+##  $ axis.line.x                     : NULL
+##  $ axis.line.x.top                 : NULL
+##  $ axis.line.x.bottom              : NULL
+##  $ axis.line.y                     : NULL
+##  $ axis.line.y.left                : NULL
+##  $ axis.line.y.right               : NULL
+##  $ axis.line.theta                 : NULL
+##  $ axis.line.r                     : NULL
+##  $ legend.background               : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : NULL
+##   ..@ colour       : logi NA
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ linejoin     : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.margin                   : NULL
+##  $ legend.spacing                  : &#39;rel&#39; num 2
+##  $ legend.spacing.x                : NULL
+##  $ legend.spacing.y                : NULL
+##  $ legend.key                      : NULL
+##  $ legend.key.size                 : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height               : NULL
+##  $ legend.key.width                : NULL
+##  $ legend.key.spacing              : NULL
+##  $ legend.key.spacing.x            : NULL
+##  $ legend.key.spacing.y            : NULL
+##  $ legend.key.justification        : NULL
+##  $ legend.frame                    : NULL
+##  $ legend.ticks                    : NULL
+##  $ legend.ticks.length             : &#39;rel&#39; num 0.2
+##  $ legend.axis.line                : NULL
+##  $ legend.text                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.text.position            : NULL
+##  $ legend.title                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.title.position           : NULL
+##  $ legend.position                 : chr &quot;right&quot;
+##  $ legend.position.inside          : NULL
+##  $ legend.direction                : NULL
+##  $ legend.byrow                    : NULL
+##  $ legend.justification            : chr &quot;center&quot;
+##  $ legend.justification.top        : NULL
+##  $ legend.justification.bottom     : NULL
+##  $ legend.justification.left       : NULL
+##  $ legend.justification.right      : NULL
+##  $ legend.justification.inside     : NULL
+##   [list output truncated]
+##  @ complete: logi TRUE
+##  @ validate: logi TRUE</code></pre>
+<p>Cajas y bigotes</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="medidas-de-forma.html#cb19-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="medidas-de-forma.html#cb19-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> median_house_value))<span class="sc">+</span></span>
+<span id="cb19-3"><a href="medidas-de-forma.html#cb19-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb19-4"><a href="medidas-de-forma.html#cb19-4" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/boxplot-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="medidas-de-forma.html#cb20-1" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-2"><a href="medidas-de-forma.html#cb20-2" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;black&#39;</span>) <span class="co">#colocar un punto en la media</span></span></code></pre></div>
+<pre><code>## geom_point: na.rm = FALSE
+## stat_summary: fun.data = NULL, fun = function (x, ...) 
+## UseMethod(&quot;mean&quot;), fun.max = NULL, fun.min = NULL, fun.args = list(), na.rm = FALSE, orientation = NA
+## position_identity</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="medidas-de-forma.html#cb22-1" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## &lt;theme&gt; List of 144
+##  $ line                            : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ lineend      : chr &quot;butt&quot;
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;black&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ rect                            : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ text                            : &lt;ggplot2::element_text&gt;
+##   ..@ family       : chr &quot;&quot;
+##   ..@ face         : chr &quot;plain&quot;
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ size         : num 11
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : num 0.5
+##   ..@ angle        : num 0
+##   ..@ lineheight   : num 0.9
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 0
+##   ..@ debug        : logi FALSE
+##   ..@ inherit.blank: logi TRUE
+##  $ title                           : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ point                           : &lt;ggplot2::element_point&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ shape        : num 19
+##   ..@ size         : num 1.5
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ stroke       : num 0.5
+##   ..@ inherit.blank: logi TRUE
+##  $ polygon                         : &lt;ggplot2::element_polygon&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ geom                            : &lt;ggplot2::element_geom&gt;
+##   ..@ ink        : chr &quot;black&quot;
+##   ..@ paper      : chr &quot;white&quot;
+##   ..@ accent     : chr &quot;#3366FF&quot;
+##   ..@ linewidth  : num 0.5
+##   ..@ borderwidth: num 0.5
+##   ..@ linetype   : int 1
+##   ..@ bordertype : int 1
+##   ..@ family     : chr &quot;&quot;
+##   ..@ fontsize   : num 3.87
+##   ..@ pointsize  : num 1.5
+##   ..@ pointshape : num 19
+##   ..@ colour     : NULL
+##   ..@ fill       : NULL
+##  $ spacing                         : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ margins                         : &lt;ggplot2::margin&gt; num [1:4] 5.5 5.5 5.5 5.5
+##  $ aspect.ratio                    : NULL
+##  $ axis.title                      : NULL
+##  $ axis.title.x                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.75 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.top                : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.75 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.bottom             : NULL
+##  $ axis.title.y                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num 90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.75 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.y.left               : NULL
+##  $ axis.title.y.right              : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num -90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.75
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text                       : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;#4D4D4DFF&quot;
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.2 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.top                 : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.2 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.bottom              : NULL
+##  $ axis.text.y                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 1
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.y.left                : NULL
+##  $ axis.text.y.right               : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.theta                 : NULL
+##  $ axis.text.r                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks                      : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;#333333FF&quot;
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ lineend      : NULL
+##   ..@ linejoin     : NULL
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;#333333FF&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks.x                    : NULL
+##  $ axis.ticks.x.top                : NULL
+##  $ axis.ticks.x.bottom             : NULL
+##  $ axis.ticks.y                    : NULL
+##  $ axis.ticks.y.left               : NULL
+##  $ axis.ticks.y.right              : NULL
+##  $ axis.ticks.theta                : NULL
+##  $ axis.ticks.r                    : NULL
+##  $ axis.minor.ticks.x.top          : NULL
+##  $ axis.minor.ticks.x.bottom       : NULL
+##  $ axis.minor.ticks.y.left         : NULL
+##  $ axis.minor.ticks.y.right        : NULL
+##  $ axis.minor.ticks.theta          : NULL
+##  $ axis.minor.ticks.r              : NULL
+##  $ axis.ticks.length               : &#39;rel&#39; num 0.5
+##  $ axis.ticks.length.x             : NULL
+##  $ axis.ticks.length.x.top         : NULL
+##  $ axis.ticks.length.x.bottom      : NULL
+##  $ axis.ticks.length.y             : NULL
+##  $ axis.ticks.length.y.left        : NULL
+##  $ axis.ticks.length.y.right       : NULL
+##  $ axis.ticks.length.theta         : NULL
+##  $ axis.ticks.length.r             : NULL
+##  $ axis.minor.ticks.length         : &#39;rel&#39; num 0.75
+##  $ axis.minor.ticks.length.x       : NULL
+##  $ axis.minor.ticks.length.x.top   : NULL
+##  $ axis.minor.ticks.length.x.bottom: NULL
+##  $ axis.minor.ticks.length.y       : NULL
+##  $ axis.minor.ticks.length.y.left  : NULL
+##  $ axis.minor.ticks.length.y.right : NULL
+##  $ axis.minor.ticks.length.theta   : NULL
+##  $ axis.minor.ticks.length.r       : NULL
+##  $ axis.line                       : &lt;ggplot2::element_blank&gt;
+##  $ axis.line.x                     : NULL
+##  $ axis.line.x.top                 : NULL
+##  $ axis.line.x.bottom              : NULL
+##  $ axis.line.y                     : NULL
+##  $ axis.line.y.left                : NULL
+##  $ axis.line.y.right               : NULL
+##  $ axis.line.theta                 : NULL
+##  $ axis.line.r                     : NULL
+##  $ legend.background               : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : NULL
+##   ..@ colour       : logi NA
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ linejoin     : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.margin                   : NULL
+##  $ legend.spacing                  : &#39;rel&#39; num 2
+##  $ legend.spacing.x                : NULL
+##  $ legend.spacing.y                : NULL
+##  $ legend.key                      : NULL
+##  $ legend.key.size                 : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height               : NULL
+##  $ legend.key.width                : NULL
+##  $ legend.key.spacing              : NULL
+##  $ legend.key.spacing.x            : NULL
+##  $ legend.key.spacing.y            : NULL
+##  $ legend.key.justification        : NULL
+##  $ legend.frame                    : NULL
+##  $ legend.ticks                    : NULL
+##  $ legend.ticks.length             : &#39;rel&#39; num 0.2
+##  $ legend.axis.line                : NULL
+##  $ legend.text                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.text.position            : NULL
+##  $ legend.title                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.title.position           : NULL
+##  $ legend.position                 : chr &quot;right&quot;
+##  $ legend.position.inside          : NULL
+##  $ legend.direction                : NULL
+##  $ legend.byrow                    : NULL
+##  $ legend.justification            : chr &quot;center&quot;
+##  $ legend.justification.top        : NULL
+##  $ legend.justification.bottom     : NULL
+##  $ legend.justification.left       : NULL
+##  $ legend.justification.right      : NULL
+##  $ legend.justification.inside     : NULL
+##   [list output truncated]
+##  @ complete: logi TRUE
+##  @ validate: logi TRUE</code></pre>
+<p>hacer interpretación</p>
+<div id="análisis-de-las-variables-independientes-caracteristicas" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Análisis de las variables independientes (caracteristicas)<a href="medidas-de-forma.html#an%C3%A1lisis-de-las-variables-independientes-caracteristicas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="medidas-de-forma.html#cb24-1" tabindex="-1"></a>vars_independientes <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span>  <span class="co">#Guardo este conjunto de datos </span></span>
+<span id="cb24-2"><a href="medidas-de-forma.html#cb24-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>median_house_value) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="medidas-de-forma.html#cb24-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb24-4"><a href="medidas-de-forma.html#cb24-4" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">everything</span>(), <span class="co">#llaves y valores</span></span>
+<span id="cb24-5"><a href="medidas-de-forma.html#cb24-5" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&#39;variable&#39;</span>,</span>
+<span id="cb24-6"><a href="medidas-de-forma.html#cb24-6" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&#39;valor&#39;</span></span>
+<span id="cb24-7"><a href="medidas-de-forma.html#cb24-7" tabindex="-1"></a>    </span>
+<span id="cb24-8"><a href="medidas-de-forma.html#cb24-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-9"><a href="medidas-de-forma.html#cb24-9" tabindex="-1"></a>  </span>
+<span id="cb24-10"><a href="medidas-de-forma.html#cb24-10" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-11"><a href="medidas-de-forma.html#cb24-11" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(valor),</span>
+<span id="cb24-12"><a href="medidas-de-forma.html#cb24-12" tabindex="-1"></a>            <span class="at">media=</span><span class="fu">mean</span>(valor),</span>
+<span id="cb24-13"><a href="medidas-de-forma.html#cb24-13" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(valor),</span>
+<span id="cb24-14"><a href="medidas-de-forma.html#cb24-14" tabindex="-1"></a>            <span class="at">mediana=</span><span class="fu">median</span>(valor),</span>
+<span id="cb24-15"><a href="medidas-de-forma.html#cb24-15" tabindex="-1"></a>            <span class="at">RIC=</span><span class="fu">IQR</span>(valor),</span>
+<span id="cb24-16"><a href="medidas-de-forma.html#cb24-16" tabindex="-1"></a>            <span class="at">Q1=</span><span class="fu">quantile</span>(valor,<span class="fl">0.25</span>),</span>
+<span id="cb24-17"><a href="medidas-de-forma.html#cb24-17" tabindex="-1"></a>            <span class="at">Q3=</span><span class="fu">quantile</span>(valor,<span class="fl">0.75</span>),</span>
+<span id="cb24-18"><a href="medidas-de-forma.html#cb24-18" tabindex="-1"></a>            <span class="at">minimo=</span><span class="fu">min</span>(valor),</span>
+<span id="cb24-19"><a href="medidas-de-forma.html#cb24-19" tabindex="-1"></a>            <span class="at">maximo=</span><span class="fu">max</span>(valor),</span>
+<span id="cb24-20"><a href="medidas-de-forma.html#cb24-20" tabindex="-1"></a>            <span class="at">asim=</span><span class="fu">skewness</span>(valor),</span>
+<span id="cb24-21"><a href="medidas-de-forma.html#cb24-21" tabindex="-1"></a>            <span class="at">curtosis=</span><span class="fu">kurtosis</span>(valor))</span></code></pre></div>
+<p>Resumen de las variables independientes existentes en el datos, agrupadas por categoria y analizadas con medidas de tendencia, dispercion, posición y forma.</p>
+<div id="hacer-interpretacion-para-cada-variable." class="section level4 hasAnchor" number="5.1.0.1">
+<h4><span class="header-section-number">5.1.0.1</span> (hacer interpretacion para cada variable.)<a href="medidas-de-forma.html#hacer-interpretacion-para-cada-variable." class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>graficos de variables independientes:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="medidas-de-forma.html#cb25-1" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="medidas-de-forma.html#cb25-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> housing_median_age))<span class="sc">+</span></span>
+<span id="cb25-3"><a href="medidas-de-forma.html#cb25-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb25-4"><a href="medidas-de-forma.html#cb25-4" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/graficop1-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="medidas-de-forma.html#cb26-1" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb26-2"><a href="medidas-de-forma.html#cb26-2" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>) <span class="co">#colocar un punto en la media</span></span></code></pre></div>
+<pre><code>## geom_point: na.rm = FALSE
+## stat_summary: fun.data = NULL, fun = function (x, ...) 
+## UseMethod(&quot;mean&quot;), fun.max = NULL, fun.min = NULL, fun.args = list(), na.rm = FALSE, orientation = NA
+## position_identity</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="medidas-de-forma.html#cb28-1" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p1</span>
+<span id="cb28-2"><a href="medidas-de-forma.html#cb28-2" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="medidas-de-forma.html#cb28-3" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="medidas-de-forma.html#cb28-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_rooms))<span class="sc">+</span></span>
+<span id="cb28-5"><a href="medidas-de-forma.html#cb28-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb28-6"><a href="medidas-de-forma.html#cb28-6" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/graficop1-2.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="medidas-de-forma.html#cb29-1" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb29-2"><a href="medidas-de-forma.html#cb29-2" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>) <span class="co">#colocar un punto en la media</span></span></code></pre></div>
+<pre><code>## geom_point: na.rm = FALSE
+## stat_summary: fun.data = NULL, fun = function (x, ...) 
+## UseMethod(&quot;mean&quot;), fun.max = NULL, fun.min = NULL, fun.args = list(), na.rm = FALSE, orientation = NA
+## position_identity</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="medidas-de-forma.html#cb31-1" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p2</span>
+<span id="cb31-2"><a href="medidas-de-forma.html#cb31-2" tabindex="-1"></a>  </span>
+<span id="cb31-3"><a href="medidas-de-forma.html#cb31-3" tabindex="-1"></a>   df <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="medidas-de-forma.html#cb31-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_bedrooms))<span class="sc">+</span></span>
+<span id="cb31-5"><a href="medidas-de-forma.html#cb31-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb31-6"><a href="medidas-de-forma.html#cb31-6" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/graficop1-3.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="medidas-de-forma.html#cb32-1" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb32-2"><a href="medidas-de-forma.html#cb32-2" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>) <span class="co">#colocar un punto en la media</span></span></code></pre></div>
+<pre><code>## geom_point: na.rm = FALSE
+## stat_summary: fun.data = NULL, fun = function (x, ...) 
+## UseMethod(&quot;mean&quot;), fun.max = NULL, fun.min = NULL, fun.args = list(), na.rm = FALSE, orientation = NA
+## position_identity</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="medidas-de-forma.html#cb34-1" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p3</span>
+<span id="cb34-2"><a href="medidas-de-forma.html#cb34-2" tabindex="-1"></a>  </span>
+<span id="cb34-3"><a href="medidas-de-forma.html#cb34-3" tabindex="-1"></a>      p1<span class="sc">+</span>p2<span class="sc">+</span>p3</span></code></pre></div>
+<pre><code>## &lt;theme&gt; List of 144
+##  $ line                            : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ lineend      : chr &quot;butt&quot;
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;black&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ rect                            : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ text                            : &lt;ggplot2::element_text&gt;
+##   ..@ family       : chr &quot;&quot;
+##   ..@ face         : chr &quot;plain&quot;
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ size         : num 11
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : num 0.5
+##   ..@ angle        : num 0
+##   ..@ lineheight   : num 0.9
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 0
+##   ..@ debug        : logi FALSE
+##   ..@ inherit.blank: logi TRUE
+##  $ title                           : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ point                           : &lt;ggplot2::element_point&gt;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ shape        : num 19
+##   ..@ size         : num 1.5
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ stroke       : num 0.5
+##   ..@ inherit.blank: logi TRUE
+##  $ polygon                         : &lt;ggplot2::element_polygon&gt;
+##   ..@ fill         : chr &quot;white&quot;
+##   ..@ colour       : chr &quot;black&quot;
+##   ..@ linewidth    : num 0.5
+##   ..@ linetype     : num 1
+##   ..@ linejoin     : chr &quot;round&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ geom                            : &lt;ggplot2::element_geom&gt;
+##   ..@ ink        : chr &quot;black&quot;
+##   ..@ paper      : chr &quot;white&quot;
+##   ..@ accent     : chr &quot;#3366FF&quot;
+##   ..@ linewidth  : num 0.5
+##   ..@ borderwidth: num 0.5
+##   ..@ linetype   : int 1
+##   ..@ bordertype : int 1
+##   ..@ family     : chr &quot;&quot;
+##   ..@ fontsize   : num 3.87
+##   ..@ pointsize  : num 1.5
+##   ..@ pointshape : num 19
+##   ..@ colour     : NULL
+##   ..@ fill       : NULL
+##  $ spacing                         : &#39;simpleUnit&#39; num 5.5points
+##   ..- attr(*, &quot;unit&quot;)= int 8
+##  $ margins                         : &lt;ggplot2::margin&gt; num [1:4] 5.5 5.5 5.5 5.5
+##  $ aspect.ratio                    : NULL
+##  $ axis.title                      : NULL
+##  $ axis.title.x                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.75 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.top                : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.75 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.x.bottom             : NULL
+##  $ axis.title.y                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num 90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.75 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.title.y.left               : NULL
+##  $ axis.title.y.right              : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : num -90
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.75
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text                       : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : chr &quot;#4D4D4DFF&quot;
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 1
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 2.2 0 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.top                 : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : NULL
+##   ..@ vjust        : num 0
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 2.2 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.x.bottom              : NULL
+##  $ axis.text.y                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 1
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 0
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.y.left                : NULL
+##  $ axis.text.y.right               : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 0 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.text.theta                 : NULL
+##  $ axis.text.r                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0.5
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : &lt;ggplot2::margin&gt; num [1:4] 0 2.2 0 2.2
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks                      : &lt;ggplot2::element_line&gt;
+##   ..@ colour       : chr &quot;#333333FF&quot;
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ lineend      : NULL
+##   ..@ linejoin     : NULL
+##   ..@ arrow        : logi FALSE
+##   ..@ arrow.fill   : chr &quot;#333333FF&quot;
+##   ..@ inherit.blank: logi TRUE
+##  $ axis.ticks.x                    : NULL
+##  $ axis.ticks.x.top                : NULL
+##  $ axis.ticks.x.bottom             : NULL
+##  $ axis.ticks.y                    : NULL
+##  $ axis.ticks.y.left               : NULL
+##  $ axis.ticks.y.right              : NULL
+##  $ axis.ticks.theta                : NULL
+##  $ axis.ticks.r                    : NULL
+##  $ axis.minor.ticks.x.top          : NULL
+##  $ axis.minor.ticks.x.bottom       : NULL
+##  $ axis.minor.ticks.y.left         : NULL
+##  $ axis.minor.ticks.y.right        : NULL
+##  $ axis.minor.ticks.theta          : NULL
+##  $ axis.minor.ticks.r              : NULL
+##  $ axis.ticks.length               : &#39;rel&#39; num 0.5
+##  $ axis.ticks.length.x             : NULL
+##  $ axis.ticks.length.x.top         : NULL
+##  $ axis.ticks.length.x.bottom      : NULL
+##  $ axis.ticks.length.y             : NULL
+##  $ axis.ticks.length.y.left        : NULL
+##  $ axis.ticks.length.y.right       : NULL
+##  $ axis.ticks.length.theta         : NULL
+##  $ axis.ticks.length.r             : NULL
+##  $ axis.minor.ticks.length         : &#39;rel&#39; num 0.75
+##  $ axis.minor.ticks.length.x       : NULL
+##  $ axis.minor.ticks.length.x.top   : NULL
+##  $ axis.minor.ticks.length.x.bottom: NULL
+##  $ axis.minor.ticks.length.y       : NULL
+##  $ axis.minor.ticks.length.y.left  : NULL
+##  $ axis.minor.ticks.length.y.right : NULL
+##  $ axis.minor.ticks.length.theta   : NULL
+##  $ axis.minor.ticks.length.r       : NULL
+##  $ axis.line                       : &lt;ggplot2::element_blank&gt;
+##  $ axis.line.x                     : NULL
+##  $ axis.line.x.top                 : NULL
+##  $ axis.line.x.bottom              : NULL
+##  $ axis.line.y                     : NULL
+##  $ axis.line.y.left                : NULL
+##  $ axis.line.y.right               : NULL
+##  $ axis.line.theta                 : NULL
+##  $ axis.line.r                     : NULL
+##  $ legend.background               : &lt;ggplot2::element_rect&gt;
+##   ..@ fill         : NULL
+##   ..@ colour       : logi NA
+##   ..@ linewidth    : NULL
+##   ..@ linetype     : NULL
+##   ..@ linejoin     : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.margin                   : NULL
+##  $ legend.spacing                  : &#39;rel&#39; num 2
+##  $ legend.spacing.x                : NULL
+##  $ legend.spacing.y                : NULL
+##  $ legend.key                      : NULL
+##  $ legend.key.size                 : &#39;simpleUnit&#39; num 1.2lines
+##   ..- attr(*, &quot;unit&quot;)= int 3
+##  $ legend.key.height               : NULL
+##  $ legend.key.width                : NULL
+##  $ legend.key.spacing              : NULL
+##  $ legend.key.spacing.x            : NULL
+##  $ legend.key.spacing.y            : NULL
+##  $ legend.key.justification        : NULL
+##  $ legend.frame                    : NULL
+##  $ legend.ticks                    : NULL
+##  $ legend.ticks.length             : &#39;rel&#39; num 0.2
+##  $ legend.axis.line                : NULL
+##  $ legend.text                     : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : &#39;rel&#39; num 0.8
+##   ..@ hjust        : NULL
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.text.position            : NULL
+##  $ legend.title                    : &lt;ggplot2::element_text&gt;
+##   ..@ family       : NULL
+##   ..@ face         : NULL
+##   ..@ italic       : chr NA
+##   ..@ fontweight   : num NA
+##   ..@ fontwidth    : num NA
+##   ..@ colour       : NULL
+##   ..@ size         : NULL
+##   ..@ hjust        : num 0
+##   ..@ vjust        : NULL
+##   ..@ angle        : NULL
+##   ..@ lineheight   : NULL
+##   ..@ margin       : NULL
+##   ..@ debug        : NULL
+##   ..@ inherit.blank: logi TRUE
+##  $ legend.title.position           : NULL
+##  $ legend.position                 : chr &quot;right&quot;
+##  $ legend.position.inside          : NULL
+##  $ legend.direction                : NULL
+##  $ legend.byrow                    : NULL
+##  $ legend.justification            : chr &quot;center&quot;
+##  $ legend.justification.top        : NULL
+##  $ legend.justification.bottom     : NULL
+##  $ legend.justification.left       : NULL
+##  $ legend.justification.right      : NULL
+##  $ legend.justification.inside     : NULL
+##   [list output truncated]
+##  @ complete: logi TRUE
+##  @ validate: logi TRUE</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="medidas-de-dispersión.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

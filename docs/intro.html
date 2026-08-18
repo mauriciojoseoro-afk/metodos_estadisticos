@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Introduction | Analisis Exploratorio</title>
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <title>Chapter 2 EDA | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
+  <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Introduction | Analisis Exploratorio" />
+  <meta property="og:title" content="Chapter 2 EDA | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Introduction | Analisis Exploratorio" />
+  <meta name="twitter:title" content="Chapter 2 EDA | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   
 
-<meta name="author" content="Mauricio Orozco y Karla Paredes" />
+<meta name="author" content="Karla Paredes y Mauricio Orozco" />
 
 
-<meta name="date" content="2026-07-29" />
+<meta name="date" content="2026-08-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="literature.html"/>
+<link rel="next" href="analisis-exploratorio-de-median_hose_value-target.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -124,29 +124,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -165,18 +142,66 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> EDA</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>4.1</b> math example</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<li class="chapter" data-level="2.0.1" data-path="intro.html"><a href="intro.html#cargar-las-librerias"><i class="fa fa-check"></i><b>2.0.1</b> Cargar las librerias</a></li>
+<li class="chapter" data-level="2.0.2" data-path="intro.html"><a href="intro.html#leer-dataset"><i class="fa fa-check"></i><b>2.0.2</b> Leer dataset</a></li>
+<li class="chapter" data-level="2.0.3" data-path="intro.html"><a href="intro.html#mostrar-las-5-primeras-filas"><i class="fa fa-check"></i><b>2.0.3</b> Mostrar las 5 primeras filas</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#estructura-de-los-datos-variables-existentes-tipo-de-variable-etc"><i class="fa fa-check"></i><b>2.1</b> Estructura de los datos (Variables existentes, tipo de variable, etc…)</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#verificar-si-hay-datos-faltantes"><i class="fa fa-check"></i><b>2.1.1</b> Verificar si hay datos faltantes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#imputacion-de-datos-faltantes"><i class="fa fa-check"></i><b>2.1.2</b> Imputacion de datos faltantes</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame"><i class="fa fa-check"></i><b>2.1.3</b> Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor"><i class="fa fa-check"></i><b>2.1.4</b> Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html"><i class="fa fa-check"></i><b>3</b> Analisis exploratorio de median_hose_value (target)</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable"><i class="fa fa-check"></i><b>3.0.1</b> Realicemos el resumen estadistico de la variable:</a></li>
+<li class="chapter" data-level="3.0.2" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value"><i class="fa fa-check"></i><b>3.0.2</b> Gráfico tipo histograma de ‘median_house_value’</a></li>
+<li class="chapter" data-level="3.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value"><i class="fa fa-check"></i><b>3.1</b> Gráfico de cajas y bigotes de ‘median_house_value’</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html"><i class="fa fa-check"></i><b>4</b> Variables independientes (caracteristicas)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente"><i class="fa fa-check"></i><b>4.1</b> Veamos el análisis de cada variable independiente</a></li>
+<li class="chapter" data-level="4.2" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#graficos-de-las-variables-independientes"><i class="fa fa-check"></i><b>4.2</b> Graficos de las variables independientes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html"><i class="fa fa-check"></i><b>5</b> Analisis exploratorio bivariado</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html#veamos-los-gr%C3%A1ficos."><i class="fa fa-check"></i><b>5.1</b> Veamos los gráficos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html"><i class="fa fa-check"></i><b>6</b> Variable categórica ‘ocean_proximity’ (convertida en factor)</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>6.1</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>6.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>6.2</b> Paquete GGally</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.2.1</b> Graficos de variables independientes vs variables independientes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>7</b> Ingeniería de Caracterización (feature engineering)</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
+<li class="chapter" data-level="7.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
+<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.3</b> Verificar el éxito de la ingenieria de caracterizacion</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.3.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones generales</a></li>
+<li class="chapter" data-level="9" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>9</b> Literature</a></li>
+<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>11</b> Applications</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>11.1</b> Example one</a></li>
+<li class="chapter" data-level="11.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>11.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -190,7 +215,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Exploratorio</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Exploratorio de Datos: Valor de Viviendas en California</a>
           </h1>
         </div>
 
@@ -199,186 +224,118 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="intro" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Introduction<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">2</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="methods.html#methods">4</a>.</p>
-<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
-<span id="cb2-2"><a href="intro.html#cb2-2" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig"></span>
-<img src="bookdown-demo_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">
-Figure 2.1: Here is a nice figure!
-</p>
+<h1><span class="header-section-number">Chapter 2</span> EDA<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El <strong>Análisis Exploratorio de Datos</strong> o <strong>EDA</strong> (<strong>Exploratory Data Analysis</strong>) es una etapa fundamental dentro del proceso de análisis estadístico, cuyo propósito es examinar, resumir y comprender las características principales de un conjunto de datos antes de aplicar técnicas de modelado o inferencia formal.</p>
+<p>La base de datos utilizada en el presente informe corresponde al conjunto de datos <strong>California Housing (housing.csv)</strong>, el cual contiene información socioeconómica y geográfica recopilada a partir del censo de California de 1990. El conjunto está compuesto por 20,640 observaciones y 10 variables, que describen tanto características demográficas de la población como atributos de las viviendas en cada zona.</p>
+<p>El propósito de este trabajo es realizar un Análisis Exploratorio de Datos (EDA) sobre esta base, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles.</p>
+<div id="cargar-las-librerias" class="section level3 hasAnchor" number="2.0.1">
+<h3><span class="header-section-number">2.0.1</span> Cargar las librerias<a href="intro.html#cargar-las-librerias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="intro.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(Amelia)</span>
+<span id="cb2-3"><a href="intro.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb2-4"><a href="intro.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="intro.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb2-6"><a href="intro.html#cb2-6" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb2-7"><a href="intro.html#cb2-7" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb2-8"><a href="intro.html#cb2-8" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb2-9"><a href="intro.html#cb2-9" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code></pre></div>
 </div>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="intro.html#fig:nice-fig">2.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="intro.html#tab:nice-tab">2.1</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb3-2"><a href="intro.html#cb3-2" tabindex="-1"></a>  <span class="fu">head</span>(iris, <span class="dv">20</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb3-3"><a href="intro.html#cb3-3" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb3-4"><a href="intro.html#cb3-4" tabindex="-1"></a>)</span></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(<a href="#ref-R-bookdown">Xie 2026</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(<a href="#ref-xie2015">Xie 2015</a>)</span>.</p>
-
+<div id="leer-dataset" class="section level3 hasAnchor" number="2.0.2">
+<h3><span class="header-section-number">2.0.2</span> Leer dataset<a href="intro.html#leer-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro.html#cb3-1" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/housing.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 20640 Columns: 10
+## ── Column specification ──────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): ocean_proximity
+## dbl (9): longitude, latitude, housing_median_age, total_rooms, total_bedrooms, populat...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-xie2015" class="csl-entry">
-Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
+<div id="mostrar-las-5-primeras-filas" class="section level3 hasAnchor" number="2.0.3">
+<h3><span class="header-section-number">2.0.3</span> Mostrar las 5 primeras filas<a href="intro.html#mostrar-las-5-primeras-filas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro.html#cb5-1" tabindex="-1"></a><span class="fu">head</span>(data,<span class="at">n=</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 10
+##   longitude latitude housing_median_age total_rooms total_bedrooms population households
+##       &lt;dbl&gt;    &lt;dbl&gt;              &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+## 1     -122.     37.9                 41         880            129        322        126
+## 2     -122.     37.9                 21        7099           1106       2401       1138
+## 3     -122.     37.8                 52        1467            190        496        177
+## 4     -122.     37.8                 52        1274            235        558        219
+## 5     -122.     37.8                 52        1627            280        565        259
+## # ℹ 3 more variables: median_income &lt;dbl&gt;, median_house_value &lt;dbl&gt;,
+## #   ocean_proximity &lt;chr&gt;</code></pre>
 </div>
-<div id="ref-R-bookdown" class="csl-entry">
-———. 2026. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
+<div id="estructura-de-los-datos-variables-existentes-tipo-de-variable-etc" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Estructura de los datos (Variables existentes, tipo de variable, etc…)<a href="intro.html#estructura-de-los-datos-variables-existentes-tipo-de-variable-etc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro.html#cb7-1" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<pre><code>## spc_tbl_ [20,640 × 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ longitude         : num [1:20640] -122 -122 -122 -122 -122 ...
+##  $ latitude          : num [1:20640] 37.9 37.9 37.9 37.9 37.9 ...
+##  $ housing_median_age: num [1:20640] 41 21 52 52 52 52 52 52 42 52 ...
+##  $ total_rooms       : num [1:20640] 880 7099 1467 1274 1627 ...
+##  $ total_bedrooms    : num [1:20640] 129 1106 190 235 280 ...
+##  $ population        : num [1:20640] 322 2401 496 558 565 ...
+##  $ households        : num [1:20640] 126 1138 177 219 259 ...
+##  $ median_income     : num [1:20640] 8.33 8.3 7.26 5.64 3.85 ...
+##  $ median_house_value: num [1:20640] 452600 358500 352100 341300 342200 ...
+##  $ ocean_proximity   : chr [1:20640] &quot;NEAR BAY&quot; &quot;NEAR BAY&quot; &quot;NEAR BAY&quot; &quot;NEAR BAY&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   longitude = col_double(),
+##   ..   latitude = col_double(),
+##   ..   housing_median_age = col_double(),
+##   ..   total_rooms = col_double(),
+##   ..   total_bedrooms = col_double(),
+##   ..   population = col_double(),
+##   ..   households = col_double(),
+##   ..   median_income = col_double(),
+##   ..   median_house_value = col_double(),
+##   ..   ocean_proximity = col_character()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;pointer: 0x000002250f652c10&gt;</code></pre>
+<div id="verificar-si-hay-datos-faltantes" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Verificar si hay datos faltantes<a href="intro.html#verificar-si-hay-datos-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="intro.html#cb9-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.)),<span class="at">.names=</span><span class="st">&quot;NA_{.col}&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 10
+##   NA_longitude NA_latitude NA_housing_median_age NA_total_rooms NA_total_bedrooms
+##          &lt;int&gt;       &lt;int&gt;                 &lt;int&gt;          &lt;int&gt;             &lt;int&gt;
+## 1            0           0                     0              0               207
+## # ℹ 5 more variables: NA_population &lt;int&gt;, NA_households &lt;int&gt;, NA_median_income &lt;int&gt;,
+## #   NA_median_house_value &lt;int&gt;, NA_ocean_proximity &lt;int&gt;</code></pre>
+<div id="otra-forma-de-detectar-valores-faltantes" class="section level4 hasAnchor" number="2.1.1.1">
+<h4><span class="header-section-number">2.1.1.1</span> Otra forma de detectar valores faltantes:<a href="intro.html#otra-forma-de-detectar-valores-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" tabindex="-1"></a><span class="fu">missmap</span>(data)</span></code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: `arguments`.
+## Unknown or uninitialised column: `arguments`.</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: `imputations`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/otra%20forma%20(libreria%20Amelia)-1.png" alt="" width="672" /></p>
+</div>
+</div>
+<div id="imputacion-de-datos-faltantes" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Imputacion de datos faltantes<a href="intro.html#imputacion-de-datos-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro.html#cb14-1" tabindex="-1"></a> data <span class="sc">%&gt;%</span>  <span class="co">#datos</span></span>
+<span id="cb14-2"><a href="intro.html#cb14-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>( <span class="co">#columnas</span></span>
+<span id="cb14-3"><a href="intro.html#cb14-3" tabindex="-1"></a>    <span class="fu">where</span>(is.numeric), <span class="co">#seleccionar variables numericas</span></span>
+<span id="cb14-4"><a href="intro.html#cb14-4" tabindex="-1"></a>    <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(.),<span class="fu">mean</span>(.,<span class="at">na.rm=</span><span class="cn">TRUE</span>), .) <span class="co">#si hay un na, reemplazar, si no, dejar la variable</span></span>
+<span id="cb14-5"><a href="intro.html#cb14-5" tabindex="-1"></a>  )) <span class="ot">-&gt;</span> df <span class="co">#data limpiada</span></span></code></pre></div>
+</div>
+<div id="ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame<a href="intro.html#ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="intro.html#cb15-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="intro.html#cb15-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.)),<span class="at">.names=</span><span class="st">&quot;NA_{.col}&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 10
+##   NA_longitude NA_latitude NA_housing_median_age NA_total_rooms NA_total_bedrooms
+##          &lt;int&gt;       &lt;int&gt;                 &lt;int&gt;          &lt;int&gt;             &lt;int&gt;
+## 1            0           0                     0              0                 0
+## # ℹ 5 more variables: NA_population &lt;int&gt;, NA_households &lt;int&gt;, NA_median_income &lt;int&gt;,
+## #   NA_median_house_value &lt;int&gt;, NA_ocean_proximity &lt;int&gt;</code></pre>
+</div>
+<div id="vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor<a href="intro.html#vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="intro.html#cb17-1" tabindex="-1"></a>df<span class="sc">$</span>ocean_proximity<span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>ocean_proximity)</span></code></pre></div>
+</div>
 </div>
 </div>
             </section>
@@ -387,7 +344,7 @@ Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd 
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analisis-exploratorio-de-median_hose_value-target.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

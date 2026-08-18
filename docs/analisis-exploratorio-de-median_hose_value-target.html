@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
+  <title>Chapter 3 Analisis exploratorio de median_hose_value (target) | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
   <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta property="og:title" content="Chapter 3 Analisis exploratorio de median_hose_value (target) | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta name="twitter:title" content="Chapter 3 Analisis exploratorio de median_hose_value (target) | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   
   <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="final-words.html"/>
-
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="variables-independientes-caracteristicas.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -223,27 +223,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="analisis-exploratorio-de-median_hose_value-target" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Analisis exploratorio de median_hose_value (target)<a href="analisis-exploratorio-de-median_hose_value-target.html#analisis-exploratorio-de-median_hose_value-target" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="realicemos-el-resumen-estadistico-de-la-variable" class="section level3 hasAnchor" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> Realicemos el resumen estadistico de la variable:<a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(median_house_value),</span>
+<span id="cb18-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-2" tabindex="-1"></a>                  <span class="at">media=</span><span class="fu">mean</span>(median_house_value),</span>
+<span id="cb18-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-3" tabindex="-1"></a>                  <span class="at">sd=</span><span class="fu">sd</span>(median_house_value),</span>
+<span id="cb18-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-4" tabindex="-1"></a>                  <span class="at">mediana=</span><span class="fu">median</span>(median_house_value),</span>
+<span id="cb18-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-5" tabindex="-1"></a>                  <span class="at">RIC=</span><span class="fu">IQR</span>(median_house_value),</span>
+<span id="cb18-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-6" tabindex="-1"></a>                  <span class="at">Q1=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.25</span>),</span>
+<span id="cb18-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-7" tabindex="-1"></a>                  <span class="at">Q3=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.75</span>),</span>
+<span id="cb18-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-8" tabindex="-1"></a>                  <span class="at">minimo=</span><span class="fu">min</span>(median_house_value),</span>
+<span id="cb18-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-9" tabindex="-1"></a>                  <span class="at">maximo=</span><span class="fu">max</span>(median_house_value),</span>
+<span id="cb18-10"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-10" tabindex="-1"></a>                  <span class="at">asim=</span><span class="fu">skewness</span>(median_house_value),</span>
+<span id="cb18-11"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb18-11" tabindex="-1"></a>                  <span class="at">curtosis=</span><span class="fu">kurtosis</span>(median_house_value))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 11
+##       n   media      sd mediana    RIC     Q1     Q3 minimo maximo  asim curtosis
+##   &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 20640 206856. 115396.  179700 145125 119600 264725  14999 500001 0.978     3.33</code></pre>
+<div id="podemos-clasificar-cada-una-de-estas-medidas-según-su-tipo-terminar-esta-seccion" class="section level4 hasAnchor" number="3.0.1.1">
+<h4><span class="header-section-number">3.0.1.1</span> Podemos clasificar cada una de estas medidas según su tipo: [¡Terminar esta seccion!]<a href="analisis-exploratorio-de-median_hose_value-target.html#podemos-clasificar-cada-una-de-estas-medidas-seg%C3%BAn-su-tipo-terminar-esta-seccion" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>1. Medidas de tendencia central:</strong>
+Media = 206,855.8 | Mediana = 179,700</p>
+<p>Esto básicamente responde a la pregunta de cuál es el valor “típico” de los
+datos, el número que mejor representa al conjunto. Acá ya se nota algo raro:
+la media es bastante más alta que la mediana, y eso de una vez nos está
+avisando que la distribución no es simétrica.</p>
+<p><strong>2. Medidas de dispersión:</strong>
+SD = 115,395.6 | RIC = 145,125</p>
+<p>Con la tendencia central sola no alcanza, porque dos distribuciones pueden
+tener la misma media y comportarse totalmente distinto. Acá la desviación
+estándar es enorme, más de la mitad del valor de la media, así que ya sabemos
+que los precios de las viviendas varían muchísimo entre sí.</p>
+<p><strong>3. Medidas de posición:</strong>
+Q1 = 119,600 | Q3 = 264,725 | Mínimo = 14,999 | Máximo = 500,001 (Mediana = Q2)</p>
+<p>Esto nos dice dónde queda ubicado un dato específico respecto al resto,
+dividiendo el conjunto ordenado en partes. La mediana en realidad también es
+una medida de posición (Q2), por eso la repetimos acá: es el punto donde
+queda el 50% de los datos por debajo y el 50% por encima.</p>
+<p><strong>4. Medidas de forma:</strong>
+Asimetría = 0.9776 | Curtosis = 3.3275</p>
+<p>Esto habla de qué forma tiene la distribución, no de dónde está el centro
+ni de cuánto se dispersa, sino de cómo se reparten los datos alrededor de
+ese centro.
+Asimetría (0.9776): es positiva y bastante notoria, o sea que hay una cola
+larga hacia la derecha, lo cual concuerda con lo que ya vimos de que la
+media es mayor que la mediana.
+Curtosis (3.3275): está casi pegada al 3, que es el valor de una distribución
+normal. Esto es curioso porque contradice un poco lo que dice la asimetría:
+aunque la distribución no es simétrica, lo “puntiaguda” o “aplanada” que es
+se parece bastante a la de una normal.</p>
 </div>
-
-
-
-
-
-
-
-
-
-
+</div>
+<div id="gráfico-tipo-histograma-de-median_house_value" class="section level3 hasAnchor" number="3.0.2">
+<h3><span class="header-section-number">3.0.2</span> Gráfico tipo histograma de ‘median_house_value’<a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>median_house_value))<span class="sc">+</span></span>
+<span id="cb20-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-3" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">after_stat</span>(density)),</span>
+<span id="cb20-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-4" tabindex="-1"></a>                <span class="at">binwidth=</span><span class="dv">25000</span>,</span>
+<span id="cb20-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-5" tabindex="-1"></a>                <span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,</span>
+<span id="cb20-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-6" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;white&quot;</span>,</span>
+<span id="cb20-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-7" tabindex="-1"></a>                <span class="at">alpha=</span><span class="fl">0.6</span>,)<span class="sc">+</span></span>
+<span id="cb20-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-8" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,<span class="at">linewidth=</span><span class="fl">1.2</span>)<span class="sc">+</span></span>
+<span id="cb20-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&#39;Distribucion del valor medio de las viviendas&#39;</span>,</span>
+<span id="cb20-10"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-10" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&#39;valor medio de la casa (USD)&#39;</span>,</span>
+<span id="cb20-11"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-11" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&#39;densidad&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-12"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb20-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/Histograma-1.png" alt="" width="672" />
+La mayoría de las viviendas están entre 100K y 250K USD, con una
+concentración cerca de los 150K, y después se ve una cola larga hacia la
+derecha que confirma lo que ya habíamos visto en la tabla (media 206,855 &gt;
+mediana 179,700, asimetría de 0.97). También se nota una acumulación rara
+cerca de los 500K, lo que probablemente sea un tope que le pusieron a los
+datos originales, y coincide justo con el máximo de 500,001 que vimos antes.</p>
+</div>
+<div id="gráfico-de-cajas-y-bigotes-de-median_house_value" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Gráfico de cajas y bigotes de ‘median_house_value’<a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> median_house_value))<span class="sc">+</span></span>
+<span id="cb21-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb21-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-4" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb21-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-5" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;green&#39;</span>)<span class="sc">+</span> <span class="co">#colocar un punto en la media</span></span>
+<span id="cb21-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb21-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/Boxplot-1.png" alt="" width="672" />
+El boxplot confirma la asimetría que veníamos viendo: la mediana (línea azul)
+está más pegada al Q1 que al Q3, y el bigote de arriba es más largo que el de
+abajo, o sea que hay cola hacia la derecha. Los puntos rojos que se ven arriba
+(entre 480K y 500K aprox) son outliers, y coinciden con el tope de 500,001 que
+ya habíamos detectado. El punto verde marca la media (unos 207K), y se ve
+claramente por encima de la mediana.</p>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-independientes-caracteristicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -274,7 +352,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/rstudio/bookdown-demo/edit/master/06-references.Rmd",
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
     "text": "Edit"
   },
   "history": {

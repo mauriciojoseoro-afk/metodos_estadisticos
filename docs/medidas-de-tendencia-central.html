@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
+  <title>Chapter 3 1. Medidas de tendencia central: | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
   <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta property="og:title" content="Chapter 3 1. Medidas de tendencia central: | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta name="twitter:title" content="Chapter 3 1. Medidas de tendencia central: | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
   
   <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Karla Paredes y Mauricio Orozco" />
 
 
-<meta name="date" content="2026-08-17" />
+<meta name="date" content="2026-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="final-words.html"/>
-
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="medidas-de-dispersión.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,61 +147,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.0.1" data-path="intro.html"><a href="intro.html#cargar-las-librerias"><i class="fa fa-check"></i><b>2.0.1</b> Cargar las librerias</a></li>
 <li class="chapter" data-level="2.0.2" data-path="intro.html"><a href="intro.html#leer-dataset"><i class="fa fa-check"></i><b>2.0.2</b> Leer dataset</a></li>
 <li class="chapter" data-level="2.0.3" data-path="intro.html"><a href="intro.html#mostrar-las-5-primeras-filas"><i class="fa fa-check"></i><b>2.0.3</b> Mostrar las 5 primeras filas</a></li>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#estructura-de-los-datos-variables-existentes-tipo-de-variable-etc"><i class="fa fa-check"></i><b>2.1</b> Estructura de los datos (Variables existentes, tipo de variable, etc…)</a>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#aalisis-exploratorio-de-median_hose_valur-target"><i class="fa fa-check"></i><b>2.1</b> Aalisis exploratorio de median_hose_valur (target)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="medidas-de-tendencia-central.html"><a href="medidas-de-tendencia-central.html"><i class="fa fa-check"></i><b>3</b> 1. Medidas de tendencia central:</a></li>
+<li class="chapter" data-level="4" data-path="medidas-de-dispersión.html"><a href="medidas-de-dispersión.html"><i class="fa fa-check"></i><b>4</b> 2. Medidas de dispersión:</a></li>
+<li class="chapter" data-level="5" data-path="medidas-de-forma.html"><a href="medidas-de-forma.html"><i class="fa fa-check"></i><b>5</b> 4. Medidas de forma:</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#verificar-si-hay-datos-faltantes"><i class="fa fa-check"></i><b>2.1.1</b> Verificar si hay datos faltantes</a></li>
-<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#imputacion-de-datos-faltantes"><i class="fa fa-check"></i><b>2.1.2</b> Imputacion de datos faltantes</a></li>
-<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame"><i class="fa fa-check"></i><b>2.1.3</b> Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame</a></li>
-<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor"><i class="fa fa-check"></i><b>2.1.4</b> Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor</a></li>
+<li class="chapter" data-level="5.1" data-path="medidas-de-forma.html"><a href="medidas-de-forma.html#an%C3%A1lisis-de-las-variables-independientes-caracteristicas"><i class="fa fa-check"></i><b>5.1</b> Análisis de las variables independientes (caracteristicas)</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html"><i class="fa fa-check"></i><b>3</b> Analisis exploratorio de median_hose_value (target)</a>
+<li class="chapter" data-level="6" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>6</b> Literature</a></li>
+<li class="chapter" data-level="7" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>7</b> Methods</a>
 <ul>
-<li class="chapter" data-level="3.0.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable"><i class="fa fa-check"></i><b>3.0.1</b> Realicemos el resumen estadistico de la variable:</a></li>
-<li class="chapter" data-level="3.0.2" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value"><i class="fa fa-check"></i><b>3.0.2</b> Gráfico tipo histograma de ‘median_house_value’</a></li>
-<li class="chapter" data-level="3.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value"><i class="fa fa-check"></i><b>3.1</b> Gráfico de cajas y bigotes de ‘median_house_value’</a></li>
+<li class="chapter" data-level="7.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>7.1</b> math example</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html"><i class="fa fa-check"></i><b>4</b> Variables independientes (caracteristicas)</a>
+<li class="chapter" data-level="8" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>8</b> Applications</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente"><i class="fa fa-check"></i><b>4.1</b> Veamos el análisis de cada variable independiente</a></li>
-<li class="chapter" data-level="4.2" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#graficos-de-las-variables-independientes"><i class="fa fa-check"></i><b>4.2</b> Graficos de las variables independientes</a></li>
+<li class="chapter" data-level="8.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>8.1</b> Example one</a></li>
+<li class="chapter" data-level="8.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>8.2</b> Example two</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html"><i class="fa fa-check"></i><b>5</b> Analisis exploratorio bivariado</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html#veamos-los-gr%C3%A1ficos."><i class="fa fa-check"></i><b>5.1</b> Veamos los gráficos.</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html"><i class="fa fa-check"></i><b>6</b> Variable categórica ‘ocean_proximity’ (convertida en factor)</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>6.1</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>6.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>6.2</b> Paquete GGally</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.2.1</b> Graficos de variables independientes vs variables independientes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>7</b> Ingeniería de Caracterización (feature engineering)</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
-<li class="chapter" data-level="7.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
-<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.3</b> Verificar el éxito de la ingenieria de caracterizacion</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.3.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones generales</a></li>
-<li class="chapter" data-level="9" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>9</b> Literature</a></li>
-<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> math example</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>11</b> Applications</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>11.1</b> Example one</a></li>
-<li class="chapter" data-level="11.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>11.2</b> Example two</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final Words</a></li>
+<li class="chapter" data-level="9" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>9</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -223,27 +187,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered hasAnchor">
-<h1>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-
+<div id="medidas-de-tendencia-central" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> 1. Medidas de tendencia central:<a href="medidas-de-tendencia-central.html#medidas-de-tendencia-central" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>-Media.
+-Mediana</p>
 </div>
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="medidas-de-dispersión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -274,7 +229,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/rstudio/bookdown-demo/edit/master/06-references.Rmd",
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
     "text": "Edit"
   },
   "history": {

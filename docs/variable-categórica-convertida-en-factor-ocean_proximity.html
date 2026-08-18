@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Variable categórica (convertida en factor) ‘ocean_proximity’ | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
+  <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Variable categórica (convertida en factor) ‘ocean_proximity’ | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Variable categórica (convertida en factor) ‘ocean_proximity’ | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  
+  <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  
+
+<meta name="author" content="Karla Paredes y Mauricio Orozco" />
+
+
+<meta name="date" content="2026-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analisis-exploratorio-bivariado.html"/>
+<link rel="next" href="literature.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> EDA</a>
+<ul>
+<li class="chapter" data-level="2.0.1" data-path="intro.html"><a href="intro.html#cargar-las-librerias"><i class="fa fa-check"></i><b>2.0.1</b> Cargar las librerias</a></li>
+<li class="chapter" data-level="2.0.2" data-path="intro.html"><a href="intro.html#leer-dataset"><i class="fa fa-check"></i><b>2.0.2</b> Leer dataset</a></li>
+<li class="chapter" data-level="2.0.3" data-path="intro.html"><a href="intro.html#mostrar-las-5-primeras-filas"><i class="fa fa-check"></i><b>2.0.3</b> Mostrar las 5 primeras filas</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#estructura-de-los-datos-variables-existentes-tipo-de-variable-etc"><i class="fa fa-check"></i><b>2.1</b> Estructura de los datos (Variables existentes, tipo de variable, etc…)</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#verificar-si-hay-datos-faltantes"><i class="fa fa-check"></i><b>2.1.1</b> Verificar si hay datos faltantes</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#imputacion-de-datos-faltantes"><i class="fa fa-check"></i><b>2.1.2</b> Imputacion de datos faltantes</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame"><i class="fa fa-check"></i><b>2.1.3</b> Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor"><i class="fa fa-check"></i><b>2.1.4</b> Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html"><i class="fa fa-check"></i><b>3</b> Analisis exploratorio de median_hose_value (target)</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable"><i class="fa fa-check"></i><b>3.0.1</b> Realicemos el resumen estadistico de la variable:</a></li>
+<li class="chapter" data-level="3.0.2" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value"><i class="fa fa-check"></i><b>3.0.2</b> Gráfico tipo histograma de ‘median_house_value’</a></li>
+<li class="chapter" data-level="3.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value"><i class="fa fa-check"></i><b>3.1</b> Gráfico de cajas y bigotes de ‘median_house_value’</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html"><i class="fa fa-check"></i><b>4</b> Variables independientes (caracteristicas)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente"><i class="fa fa-check"></i><b>4.1</b> Veamos el análisis de cada variable independiente</a></li>
+<li class="chapter" data-level="4.2" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#graficos-de-las-variables-independientes"><i class="fa fa-check"></i><b>4.2</b> Graficos de las variables independientes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html"><i class="fa fa-check"></i><b>5</b> Analisis exploratorio bivariado</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html#veamos-los-gr%C3%A1ficos."><i class="fa fa-check"></i><b>5.1</b> Veamos los gráficos.</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="variable-categórica-convertida-en-factor-ocean_proximity.html"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html"><i class="fa fa-check"></i><b>6</b> Variable categórica (convertida en factor) ‘ocean_proximity’</a>
+<ul>
+<li class="chapter" data-level="6.0.1" data-path="variable-categórica-convertida-en-factor-ocean_proximity.html"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#diagrama-de-barras-para-variable-num%C3%A9rica-x-variable-categ%C3%B3rica"><i class="fa fa-check"></i><b>6.0.1</b> Diagrama de barras para variable numérica x variable categórica</a></li>
+<li class="chapter" data-level="6.1" data-path="variable-categórica-convertida-en-factor-ocean_proximity.html"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>6.1</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="variable-categórica-convertida-en-factor-ocean_proximity.html"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#veamos-un-grafico-de-cajas-y-bigotes"><i class="fa fa-check"></i><b>6.1.1</b> Veamos un grafico de cajas y bigotes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="variable-categórica-convertida-en-factor-ocean_proximity.html"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#paquete-ggally"><i class="fa fa-check"></i><b>6.2</b> Paquete GGally</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>7</b> Literature</a></li>
+<li class="chapter" data-level="8" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>8.1</b> math example</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Exploratorio de Datos: Valor de Viviendas en California</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variable-categórica-convertida-en-factor-ocean_proximity" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Variable categórica (convertida en factor) ‘ocean_proximity’<a href="variable-categórica-convertida-en-factor-ocean_proximity.html#variable-categ%C3%B3rica-convertida-en-factor-ocean_proximity" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-2" tabindex="-1"></a>  <span class="fu">count</span>(ocean_proximity,<span class="at">name=</span><span class="st">&quot;n&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Porcentaje=</span><span class="fu">round</span>((n<span class="sc">/</span><span class="fu">sum</span>(n))<span class="sc">*</span><span class="dv">100</span>,<span class="dv">2</span>),</span>
+<span id="cb33-4"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-4" tabindex="-1"></a>         <span class="at">variable=</span><span class="st">&#39;ocean_proximity&#39;</span>,</span>
+<span id="cb33-5"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-5" tabindex="-1"></a>         <span class="at">categoria=</span><span class="fu">as.character</span>(ocean_proximity))<span class="sc">%&gt;%</span> <span class="fu">select</span>(variable,categoria,n,Porcentaje)<span class="ot">-&gt;</span> tabla_ocean</span>
+<span id="cb33-6"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-6" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb33-7" tabindex="-1"></a>tabla_ocean</span></code></pre></div>
+<pre><code>##          variable  categoria    n Porcentaje
+## 1 ocean_proximity  &lt;1H OCEAN 9136      44.26
+## 2 ocean_proximity     INLAND 6551      31.74
+## 3 ocean_proximity     ISLAND    5       0.02
+## 4 ocean_proximity   NEAR BAY 2290      11.09
+## 5 ocean_proximity NEAR OCEAN 2658      12.88</code></pre>
+<div id="diagrama-de-barras-para-variable-numérica-x-variable-categórica" class="section level3 hasAnchor" number="6.0.1">
+<h3><span class="header-section-number">6.0.1</span> Diagrama de barras para variable numérica x variable categórica<a href="variable-categórica-convertida-en-factor-ocean_proximity.html#diagrama-de-barras-para-variable-num%C3%A9rica-x-variable-categ%C3%B3rica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-1" tabindex="-1"></a>tabla_ocean_b <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-2" tabindex="-1"></a>  <span class="fu">count</span>(ocean_proximity,<span class="at">name=</span><span class="st">&quot;n&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Porcentaje=</span><span class="fu">round</span>((n<span class="sc">/</span><span class="fu">sum</span>(n))<span class="sc">*</span><span class="dv">100</span>,<span class="dv">1</span>),</span>
+<span id="cb35-4"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-4" tabindex="-1"></a>         <span class="at">Etiqueta=</span> <span class="fu">paste0</span>(n,<span class="st">&quot;(&quot;</span>,Porcentaje,<span class="st">&quot;%)&quot;</span>))</span>
+<span id="cb35-5"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-5" tabindex="-1"></a>tabla_ocean_b <span class="sc">%&gt;%</span> </span>
+<span id="cb35-6"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-6" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ocean_proximity,<span class="at">y=</span>n))<span class="sc">+</span></span>
+<span id="cb35-7"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-7" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill=</span><span class="st">&quot;#008b8b&quot;</span>,<span class="at">width=</span><span class="fl">0.6</span>)<span class="sc">+</span></span>
+<span id="cb35-8"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-8" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>Etiqueta),<span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.5</span>,<span class="at">size=</span><span class="fl">4.5</span>)<span class="sc">+</span></span>
+<span id="cb35-9"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-9" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">&#39;Distribución de la variable ocean_proximity&#39;</span>)<span class="sc">+</span></span>
+<span id="cb35-10"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-10" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand=</span><span class="fu">expansion</span>(<span class="at">mult=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.15</span>)))<span class="sc">+</span></span>
+<span id="cb35-11"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb35-11" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/tabla%20ocean_proximity-1.png" alt="" width="672" />
+[Hacer iterpretación]</p>
+</div>
+<div id="ahora-comparemos-el-valor-medio-de-la-vivienda-según-la-proximidad-al-oceano" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano<a href="variable-categórica-convertida-en-factor-ocean_proximity.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Compararemos nuestra variable respuesta con una variable categórica.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-2" tabindex="-1"></a>  <span class="fu">group_by</span>(ocean_proximity) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(median_house_value),</span>
+<span id="cb36-4"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-4" tabindex="-1"></a>                 <span class="at">media=</span><span class="fu">mean</span>(median_house_value),</span>
+<span id="cb36-5"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-5" tabindex="-1"></a>                 <span class="at">sd=</span><span class="fu">sd</span>(median_house_value),</span>
+<span id="cb36-6"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-6" tabindex="-1"></a>                 <span class="at">mediana=</span><span class="fu">median</span>(median_house_value),</span>
+<span id="cb36-7"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-7" tabindex="-1"></a>                 <span class="at">RIC=</span><span class="fu">IQR</span>(median_house_value),</span>
+<span id="cb36-8"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-8" tabindex="-1"></a>                 <span class="at">Q1=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.25</span>),</span>
+<span id="cb36-9"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-9" tabindex="-1"></a>                 <span class="at">Q3=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.75</span>),</span>
+<span id="cb36-10"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-10" tabindex="-1"></a>                 <span class="at">minimo=</span><span class="fu">min</span>(median_house_value),</span>
+<span id="cb36-11"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-11" tabindex="-1"></a>                 <span class="at">maximo=</span><span class="fu">max</span>(median_house_value),</span>
+<span id="cb36-12"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-12" tabindex="-1"></a>                 <span class="at">asimetria=</span><span class="fu">skewness</span>(median_house_value),</span>
+<span id="cb36-13"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb36-13" tabindex="-1"></a>                 <span class="at">curtosis=</span><span class="fu">kurtosis</span>(median_house_value))</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 12
+##   ocean_proximity     n  media     sd mediana    RIC     Q1     Q3 minimo maximo
+##   &lt;fct&gt;           &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 &lt;1H OCEAN        9136 2.40e5 1.06e5  214850 125000 164100 289100  17500 500001
+## 2 INLAND           6551 1.25e5 7.00e4  108500  71450  77500 148950  14999 500001
+## 3 ISLAND              5 3.80e5 8.06e4  414700 150000 300000 450000 287500 450000
+## 4 NEAR BAY         2290 2.59e5 1.23e5  233800 183200 162500 345700  22500 500001
+## 5 NEAR OCEAN       2658 2.49e5 1.22e5  229450 172750 150000 322750  22500 500001
+## # ℹ 2 more variables: asimetria &lt;dbl&gt;, curtosis &lt;dbl&gt;</code></pre>
+<div id="veamos-un-grafico-de-cajas-y-bigotes" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Veamos un grafico de cajas y bigotes<a href="variable-categórica-convertida-en-factor-ocean_proximity.html#veamos-un-grafico-de-cajas-y-bigotes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb38-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb38-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ocean_proximity, <span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
+<span id="cb38-3"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb38-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>,<span class="at">outlier.color=</span><span class="st">&quot;darkred&quot;</span>)<span class="sc">+</span></span>
+<span id="cb38-4"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb38-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&quot;darkgreen&quot;</span>)<span class="sc">+</span></span>
+<span id="cb38-5"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb38-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/biboxplot-1.png" alt="" width="672" /></p>
+<p>[Interpretación]</p>
+</div>
+</div>
+<div id="paquete-ggally" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Paquete GGally<a href="variable-categórica-convertida-en-factor-ocean_proximity.html#paquete-ggally" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb39-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb39-2" tabindex="-1"></a>  <span class="fu">ggpairs</span>()<span class="sc">+</span></span>
+<span id="cb39-3"><a href="variable-categórica-convertida-en-factor-ocean_proximity.html#cb39-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+<p><img src="bookdown-demo_files/figure-html/Paquete%20GGally-1.png" alt="" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analisis-exploratorio-bivariado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
