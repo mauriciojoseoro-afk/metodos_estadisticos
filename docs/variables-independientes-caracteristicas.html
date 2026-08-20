@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Variables independientes (caracteristicas) | Análisis Exploratorio de Datos: Valor de Viviendas en California</title>
-  <meta name="description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <title>Chapter 4 Variables independientes (caracteristicas) | Analisis Exploratorio</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Variables independientes (caracteristicas) | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta property="og:title" content="Chapter 4 Variables independientes (caracteristicas) | Analisis Exploratorio" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Variables independientes (caracteristicas) | Análisis Exploratorio de Datos: Valor de Viviendas en California" />
+  <meta name="twitter:title" content="Chapter 4 Variables independientes (caracteristicas) | Analisis Exploratorio" />
   
-  <meta name="twitter:description" content="Realizar un Análisis Exploratorio de Datos (EDA) sobre la base de datos housing.csv, con el fin de comprender el comportamiento de la variable median_house_value (valor medio de las viviendas), la cual constituye nuestra variable de estudio central, así como su relación con las demás variables predictoras disponibles." />
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
 
-<meta name="author" content="Karla Paredes y Mauricio Orozco" />
+<meta name="author" content="Mauricio Orozco y Karla Paredes" />
 
 
-<meta name="date" content="2026-08-17" />
+<meta name="date" content="2026-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,10 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -172,37 +176,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html"><i class="fa fa-check"></i><b>6</b> Variable categórica ‘ocean_proximity’ (convertida en factor)</a>
 <ul>
+<li class="chapter" data-level="6.0.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#diagrama-de-barras-para-variable-num%C3%A9rica-x-variable-categ%C3%B3rica"><i class="fa fa-check"></i><b>6.0.1</b> Diagrama de barras para variable numérica x variable categórica</a></li>
 <li class="chapter" data-level="6.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>6.1</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>6.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>6.2</b> Paquete GGally</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.2.1</b> Graficos de variables independientes vs variables independientes</a></li>
-</ul></li>
+<li class="chapter" data-level="6.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>6.2</b> Paquete GGally</a></li>
+<li class="chapter" data-level="6.3" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.3</b> Graficos de variables independientes vs variables independientes</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>7</b> Ingeniería de Caracterización (feature engineering)</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
 <li class="chapter" data-level="7.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
-<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.3</b> Verificar el éxito de la ingenieria de caracterizacion</a>
+<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>7.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.3.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
+<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>7.3.1</b> Revisar que se crearon correctamente:</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>7.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>7.3.3</b> Realizamos el resumen estadistico</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>7.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
+<li class="chapter" data-level="7.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones generales</a></li>
-<li class="chapter" data-level="9" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>9</b> Literature</a></li>
-<li class="chapter" data-level="10" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>10</b> Methods</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="methods.html"><a href="methods.html#math-example"><i class="fa fa-check"></i><b>10.1</b> math example</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>11</b> Applications</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>11.1</b> Example one</a></li>
-<li class="chapter" data-level="11.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>11.2</b> Example two</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -215,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis Exploratorio de Datos: Valor de Viviendas en California</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Exploratorio</a>
           </h1>
         </div>
 
@@ -225,182 +223,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="variables-independientes-caracteristicas" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Variables independientes (caracteristicas)<a href="variables-independientes-caracteristicas.html#variables-independientes-caracteristicas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="variables-independientes-caracteristicas.html#cb22-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span>  <span class="co">#Guardo este conjunto de datos </span></span>
-<span id="cb22-2"><a href="variables-independientes-caracteristicas.html#cb22-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>median_house_value) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="variables-independientes-caracteristicas.html#cb22-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb22-4"><a href="variables-independientes-caracteristicas.html#cb22-4" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">everything</span>(), <span class="co">#llaves y valores</span></span>
-<span id="cb22-5"><a href="variables-independientes-caracteristicas.html#cb22-5" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&#39;variable&#39;</span>,</span>
-<span id="cb22-6"><a href="variables-independientes-caracteristicas.html#cb22-6" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&#39;valor&#39;</span></span>
-<span id="cb22-7"><a href="variables-independientes-caracteristicas.html#cb22-7" tabindex="-1"></a>    )  <span class="sc">%&gt;%</span></span>
-<span id="cb22-8"><a href="variables-independientes-caracteristicas.html#cb22-8" tabindex="-1"></a>  </span>
-<span id="cb22-9"><a href="variables-independientes-caracteristicas.html#cb22-9" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-10"><a href="variables-independientes-caracteristicas.html#cb22-10" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(valor),</span>
-<span id="cb22-11"><a href="variables-independientes-caracteristicas.html#cb22-11" tabindex="-1"></a>            <span class="at">media=</span><span class="fu">mean</span>(valor),</span>
-<span id="cb22-12"><a href="variables-independientes-caracteristicas.html#cb22-12" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(valor),</span>
-<span id="cb22-13"><a href="variables-independientes-caracteristicas.html#cb22-13" tabindex="-1"></a>            <span class="at">mediana=</span><span class="fu">median</span>(valor),</span>
-<span id="cb22-14"><a href="variables-independientes-caracteristicas.html#cb22-14" tabindex="-1"></a>            <span class="at">RIC=</span><span class="fu">IQR</span>(valor),</span>
-<span id="cb22-15"><a href="variables-independientes-caracteristicas.html#cb22-15" tabindex="-1"></a>            <span class="at">Q1=</span><span class="fu">quantile</span>(valor,<span class="fl">0.25</span>),</span>
-<span id="cb22-16"><a href="variables-independientes-caracteristicas.html#cb22-16" tabindex="-1"></a>            <span class="at">Q3=</span><span class="fu">quantile</span>(valor,<span class="fl">0.75</span>),</span>
-<span id="cb22-17"><a href="variables-independientes-caracteristicas.html#cb22-17" tabindex="-1"></a>            <span class="at">minimo=</span><span class="fu">min</span>(valor),</span>
-<span id="cb22-18"><a href="variables-independientes-caracteristicas.html#cb22-18" tabindex="-1"></a>            <span class="at">maximo=</span><span class="fu">max</span>(valor),</span>
-<span id="cb22-19"><a href="variables-independientes-caracteristicas.html#cb22-19" tabindex="-1"></a>            <span class="at">asim=</span><span class="fu">skewness</span>(valor),</span>
-<span id="cb22-20"><a href="variables-independientes-caracteristicas.html#cb22-20" tabindex="-1"></a>            <span class="at">curtosis=</span><span class="fu">kurtosis</span>(valor))</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="variables-independientes-caracteristicas.html#cb18-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span>   </span>
+<span id="cb18-2"><a href="variables-independientes-caracteristicas.html#cb18-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric),<span class="sc">-</span>median_house_value) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="variables-independientes-caracteristicas.html#cb18-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb18-4"><a href="variables-independientes-caracteristicas.html#cb18-4" tabindex="-1"></a>    <span class="at">cols=</span><span class="fu">everything</span>(), <span class="co">#llaves y valores para cambiar la posicion del encabezado</span></span>
+<span id="cb18-5"><a href="variables-independientes-caracteristicas.html#cb18-5" tabindex="-1"></a>    <span class="at">names_to=</span><span class="st">&#39;variable&#39;</span>,</span>
+<span id="cb18-6"><a href="variables-independientes-caracteristicas.html#cb18-6" tabindex="-1"></a>    <span class="at">values_to=</span><span class="st">&#39;valor&#39;</span></span>
+<span id="cb18-7"><a href="variables-independientes-caracteristicas.html#cb18-7" tabindex="-1"></a>    )  <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="variables-independientes-caracteristicas.html#cb18-8" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-9"><a href="variables-independientes-caracteristicas.html#cb18-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(valor),</span>
+<span id="cb18-10"><a href="variables-independientes-caracteristicas.html#cb18-10" tabindex="-1"></a>            <span class="at">media=</span><span class="fu">mean</span>(valor),</span>
+<span id="cb18-11"><a href="variables-independientes-caracteristicas.html#cb18-11" tabindex="-1"></a>            <span class="at">sd=</span><span class="fu">sd</span>(valor),</span>
+<span id="cb18-12"><a href="variables-independientes-caracteristicas.html#cb18-12" tabindex="-1"></a>            <span class="at">mediana=</span><span class="fu">median</span>(valor),</span>
+<span id="cb18-13"><a href="variables-independientes-caracteristicas.html#cb18-13" tabindex="-1"></a>            <span class="at">RIC=</span><span class="fu">IQR</span>(valor),</span>
+<span id="cb18-14"><a href="variables-independientes-caracteristicas.html#cb18-14" tabindex="-1"></a>            <span class="at">Q1=</span><span class="fu">quantile</span>(valor,<span class="fl">0.25</span>),</span>
+<span id="cb18-15"><a href="variables-independientes-caracteristicas.html#cb18-15" tabindex="-1"></a>            <span class="at">Q3=</span><span class="fu">quantile</span>(valor,<span class="fl">0.75</span>),</span>
+<span id="cb18-16"><a href="variables-independientes-caracteristicas.html#cb18-16" tabindex="-1"></a>            <span class="at">minimo=</span><span class="fu">min</span>(valor),</span>
+<span id="cb18-17"><a href="variables-independientes-caracteristicas.html#cb18-17" tabindex="-1"></a>            <span class="at">maximo=</span><span class="fu">max</span>(valor),</span>
+<span id="cb18-18"><a href="variables-independientes-caracteristicas.html#cb18-18" tabindex="-1"></a>            <span class="at">asim=</span><span class="fu">skewness</span>(valor),</span>
+<span id="cb18-19"><a href="variables-independientes-caracteristicas.html#cb18-19" tabindex="-1"></a>            <span class="at">curtosis=</span><span class="fu">kurtosis</span>(valor))</span></code></pre></div>
 <pre><code>## # A tibble: 8 × 12
-##   variable        n   media     sd mediana    RIC      Q1      Q3   minimo  maximo    asim
-##   &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 households  20640  500.   3.82e2  409    3.25e2  280     605       1      6082    3.41  
-## 2 housing_me… 20640   28.6  1.26e1   29    1.9 e1   18      37       1        52    0.0603
-## 3 latitude    20640   35.6  2.14e0   34.3  3.78e0   33.9    37.7    32.5      42.0  0.466 
-## 4 longitude   20640 -120.   2.00e0 -118.   3.79e0 -122.   -118.   -124.     -114.  -0.298 
-## 5 median_inc… 20640    3.87 1.90e0    3.53 2.18e0    2.56    4.74    0.500    15.0  1.65  
-## 6 population  20640 1425.   1.13e3 1166    9.38e2  787    1725       3     35682    4.94  
-## 7 total_bedr… 20640  538.   4.19e2  438    3.46e2  297     643.      1      6445    3.48  
-## 8 total_rooms 20640 2636.   2.18e3 2127    1.70e3 1448.   3148       2     39320    4.15  
-## # ℹ 1 more variable: curtosis &lt;dbl&gt;</code></pre>
+##   variable            n   media     sd mediana    RIC      Q1      Q3   minimo  maximo    asim curtosis
+##   &lt;chr&gt;           &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+## 1 households      20640  500.   3.82e2  409    3.25e2  280     605       1      6082    3.41      25.1 
+## 2 housing_median… 20640   28.6  1.26e1   29    1.9 e1   18      37       1        52    0.0603     2.20
+## 3 latitude        20640   35.6  2.14e0   34.3  3.78e0   33.9    37.7    32.5      42.0  0.466      1.88
+## 4 longitude       20640 -120.   2.00e0 -118.   3.79e0 -122.   -118.   -124.     -114.  -0.298      1.67
+## 5 median_income   20640    3.87 1.90e0    3.53 2.18e0    2.56    4.74    0.500    15.0  1.65       7.95
+## 6 population      20640 1425.   1.13e3 1166    9.38e2  787    1725       3     35682    4.94      76.5 
+## 7 total_bedrooms  20640  538.   4.19e2  438    3.46e2  297     643.      1      6445    3.48      25.2 
+## 8 total_rooms     20640 2636.   2.18e3 2127    1.70e3 1448.   3148       2     39320    4.15      35.6</code></pre>
 <div id="veamos-el-análisis-de-cada-variable-independiente" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Veamos el análisis de cada variable independiente<a href="variables-independientes-caracteristicas.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>-households
-Media 499.5 y mediana 409. La media está por encima de la mediana, así que
+<p>-<strong>households: </strong></p>
+<p>Media 499.5 y mediana 409. La media está por encima de la mediana, así que
 hay asimetría positiva: deben haber sectores con muchos hogares que suben
 el promedio.</p>
-<p>-housing_median_age
-Media 28.6 y mediana 29, prácticamente iguales. Esto ya nos dice que la
+<p>-<strong>housing_median_age: </strong></p>
+<p>Media 28.6 y mediana 29, prácticamente iguales. Esto ya nos dice que la
 distribución es bastante simétrica, sin inclinarse mucho hacia edades muy
 altas ni muy bajas.</p>
-<p>-latitude
-Es una variable geográfica, no económica. El sd de 2.13 solo nos habla del
+<p>-<strong>latitude: </strong></p>
+<p>Es una variable geográfica, no económica. El sd de 2.13 solo nos habla del
 rango de ubicación que cubren los datos, no hay que interpretarlo como
 asimetría o dispersión de un fenómeno real.</p>
-<p>-longitude
-Igual que la latitud, es una coordenada. Su dispersión (sd 2.0) muestra el
+<p>-<strong>longitude: </strong></p>
+<p>Igual que la latitud, es una coordenada. Su dispersión (sd 2.0) muestra el
 rango geográfico del estudio, no algo estadístico relevante en sí mismo.</p>
-<p>-median_income
-Media 3.87 y mediana 3.53, bastante cercanas, o sea que la distribución es
+<p>-<strong>median_income: </strong></p>
+<p>Media 3.87 y mediana 3.53, bastante cercanas, o sea que la distribución es
 más o menos simétrica, aunque con una leve inclinación hacia valores más
 altos.</p>
-<p>-population
-Media 1425.5 y mediana 1166. La diferencia entre ambas y una desviación
+<p>-<strong>population: </strong></p>
+<p>Media 1425.5 y mediana 1166. La diferencia entre ambas y una desviación
 estándar alta (1132.5) confirman que hay asimetría positiva, probablemente
 por sectores con población bastante superior al resto.</p>
-<p>-total_bedrooms
-Media 537.9 y mediana 438. Igual que con households, la media supera
+<p>-<strong>total_bedrooms: </strong></p>
+<p>Media 537.9 y mediana 438. Igual que con households, la media supera
 claramente a la mediana, lo que muestra asimetría positiva por viviendas
 con cantidades de habitaciones muy por encima del promedio.</p>
-<p>-total_rooms
-Media 2635.8 y mediana 2127, y tiene la desviación estándar más alta de
+<p>-<strong>total_rooms: </strong></p>
+<p>Media 2635.8 y mediana 2127, y tiene la desviación estándar más alta de
 todas (2181.6). Esto indica que hay mucha dispersión y asimetría positiva,
 con sectores que concentran bastantes más habitaciones que el resto.</p>
 </div>
 <div id="graficos-de-las-variables-independientes" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Graficos de las variables independientes<a href="variables-independientes-caracteristicas.html#graficos-de-las-variables-independientes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="variables-independientes-caracteristicas.html#cb24-1" tabindex="-1"></a><span class="co"># &#39;households&#39;</span></span>
-<span id="cb24-2"><a href="variables-independientes-caracteristicas.html#cb24-2" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="variables-independientes-caracteristicas.html#cb24-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> households))<span class="sc">+</span></span>
-<span id="cb24-4"><a href="variables-independientes-caracteristicas.html#cb24-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-5"><a href="variables-independientes-caracteristicas.html#cb24-5" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-6"><a href="variables-independientes-caracteristicas.html#cb24-6" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-7"><a href="variables-independientes-caracteristicas.html#cb24-7" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-8"><a href="variables-independientes-caracteristicas.html#cb24-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p1</span>
-<span id="cb24-9"><a href="variables-independientes-caracteristicas.html#cb24-9" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="variables-independientes-caracteristicas.html#cb24-10" tabindex="-1"></a><span class="co"># &#39;housing_median_age&#39;</span></span>
-<span id="cb24-11"><a href="variables-independientes-caracteristicas.html#cb24-11" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-12"><a href="variables-independientes-caracteristicas.html#cb24-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> housing_median_age))<span class="sc">+</span></span>
-<span id="cb24-13"><a href="variables-independientes-caracteristicas.html#cb24-13" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-14"><a href="variables-independientes-caracteristicas.html#cb24-14" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-15"><a href="variables-independientes-caracteristicas.html#cb24-15" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-16"><a href="variables-independientes-caracteristicas.html#cb24-16" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-17"><a href="variables-independientes-caracteristicas.html#cb24-17" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p2</span>
-<span id="cb24-18"><a href="variables-independientes-caracteristicas.html#cb24-18" tabindex="-1"></a></span>
-<span id="cb24-19"><a href="variables-independientes-caracteristicas.html#cb24-19" tabindex="-1"></a>  </span>
-<span id="cb24-20"><a href="variables-independientes-caracteristicas.html#cb24-20" tabindex="-1"></a><span class="co"># &#39;latitude&#39;</span></span>
-<span id="cb24-21"><a href="variables-independientes-caracteristicas.html#cb24-21" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-22"><a href="variables-independientes-caracteristicas.html#cb24-22" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> latitude))<span class="sc">+</span></span>
-<span id="cb24-23"><a href="variables-independientes-caracteristicas.html#cb24-23" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-24"><a href="variables-independientes-caracteristicas.html#cb24-24" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-25"><a href="variables-independientes-caracteristicas.html#cb24-25" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-26"><a href="variables-independientes-caracteristicas.html#cb24-26" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-27"><a href="variables-independientes-caracteristicas.html#cb24-27" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p3</span>
-<span id="cb24-28"><a href="variables-independientes-caracteristicas.html#cb24-28" tabindex="-1"></a>  </span>
-<span id="cb24-29"><a href="variables-independientes-caracteristicas.html#cb24-29" tabindex="-1"></a><span class="co"># &#39;longitude&#39;</span></span>
-<span id="cb24-30"><a href="variables-independientes-caracteristicas.html#cb24-30" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-31"><a href="variables-independientes-caracteristicas.html#cb24-31" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> longitude))<span class="sc">+</span></span>
-<span id="cb24-32"><a href="variables-independientes-caracteristicas.html#cb24-32" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-33"><a href="variables-independientes-caracteristicas.html#cb24-33" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-34"><a href="variables-independientes-caracteristicas.html#cb24-34" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-35"><a href="variables-independientes-caracteristicas.html#cb24-35" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-36"><a href="variables-independientes-caracteristicas.html#cb24-36" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p4</span>
-<span id="cb24-37"><a href="variables-independientes-caracteristicas.html#cb24-37" tabindex="-1"></a></span>
-<span id="cb24-38"><a href="variables-independientes-caracteristicas.html#cb24-38" tabindex="-1"></a><span class="co"># &#39;median_income&#39;</span></span>
-<span id="cb24-39"><a href="variables-independientes-caracteristicas.html#cb24-39" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-40"><a href="variables-independientes-caracteristicas.html#cb24-40" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> median_income))<span class="sc">+</span></span>
-<span id="cb24-41"><a href="variables-independientes-caracteristicas.html#cb24-41" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-42"><a href="variables-independientes-caracteristicas.html#cb24-42" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-43"><a href="variables-independientes-caracteristicas.html#cb24-43" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-44"><a href="variables-independientes-caracteristicas.html#cb24-44" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-45"><a href="variables-independientes-caracteristicas.html#cb24-45" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p5</span>
-<span id="cb24-46"><a href="variables-independientes-caracteristicas.html#cb24-46" tabindex="-1"></a></span>
-<span id="cb24-47"><a href="variables-independientes-caracteristicas.html#cb24-47" tabindex="-1"></a><span class="co"># &#39;population&#39;</span></span>
-<span id="cb24-48"><a href="variables-independientes-caracteristicas.html#cb24-48" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-49"><a href="variables-independientes-caracteristicas.html#cb24-49" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> population))<span class="sc">+</span></span>
-<span id="cb24-50"><a href="variables-independientes-caracteristicas.html#cb24-50" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-51"><a href="variables-independientes-caracteristicas.html#cb24-51" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-52"><a href="variables-independientes-caracteristicas.html#cb24-52" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-53"><a href="variables-independientes-caracteristicas.html#cb24-53" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-54"><a href="variables-independientes-caracteristicas.html#cb24-54" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p6</span>
-<span id="cb24-55"><a href="variables-independientes-caracteristicas.html#cb24-55" tabindex="-1"></a></span>
-<span id="cb24-56"><a href="variables-independientes-caracteristicas.html#cb24-56" tabindex="-1"></a><span class="co"># &#39;total_rooms&#39;</span></span>
-<span id="cb24-57"><a href="variables-independientes-caracteristicas.html#cb24-57" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-58"><a href="variables-independientes-caracteristicas.html#cb24-58" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_rooms))<span class="sc">+</span></span>
-<span id="cb24-59"><a href="variables-independientes-caracteristicas.html#cb24-59" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-60"><a href="variables-independientes-caracteristicas.html#cb24-60" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-61"><a href="variables-independientes-caracteristicas.html#cb24-61" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-62"><a href="variables-independientes-caracteristicas.html#cb24-62" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-63"><a href="variables-independientes-caracteristicas.html#cb24-63" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p7</span>
-<span id="cb24-64"><a href="variables-independientes-caracteristicas.html#cb24-64" tabindex="-1"></a>  </span>
-<span id="cb24-65"><a href="variables-independientes-caracteristicas.html#cb24-65" tabindex="-1"></a><span class="co"># &#39;total_bedrooms&#39;</span></span>
-<span id="cb24-66"><a href="variables-independientes-caracteristicas.html#cb24-66" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb24-67"><a href="variables-independientes-caracteristicas.html#cb24-67" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_bedrooms))<span class="sc">+</span></span>
-<span id="cb24-68"><a href="variables-independientes-caracteristicas.html#cb24-68" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb24-69"><a href="variables-independientes-caracteristicas.html#cb24-69" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb24-70"><a href="variables-independientes-caracteristicas.html#cb24-70" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
-<span id="cb24-71"><a href="variables-independientes-caracteristicas.html#cb24-71" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
-<span id="cb24-72"><a href="variables-independientes-caracteristicas.html#cb24-72" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="ot">-&gt;</span>p8</span>
-<span id="cb24-73"><a href="variables-independientes-caracteristicas.html#cb24-73" tabindex="-1"></a>  </span>
-<span id="cb24-74"><a href="variables-independientes-caracteristicas.html#cb24-74" tabindex="-1"></a>p1<span class="sc">+</span>p2<span class="sc">+</span>p3<span class="sc">+</span>p4<span class="sc">+</span>p5<span class="sc">+</span>p6<span class="sc">+</span>p7<span class="sc">+</span>p8</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="variables-independientes-caracteristicas.html#cb20-1" tabindex="-1"></a><span class="co"># &#39;households&#39;</span></span>
+<span id="cb20-2"><a href="variables-independientes-caracteristicas.html#cb20-2" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="variables-independientes-caracteristicas.html#cb20-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> households))<span class="sc">+</span></span>
+<span id="cb20-4"><a href="variables-independientes-caracteristicas.html#cb20-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-5"><a href="variables-independientes-caracteristicas.html#cb20-5" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-6"><a href="variables-independientes-caracteristicas.html#cb20-6" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-7"><a href="variables-independientes-caracteristicas.html#cb20-7" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-8"><a href="variables-independientes-caracteristicas.html#cb20-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-9"><a href="variables-independientes-caracteristicas.html#cb20-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-10"><a href="variables-independientes-caracteristicas.html#cb20-10" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-11"><a href="variables-independientes-caracteristicas.html#cb20-11" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>()) <span class="ot">-&gt;</span>p1</span>
+<span id="cb20-12"><a href="variables-independientes-caracteristicas.html#cb20-12" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="variables-independientes-caracteristicas.html#cb20-13" tabindex="-1"></a><span class="co"># &#39;housing_median_age&#39;</span></span>
+<span id="cb20-14"><a href="variables-independientes-caracteristicas.html#cb20-14" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-15"><a href="variables-independientes-caracteristicas.html#cb20-15" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> housing_median_age))<span class="sc">+</span></span>
+<span id="cb20-16"><a href="variables-independientes-caracteristicas.html#cb20-16" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-17"><a href="variables-independientes-caracteristicas.html#cb20-17" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-18"><a href="variables-independientes-caracteristicas.html#cb20-18" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-19"><a href="variables-independientes-caracteristicas.html#cb20-19" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-20"><a href="variables-independientes-caracteristicas.html#cb20-20" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-21"><a href="variables-independientes-caracteristicas.html#cb20-21" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-22"><a href="variables-independientes-caracteristicas.html#cb20-22" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-23"><a href="variables-independientes-caracteristicas.html#cb20-23" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p2</span>
+<span id="cb20-24"><a href="variables-independientes-caracteristicas.html#cb20-24" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="variables-independientes-caracteristicas.html#cb20-25" tabindex="-1"></a>  </span>
+<span id="cb20-26"><a href="variables-independientes-caracteristicas.html#cb20-26" tabindex="-1"></a><span class="co"># &#39;latitude&#39;</span></span>
+<span id="cb20-27"><a href="variables-independientes-caracteristicas.html#cb20-27" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-28"><a href="variables-independientes-caracteristicas.html#cb20-28" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> latitude))<span class="sc">+</span></span>
+<span id="cb20-29"><a href="variables-independientes-caracteristicas.html#cb20-29" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-30"><a href="variables-independientes-caracteristicas.html#cb20-30" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-31"><a href="variables-independientes-caracteristicas.html#cb20-31" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-32"><a href="variables-independientes-caracteristicas.html#cb20-32" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-33"><a href="variables-independientes-caracteristicas.html#cb20-33" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-34"><a href="variables-independientes-caracteristicas.html#cb20-34" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-35"><a href="variables-independientes-caracteristicas.html#cb20-35" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-36"><a href="variables-independientes-caracteristicas.html#cb20-36" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p3</span>
+<span id="cb20-37"><a href="variables-independientes-caracteristicas.html#cb20-37" tabindex="-1"></a>  </span>
+<span id="cb20-38"><a href="variables-independientes-caracteristicas.html#cb20-38" tabindex="-1"></a><span class="co"># &#39;longitude&#39;</span></span>
+<span id="cb20-39"><a href="variables-independientes-caracteristicas.html#cb20-39" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-40"><a href="variables-independientes-caracteristicas.html#cb20-40" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> longitude))<span class="sc">+</span></span>
+<span id="cb20-41"><a href="variables-independientes-caracteristicas.html#cb20-41" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-42"><a href="variables-independientes-caracteristicas.html#cb20-42" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-43"><a href="variables-independientes-caracteristicas.html#cb20-43" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-44"><a href="variables-independientes-caracteristicas.html#cb20-44" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-45"><a href="variables-independientes-caracteristicas.html#cb20-45" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-46"><a href="variables-independientes-caracteristicas.html#cb20-46" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-47"><a href="variables-independientes-caracteristicas.html#cb20-47" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-48"><a href="variables-independientes-caracteristicas.html#cb20-48" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p4</span>
+<span id="cb20-49"><a href="variables-independientes-caracteristicas.html#cb20-49" tabindex="-1"></a></span>
+<span id="cb20-50"><a href="variables-independientes-caracteristicas.html#cb20-50" tabindex="-1"></a><span class="co"># &#39;median_income&#39;</span></span>
+<span id="cb20-51"><a href="variables-independientes-caracteristicas.html#cb20-51" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-52"><a href="variables-independientes-caracteristicas.html#cb20-52" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> median_income))<span class="sc">+</span></span>
+<span id="cb20-53"><a href="variables-independientes-caracteristicas.html#cb20-53" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-54"><a href="variables-independientes-caracteristicas.html#cb20-54" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-55"><a href="variables-independientes-caracteristicas.html#cb20-55" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-56"><a href="variables-independientes-caracteristicas.html#cb20-56" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-57"><a href="variables-independientes-caracteristicas.html#cb20-57" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-58"><a href="variables-independientes-caracteristicas.html#cb20-58" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-59"><a href="variables-independientes-caracteristicas.html#cb20-59" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-60"><a href="variables-independientes-caracteristicas.html#cb20-60" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p5</span>
+<span id="cb20-61"><a href="variables-independientes-caracteristicas.html#cb20-61" tabindex="-1"></a></span>
+<span id="cb20-62"><a href="variables-independientes-caracteristicas.html#cb20-62" tabindex="-1"></a><span class="co"># &#39;population&#39;</span></span>
+<span id="cb20-63"><a href="variables-independientes-caracteristicas.html#cb20-63" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-64"><a href="variables-independientes-caracteristicas.html#cb20-64" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> population))<span class="sc">+</span></span>
+<span id="cb20-65"><a href="variables-independientes-caracteristicas.html#cb20-65" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-66"><a href="variables-independientes-caracteristicas.html#cb20-66" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-67"><a href="variables-independientes-caracteristicas.html#cb20-67" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-68"><a href="variables-independientes-caracteristicas.html#cb20-68" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-69"><a href="variables-independientes-caracteristicas.html#cb20-69" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-70"><a href="variables-independientes-caracteristicas.html#cb20-70" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-71"><a href="variables-independientes-caracteristicas.html#cb20-71" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-72"><a href="variables-independientes-caracteristicas.html#cb20-72" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p6</span>
+<span id="cb20-73"><a href="variables-independientes-caracteristicas.html#cb20-73" tabindex="-1"></a></span>
+<span id="cb20-74"><a href="variables-independientes-caracteristicas.html#cb20-74" tabindex="-1"></a><span class="co"># &#39;total_rooms&#39;</span></span>
+<span id="cb20-75"><a href="variables-independientes-caracteristicas.html#cb20-75" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-76"><a href="variables-independientes-caracteristicas.html#cb20-76" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_rooms))<span class="sc">+</span></span>
+<span id="cb20-77"><a href="variables-independientes-caracteristicas.html#cb20-77" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-78"><a href="variables-independientes-caracteristicas.html#cb20-78" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-79"><a href="variables-independientes-caracteristicas.html#cb20-79" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-80"><a href="variables-independientes-caracteristicas.html#cb20-80" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-81"><a href="variables-independientes-caracteristicas.html#cb20-81" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-82"><a href="variables-independientes-caracteristicas.html#cb20-82" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-83"><a href="variables-independientes-caracteristicas.html#cb20-83" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-84"><a href="variables-independientes-caracteristicas.html#cb20-84" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p7</span>
+<span id="cb20-85"><a href="variables-independientes-caracteristicas.html#cb20-85" tabindex="-1"></a>  </span>
+<span id="cb20-86"><a href="variables-independientes-caracteristicas.html#cb20-86" tabindex="-1"></a><span class="co"># &#39;total_bedrooms&#39;</span></span>
+<span id="cb20-87"><a href="variables-independientes-caracteristicas.html#cb20-87" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb20-88"><a href="variables-independientes-caracteristicas.html#cb20-88" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span><span class="st">&quot; &quot;</span>,<span class="at">y =</span> total_bedrooms))<span class="sc">+</span></span>
+<span id="cb20-89"><a href="variables-independientes-caracteristicas.html#cb20-89" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
+<span id="cb20-90"><a href="variables-independientes-caracteristicas.html#cb20-90" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
+<span id="cb20-91"><a href="variables-independientes-caracteristicas.html#cb20-91" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>,</span>
+<span id="cb20-92"><a href="variables-independientes-caracteristicas.html#cb20-92" tabindex="-1"></a>               <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;darkgreen&#39;</span>)<span class="sc">+</span> </span>
+<span id="cb20-93"><a href="variables-independientes-caracteristicas.html#cb20-93" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb20-94"><a href="variables-independientes-caracteristicas.html#cb20-94" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-95"><a href="variables-independientes-caracteristicas.html#cb20-95" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb20-96"><a href="variables-independientes-caracteristicas.html#cb20-96" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="ot">-&gt;</span>p8</span>
+<span id="cb20-97"><a href="variables-independientes-caracteristicas.html#cb20-97" tabindex="-1"></a>  </span>
+<span id="cb20-98"><a href="variables-independientes-caracteristicas.html#cb20-98" tabindex="-1"></a>p1<span class="sc">+</span>p2<span class="sc">+</span>p3<span class="sc">+</span>p4<span class="sc">+</span>p5<span class="sc">+</span>p6<span class="sc">+</span>p7<span class="sc">+</span>p8</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/Graficos%20V.I-1.png" alt="" width="672" /></p>
-<p>-households
-La caja está bien comprimida cerca de cero y hay un montón de outliers
+<p>-<strong>households: </strong></p>
+<p>La caja está bien comprimida cerca de cero y hay un montón de outliers
 (puntos rojos) hasta los 6000. Esto confirma la asimetría positiva que ya
 habíamos visto: la mayoría de los valores son bajos, pero hay sectores con
 households muy altos que se disparan como atípicos.</p>
-<p>-housing_median_age
-Caja bien proporcionada, casi sin outliers, y bigotes parejos entre 0 y 50.
+<p>-<strong>housing_median_age: </strong></p>
+<p>Caja bien proporcionada, casi sin outliers, y bigotes parejos entre 0 y 50.
 Es la variable más equilibrada de todas, lo cual coincide con lo de la
 media y mediana casi iguales.</p>
-<p>-latitude
-Caja compacta entre 32.5 y 40, sin outliers visibles. Como es una coordenada
+<p>-<strong>latitude: </strong></p>
+<p>Caja compacta entre 32.5 y 40, sin outliers visibles. Como es una coordenada
 geográfica, esa dispersión solo refleja el rango de ubicación de los datos,
 no algo que haya que interpretar de fondo.</p>
-<p>-longitude
-Parecido a latitude: caja simétrica sin outliers, mostrando el rango
+<p>-<strong>longitude: </strong></p>
+<p>Parecido a latitude: caja simétrica sin outliers, mostrando el rango
 geográfico que cubren los datos (-124 a -115 aprox), sin mayor relevancia
 estadística.</p>
-<p>-median_income
-Caja chica y comprimida en valores bajos, con bastantes outliers rojos que
+<p>-<strong>median_income: </strong></p>
+<p>Caja chica y comprimida en valores bajos, con bastantes outliers rojos que
 llegan hasta 15. Confirma la asimetría positiva leve que ya habíamos visto:
 la mayoría de ingresos son moderados pero hay sectores con ingresos bastante
 más altos.</p>
-<p>-population
-Caja súper comprimida cerca de cero, con outliers que llegan hasta más de
+<p>-<strong>population: </strong></p>
+<p>Caja súper comprimida cerca de cero, con outliers que llegan hasta más de
 30,000. Es la variable con la asimetría más marcada de todas visualmente:
 la mayoría de sectores tienen poblaciones bajas, y unos pocos se disparan
 con valores extremos.</p>
-<p>-total_rooms
-Mismo patrón que population: caja pegada a cero con hartos outliers hasta
+<p>-<strong>total_rooms: </strong></p>
+<p>Mismo patrón que population: caja pegada a cero con hartos outliers hasta
 40,000. Confirma la fuerte dispersión y asimetría positiva que ya habíamos
 visto en la tabla.</p>
-<p>-total_bedrooms
-Parecido a total_rooms y households: caja comprimida cerca de cero con
+<p>-<strong>total_bedrooms: </strong></p>
+<p>Parecido a total_rooms y households: caja comprimida cerca de cero con
 outliers hasta 6000, mostrando que unos pocos sectores tienen cantidades
 de habitaciones muy por encima del resto.</p>
 </div>

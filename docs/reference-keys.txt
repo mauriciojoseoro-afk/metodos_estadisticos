@@ -1,3 +1,4 @@
+tab:bivaloresoceano
 prerequisites
 intro
 cargar-las-librerias
@@ -11,7 +12,7 @@ ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame
 vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor
 analisis-exploratorio-de-median_hose_value-target
 realicemos-el-resumen-estadistico-de-la-variable
-podemos-clasificar-cada-una-de-estas-medidas-según-su-tipo-terminar-esta-seccion
+podemos-clasificar-cada-una-de-estas-medidas-según-su-tipo
 gráfico-tipo-histograma-de-median_house_value
 gráfico-de-cajas-y-bigotes-de-median_house_value
 variables-independientes-caracteristicas
@@ -20,6 +21,7 @@ graficos-de-las-variables-independientes
 analisis-exploratorio-bivariado
 veamos-los-gráficos.
 variable-categórica-ocean_proximity-convertida-en-factor
+diagrama-de-barras-para-variable-numérica-x-variable-categórica
 ahora-comparemos-el-valor-medio-de-la-vivienda-según-la-proximidad-al-oceano
 grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity
 paquete-ggally
@@ -27,13 +29,11 @@ graficos-de-variables-independientes-vs-variables-independientes
 ingeniería-de-caracterización-feature-engineering
 graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion
 realizamos-el-procedimiento-de-ingenieria-de-caracterizacion
+analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido
+revisar-que-se-crearon-correctamente
+revisamos-si-hay-datos-faltantes-nuevamente
+realizamos-el-resumen-estadistico
+veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas.
 verificar-el-éxito-de-la-ingenieria-de-caracterizacion
 diagramas-de-dispersión-de-las-nuevas-variables-vs-median_house_value
 conclusiones-generales
-literature
-methods
-math-example
-applications
-example-one
-example-two
-final-words
