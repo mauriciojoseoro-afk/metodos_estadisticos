@@ -1,5 +1,54 @@
-[![Build Status](https://travis-ci.com/rstudio/bookdown-demo.svg?branch=master)](https://travis-ci.com/rstudio/bookdown-demo)
+# Análisis Exploratorio de Datos - California Housing
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "[Get Started](https://bookdown.org/yihui/bookdown/get-started.html)" at https://bookdown.org/yihui/bookdown/ for how to compile this example into HTML. You may generate a copy of the book in `bookdown::pdf_book` format by calling `bookdown::render_book('index.Rmd', 'bookdown::pdf_book')`. More detailed instructions are available here https://bookdown.org/yihui/bookdown/build-the-book.html.
+## Descripción del proyecto
 
-You can find the preview of this example at https://bookdown.org/yihui/bookdown-demo/.
+Este proyecto contiene un Análisis Exploratorio de Datos (EDA) realizado sobre el conjunto de datos California Housing, el cual reúne información socioeconómica y geográfica recopilada a partir del censo de California de 1990. El objetivo principal es comprender el comportamiento de la variable median_house_value (valor medio de las viviendas) y su relación con las demás variables predictoras disponibles en el dataset.
+
+El desarrollo del proyecto se realizó utilizando R y R Markdown, apoyado en la estructura de Bookdown para la generación del documento final en formato HTML.
+
+## Contenido del análisis
+
+El proyecto abarca las siguientes etapas:
+
+- Carga y limpieza del dataset, incluyendo la identificación e imputación de datos faltantes.
+- Análisis exploratorio univariado de la variable respuesta (median_house_value), incluyendo medidas de tendencia central, dispersión, posición y forma.
+- Análisis exploratorio de las variables independientes numéricas y su respectiva interpretación estadística.
+- Análisis bivariado entre la variable respuesta y cada una de las variables predictoras.
+- Análisis de la variable categórica ocean_proximity y su relación con el valor medio de la vivienda.
+- Análisis de relaciones entre variables independientes, con el fin de identificar posibles problemas de multicolinealidad.
+- Ingeniería de características (feature engineering), a través de la creación de nuevas variables de razón que buscan representar de forma más adecuada la información contenida en el dataset.
+
+## Estructura del proyecto
+
+El proyecto está organizado siguiendo la estructura estándar de un libro en Bookdown, donde cada capítulo corresponde a un archivo .Rmd independiente. La carpeta docs contiene el resultado del documento ya renderizado en formato HTML, disponible para su visualización a través de GitHub Pages.
+
+## Requisitos
+
+Para ejecutar este proyecto de forma local se requiere tener instalado:
+
+- R (versión 4.0 o superior)
+- RStudio
+- Los siguientes paquetes de R: tidyverse, Amelia, moments, ggplot2, patchwork, GGally, reshape y bookdown
+
+## Cómo generar el documento
+
+1. Clonar o descargar este repositorio.
+2. Abrir el archivo del proyecto (.Rproj) en RStudio.
+3. Ejecutar el siguiente comando en la consola de R para generar el libro completo:
+
+bookdown::render_book("index.Rmd", "bookdown::gitbook")
+
+4. El documento HTML generado se guardará en la carpeta de salida configurada en el archivo _bookdown.yml.
+
+## Fuente de los datos
+
+El conjunto de datos utilizado corresponde a California Housing (housing.csv), compuesto por 20,640 observaciones y 10 variables relacionadas con características demográficas y de vivienda por bloque censal.
+
+## Colaboradores
+
+- Mauricio José Orozco Porto 
+- Karla Sofía Paredes Rojano
+
+## Enlace para visualizar el documento:
+
+https://mauriciojoseoro-afk.github.io/metodos_estadisticos/
