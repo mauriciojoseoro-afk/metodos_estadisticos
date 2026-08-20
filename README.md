@@ -22,23 +22,6 @@ El proyecto abarca las siguientes etapas:
 
 El proyecto está organizado siguiendo la estructura estándar de un libro en Bookdown, donde cada capítulo corresponde a un archivo .Rmd independiente. La carpeta docs contiene el resultado del documento ya renderizado en formato HTML, disponible para su visualización a través de GitHub Pages.
 
-## Requisitos
-
-Para ejecutar este proyecto de forma local se requiere tener instalado:
-
-- R (versión 4.0 o superior)
-- RStudio
-- Los siguientes paquetes de R: tidyverse, Amelia, moments, ggplot2, patchwork, GGally, reshape y bookdown
-
-## Cómo generar el documento
-
-1. Clonar o descargar este repositorio.
-2. Abrir el archivo del proyecto (.Rproj) en RStudio.
-3. Ejecutar el siguiente comando en la consola de R para generar el libro completo:
-
-bookdown::render_book("index.Rmd", "bookdown::gitbook")
-
-4. El documento HTML generado se guardará en la carpeta de salida configurada en el archivo _bookdown.yml.
 
 ## Fuente de los datos
 
