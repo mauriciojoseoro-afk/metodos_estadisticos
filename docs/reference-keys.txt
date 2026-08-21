@@ -37,7 +37,6 @@ veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-
 verificar-el-éxito-de-la-ingenieria-de-caracterizacion
 diagramas-de-dispersión-de-las-nuevas-variables-vs-median_house_value
 conclusiones-generales
-tarea-de-estadística-paramétrica-y-no-paramétrica
 base-de-datos-n1-datos_medicos.xlsx
 transformación
 revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast
@@ -59,7 +58,6 @@ ejercicio-verificar-el-estadistico-grados-de-libertad-con-la-correccion-de-welch
 tamaño-de-efecto-investigar-otros-tipos-de-prueba-de-efecto
 base-de-datos-n-3-data.frameestudiantes
 datos-de-tiempos-antes-y-después-de-la-intervención-educativa
-analisis-exploratorio-ejercicio-de-tarea
 verificamos-supuesto-de-normalidad-1
 diferencia-entre-las-medias
 tamaño-del-efecto
@@ -69,9 +67,7 @@ caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no.
 verificar-supuesto-de-normalidad
 podemos-aplicar-shapiro-o-kolmogorov
 kolmogorov-para-supuesto-de-normalidad
-base-de-datos-n-5
 caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento--
-supuesto-de-normalidad--
 filtramos-experimento
 base-de-datos-n-6-data.frameempleados
 omitimos-los-datos-faltantes
