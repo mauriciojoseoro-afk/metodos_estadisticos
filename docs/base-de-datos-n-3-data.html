@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Analisis exploratorio de median_hose_value (target) | Tarea de Estadistica paramétrica y no paramétrica</title>
+  <title>Chapter 10 Base de datos n° 3: data.frame(estudiantes) | Tarea de Estadistica paramétrica y no paramétrica</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta property="og:title" content="Chapter 10 Base de datos n° 3: data.frame(estudiantes) | Tarea de Estadistica paramétrica y no paramétrica" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta name="twitter:title" content="Chapter 10 Base de datos n° 3: data.frame(estudiantes) | Tarea de Estadistica paramétrica y no paramétrica" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="variables-independientes-caracteristicas.html"/>
+<link rel="prev" href="base-de-datos-n2-datos_economia.html"/>
+<link rel="next" href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -273,180 +273,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="analisis-exploratorio-de-median_hose_value-target" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Analisis exploratorio de median_hose_value (target)<a href="analisis-exploratorio-de-median_hose_value-target.html#analisis-exploratorio-de-median_hose_value-target" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="realicemos-el-resumen-estadistico-de-la-variable" class="section level3 hasAnchor" number="2.0.1">
-<h3><span class="header-section-number">2.0.1</span> Realicemos el resumen estadistico de la variable:<a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span>  <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(median_house_value),</span>
-<span id="cb11-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-2" tabindex="-1"></a>                  <span class="at">Media=</span><span class="fu">mean</span>(median_house_value),</span>
-<span id="cb11-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-3" tabindex="-1"></a>                  <span class="at">Ds=</span><span class="fu">sd</span>(median_house_value),</span>
-<span id="cb11-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-4" tabindex="-1"></a>                  <span class="at">Mediana=</span><span class="fu">median</span>(median_house_value),</span>
-<span id="cb11-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-5" tabindex="-1"></a>                  <span class="at">RIC=</span><span class="fu">IQR</span>(median_house_value),</span>
-<span id="cb11-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-6" tabindex="-1"></a>                  <span class="at">Q1=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.25</span>),</span>
-<span id="cb11-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-7" tabindex="-1"></a>                  <span class="at">Q3=</span><span class="fu">quantile</span>(median_house_value,<span class="fl">0.75</span>),</span>
-<span id="cb11-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-8" tabindex="-1"></a>                  Mínimo<span class="ot">=</span><span class="fu">min</span>(median_house_value),</span>
-<span id="cb11-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-9" tabindex="-1"></a>                  Máximo<span class="ot">=</span><span class="fu">max</span>(median_house_value),</span>
-<span id="cb11-10"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-10" tabindex="-1"></a>                  <span class="at">Asim=</span><span class="fu">skewness</span>(median_house_value),</span>
-<span id="cb11-11"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-11" tabindex="-1"></a>                  <span class="at">Curtosis=</span><span class="fu">kurtosis</span>(median_house_value)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-12"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-12" tabindex="-1"></a><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&quot; Primeras 5 observaciones del dataset&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-13"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-13" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>),</span>
-<span id="cb11-14"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-14" tabindex="-1"></a>                <span class="at">full_width =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-15"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb11-15" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table-hover table-condensed" style="color: black; margin-left: auto; margin-right: auto;">
-<caption>
-(#tab:resumen median_house_value)(#tab:resumen median_house_value) Primeras 5 observaciones del dataset
-</caption>
-<thead>
-<tr>
-<th style="text-align:right;">
-n
-</th>
-<th style="text-align:right;">
-Media
-</th>
-<th style="text-align:right;">
-Ds
-</th>
-<th style="text-align:right;">
-Mediana
-</th>
-<th style="text-align:right;">
-RIC
-</th>
-<th style="text-align:right;">
-Q1
-</th>
-<th style="text-align:right;">
-Q3
-</th>
-<th style="text-align:right;">
-Mínimo
-</th>
-<th style="text-align:right;">
-Máximo
-</th>
-<th style="text-align:right;">
-Asim
-</th>
-<th style="text-align:right;">
-Curtosis
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-20640
-</td>
-<td style="text-align:right;">
-206855.8
-</td>
-<td style="text-align:right;">
-115395.6
-</td>
-<td style="text-align:right;">
-179700
-</td>
-<td style="text-align:right;">
-145125
-</td>
-<td style="text-align:right;">
-119600
-</td>
-<td style="text-align:right;">
-264725
-</td>
-<td style="text-align:right;">
-14999
-</td>
-<td style="text-align:right;">
-500001
-</td>
-<td style="text-align:right;">
-0.9776922
-</td>
-<td style="text-align:right;">
-3.3275
-</td>
-</tr>
-</tbody>
-</table>
+<div id="base-de-datos-n-3-data.frameestudiantes" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Base de datos n° 3: data.frame(estudiantes)<a href="base-de-datos-n-3-data.html#base-de-datos-n-3-data.frameestudiantes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Estadistica paramétrica con dependencia (datos pareados)</p>
+<div id="datos-de-tiempos-antes-y-después-de-la-intervención-educativa" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Datos de tiempos antes y después de la intervención educativa<a href="base-de-datos-n-3-data.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="base-de-datos-n-3-data.html#cb76-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb76-2"><a href="base-de-datos-n-3-data.html#cb76-2" tabindex="-1"></a>  <span class="at">estudiante =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),</span>
+<span id="cb76-3"><a href="base-de-datos-n-3-data.html#cb76-3" tabindex="-1"></a>  <span class="at">antes =</span> <span class="fu">c</span>(<span class="fl">12.9</span>, <span class="fl">13.5</span>, <span class="fl">12.8</span>, <span class="fl">15.6</span>, <span class="fl">17.2</span>, <span class="fl">19.2</span>, <span class="fl">12.6</span>, <span class="fl">15.3</span>, <span class="fl">14.4</span>, <span class="fl">11.3</span>),</span>
+<span id="cb76-4"><a href="base-de-datos-n-3-data.html#cb76-4" tabindex="-1"></a>  <span class="at">despues =</span> <span class="fu">c</span>(<span class="fl">12.7</span>, <span class="fl">13.6</span>, <span class="fl">12.0</span>, <span class="fl">15.2</span>, <span class="fl">16.8</span>, <span class="fl">20.0</span>, <span class="fl">12.0</span>, <span class="fl">15.9</span>, <span class="fl">16.0</span>, <span class="fl">11.1</span>)</span>
+<span id="cb76-5"><a href="base-de-datos-n-3-data.html#cb76-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>#Analisis exploratorio (Ejercicio de tarea)</p>
 </div>
-<div id="podemos-clasificar-cada-una-de-estas-medidas-según-su-tipo" class="section level4 hasAnchor" number="2.0.1.1">
-<h4><span class="header-section-number">2.0.1.1</span> Podemos clasificar cada una de estas medidas según su tipo:<a href="analisis-exploratorio-de-median_hose_value-target.html#podemos-clasificar-cada-una-de-estas-medidas-seg%C3%BAn-su-tipo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>1. Medidas de tendencia central:</strong>
-Media = 206,855.8 | Mediana = 179,700</p>
-<p>Esto básicamente responde a la pregunta de cuál es el valor “típico” de los
-datos, el número que mejor representa al conjunto. Acá ya se nota algo raro:
-la media es bastante más alta que la mediana, y eso de una vez nos está
-avisando que la distribución no es simétrica.</p>
-<p><strong>2. Medidas de dispersión:</strong>
-SD = 115,395.6 | RIC = 145,125</p>
-<p>Con la tendencia central sola no alcanza, porque dos distribuciones pueden
-tener la misma media y comportarse totalmente distinto. Acá la desviación
-estándar es enorme, más de la mitad del valor de la media, así que ya sabemos
-que los precios de las viviendas varían muchísimo entre sí.</p>
-<p><strong>3. Medidas de posición:</strong>
-Q1 = 119,600 | Q3 = 264,725 | Mínimo = 14,999 | Máximo = 500,001 (Mediana = Q2)</p>
-<p>Esto nos dice dónde queda ubicado un dato específico respecto al resto,
-dividiendo el conjunto ordenado en partes. La mediana en realidad también es
-una medida de posición (Q2), por eso la repetimos acá: es el punto donde
-queda el 50% de los datos por debajo y el 50% por encima.</p>
-<p><strong>4. Medidas de forma:</strong>
-Asimetría = 0.9776 | Curtosis = 3.3275</p>
-<p>Esto habla de qué forma tiene la distribución, no de dónde está el centro
-ni de cuánto se dispersa, sino de cómo se reparten los datos alrededor de
-ese centro.
-Asimetría (0.9776): es positiva y bastante notoria, o sea que hay una cola
-larga hacia la derecha, lo cual concuerda con lo que ya vimos de que la
-media es mayor que la mediana.
-Curtosis (3.3275): está casi pegada al 3, que es el valor de una distribución
-normal. Esto es curioso porque contradice un poco lo que dice la asimetría:
-aunque la distribución no es simétrica, lo “puntiaguda” o “aplanada” que es
-se parece bastante a la de una normal.</p>
+<div id="verificamos-supuesto-de-normalidad-1" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Verificamos supuesto de normalidad<a href="base-de-datos-n-3-data.html#verificamos-supuesto-de-normalidad-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="base-de-datos-n-3-data.html#cb77-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(datos<span class="sc">$</span>despues)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  datos$despues
+## W = 0.93638, p-value = 0.5135</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="base-de-datos-n-3-data.html#cb79-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(datos<span class="sc">$</span>antes)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  datos$antes
+## W = 0.94444, p-value = 0.6033</code></pre>
 </div>
+<div id="diferencia-entre-las-medias" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Diferencia entre las medias<a href="base-de-datos-n-3-data.html#diferencia-entre-las-medias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="base-de-datos-n-3-data.html#cb81-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>datos<span class="sc">$</span>despues,<span class="at">y=</span>datos<span class="sc">$</span>antes, <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="co">#verificar esto usando el teorema a mano</span></span></code></pre></div>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  datos$despues and datos$antes
+## t = 0.21331, df = 9, p-value = 0.8358
+## alternative hypothesis: true mean difference is not equal to 0
+## 95 percent confidence interval:
+##  -0.4802549  0.5802549
+## sample estimates:
+## mean difference 
+##            0.05</code></pre>
 </div>
-<div id="gráfico-tipo-histograma-de-median_house_value" class="section level3 hasAnchor" number="2.0.2">
-<h3><span class="header-section-number">2.0.2</span> Gráfico tipo histograma de ‘median_house_value’<a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>median_house_value))<span class="sc">+</span></span>
-<span id="cb12-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-3" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y=</span><span class="fu">after_stat</span>(density)),</span>
-<span id="cb12-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-4" tabindex="-1"></a>                <span class="at">binwidth=</span><span class="dv">25000</span>,</span>
-<span id="cb12-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-5" tabindex="-1"></a>                <span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,</span>
-<span id="cb12-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-6" tabindex="-1"></a>                <span class="at">color=</span><span class="st">&quot;white&quot;</span>,</span>
-<span id="cb12-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-7" tabindex="-1"></a>                <span class="at">alpha=</span><span class="fl">0.6</span>,)<span class="sc">+</span></span>
-<span id="cb12-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-8" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,<span class="at">linewidth=</span><span class="fl">1.2</span>)<span class="sc">+</span></span>
-<span id="cb12-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&#39;Distribucion del valor medio de las viviendas&#39;</span>,</span>
-<span id="cb12-10"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-10" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&#39;valor medio de la casa (USD)&#39;</span>,</span>
-<span id="cb12-11"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-11" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&#39;densidad&#39;</span>)<span class="sc">+</span></span>
-<span id="cb12-12"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/Histograma-1.png" alt="" width="672" />
-La mayoría de las viviendas están entre 100K y 250K USD, con una
-concentración cerca de los 150K, y después se ve una cola larga hacia la
-derecha que confirma lo que ya habíamos visto en la tabla (media 206,855 &gt;
-mediana 179,700, asimetría de 0.97). También se nota una acumulación rara
-cerca de los 500K, lo que probablemente sea un tope que le pusieron a los
-datos originales, y coincide justo con el máximo de 500,001 que vimos antes.</p>
-</div>
-<div id="gráfico-de-cajas-y-bigotes-de-median_house_value" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Gráfico de cajas y bigotes de ‘median_house_value’<a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-1" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> median_house_value))<span class="sc">+</span></span>
-<span id="cb13-3"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;#797bb0&quot;</span>,<span class="at">color=</span><span class="st">&quot;darkblue&quot;</span>,</span>
-<span id="cb13-4"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-4" tabindex="-1"></a>               <span class="at">outlier.color=</span><span class="st">&#39;darkred&#39;</span>)<span class="sc">+</span></span>
-<span id="cb13-5"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-5" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean, <span class="at">geom=</span><span class="st">&#39;point&#39;</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">&#39;green3&#39;</span>)<span class="sc">+</span> <span class="co">#colocar un punto en la media</span></span>
-<span id="cb13-6"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
-<span id="cb13-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-8" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb13-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-9" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/Boxplot-1.png" alt="" width="672" />
-El boxplot confirma la asimetría que pudimos notar: la mediana (línea azul)
-está más pegada al Q1 que al Q3, y el bigote de arriba es más largo que el de
-abajo, o sea que hay cola hacia la derecha. Los puntos rojos que se ven arriba
-(entre 480K y 500K aprox) son outliers, y coinciden con el tope de 500,001 que
-ya habíamos detectado. El punto verde marca la media (unos 207K), y se ve
-claramente por encima de la mediana.</p>
+<div id="tamaño-del-efecto" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Tamaño del efecto<a href="base-de-datos-n-3-data.html#tama%C3%B1o-del-efecto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="base-de-datos-n-3-data.html#cb83-1" tabindex="-1"></a><span class="fu">cohen.d</span>(datos<span class="sc">$</span>despues, datos<span class="sc">$</span>antes, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## 
+## Cohen&#39;s d
+## 
+## d estimate: 0.0169815 (negligible)
+## 95 percent confidence interval:
+##      lower      upper 
+## -0.1502851  0.1842481</code></pre>
 </div>
 </div>
             </section>
@@ -454,8 +332,8 @@ claramente por encima de la mediana.</p>
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-independientes-caracteristicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-de-datos-n2-datos_economia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -486,7 +364,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/07-tarea°2.Rmd",
     "text": "Edit"
   },
   "history": {
