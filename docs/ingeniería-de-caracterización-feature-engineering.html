@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Ingeniería de Caracterización (feature engineering) | Tarea de Estadistica paramétrica y no paramétrica</title>
+  <title>Chapter 7 Ingeniería de Caracterización (feature engineering) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Ingeniería de Caracterización (feature engineering) | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta property="og:title" content="Chapter 7 Ingeniería de Caracterización (feature engineering) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Ingeniería de Caracterización (feature engineering) | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta name="twitter:title" content="Chapter 7 Ingeniería de Caracterización (feature engineering) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variable-categórica-ocean_proximity-convertida-en-factor.html"/>
+<link rel="prev" href="analisis-de-variables-independientes-x-variables-independientes.html"/>
 <link rel="next" href="conclusiones-generales.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -179,81 +179,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>5.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>5.2</b> Paquete GGally</a></li>
-<li class="chapter" data-level="5.3" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>5.3</b> Graficos de variables independientes vs variables independientes</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>6</b> Ingeniería de Caracterización (feature engineering)</a>
+<li class="chapter" data-level="6" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html"><i class="fa fa-check"></i><b>6</b> Analisis de variables independientes x variables independientes</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
-<li class="chapter" data-level="6.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
-<li class="chapter" data-level="6.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>6.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>6.3.1</b> Revisar que se crearon correctamente:</a></li>
-<li class="chapter" data-level="6.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>6.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
-<li class="chapter" data-level="6.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>6.3.3</b> Realizamos el resumen estadistico</a></li>
+<li class="chapter" data-level="6.1" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html#paquete-ggally"><i class="fa fa-check"></i><b>6.1</b> Paquete GGally</a></li>
+<li class="chapter" data-level="6.2" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.2</b> Graficos de variables independientes vs variables independientes</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>6.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
-<li class="chapter" data-level="6.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
+<li class="chapter" data-level="7" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>7</b> Ingeniería de Caracterización (feature engineering)</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>6.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
+<li class="chapter" data-level="7.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
+<li class="chapter" data-level="7.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
+<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>7.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>7.3.1</b> Revisar que se crearon correctamente:</a></li>
+<li class="chapter" data-level="7.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>7.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
+<li class="chapter" data-level="7.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>7.3.3</b> Realizamos el resumen estadistico</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>7.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
+<li class="chapter" data-level="7.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>7</b> Conclusiones generales</a></li>
-<li class="chapter" data-level="8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><i class="fa fa-check"></i><b>8</b> Tarea de Estadistica paramétrica y no paramétrica</a>
+<li class="chapter" data-level="8" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones generales</a></li>
+<li class="chapter" data-level="9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><i class="fa fa-check"></i><b>9</b> Tarea de Estadistica paramétrica y no paramétrica</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n1-datos_medicos.xlsx"><i class="fa fa-check"></i><b>8.1</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
+<li class="chapter" data-level="9.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n1-datos_medicos.xlsx"><i class="fa fa-check"></i><b>9.1</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>8.1.1</b> Transformación</a></li>
-<li class="chapter" data-level="8.1.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>8.1.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
-<li class="chapter" data-level="8.1.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#resumen-exploratorio"><i class="fa fa-check"></i><b>8.1.3</b> Resumen exploratorio</a></li>
-<li class="chapter" data-level="8.1.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>8.1.4</b> Vaiables exstentes hasta el momento</a></li>
-<li class="chapter" data-level="8.1.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>8.1.5</b> Filtramos los tipos de ‘Presion’</a></li>
-<li class="chapter" data-level="8.1.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>8.1.6</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
-<li class="chapter" data-level="8.1.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>8.1.7</b> 2. Supuesto de homocedasticidad</a></li>
-<li class="chapter" data-level="8.1.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>8.1.8</b> Utilizamos t de student</a></li>
+<li class="chapter" data-level="9.1.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>9.1.1</b> Transformación</a></li>
+<li class="chapter" data-level="9.1.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>9.1.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
+<li class="chapter" data-level="9.1.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#resumen-exploratorio"><i class="fa fa-check"></i><b>9.1.3</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="9.1.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>9.1.4</b> Vaiables exstentes hasta el momento</a></li>
+<li class="chapter" data-level="9.1.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>9.1.5</b> Filtramos los tipos de ‘Presion’</a></li>
+<li class="chapter" data-level="9.1.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>9.1.6</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
+<li class="chapter" data-level="9.1.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>9.1.7</b> 2. Supuesto de homocedasticidad</a></li>
+<li class="chapter" data-level="9.1.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>9.1.8</b> Utilizamos t de student</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n2-datos_economia.xlsx"><i class="fa fa-check"></i><b>8.2</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
+<li class="chapter" data-level="9.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n2-datos_economia.xlsx"><i class="fa fa-check"></i><b>9.2</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformacion"><i class="fa fa-check"></i><b>8.2.1</b> Transformacion</a></li>
-<li class="chapter" data-level="8.2.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>8.2.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
-<li class="chapter" data-level="8.2.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#analisis-exploratorio-tarea"><i class="fa fa-check"></i><b>8.2.3</b> Analisis exploratorio [tarea]</a></li>
-<li class="chapter" data-level="8.2.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.2.4</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="8.2.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#homocedasticidad"><i class="fa fa-check"></i><b>8.2.5</b> Homocedasticidad</a></li>
-<li class="chapter" data-level="8.2.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#pruebas"><i class="fa fa-check"></i><b>8.2.6</b> Pruebas</a></li>
+<li class="chapter" data-level="9.2.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformacion"><i class="fa fa-check"></i><b>9.2.1</b> Transformacion</a></li>
+<li class="chapter" data-level="9.2.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>9.2.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
+<li class="chapter" data-level="9.2.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#analisis-exploratorio-tarea"><i class="fa fa-check"></i><b>9.2.3</b> Analisis exploratorio [tarea]</a></li>
+<li class="chapter" data-level="9.2.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.2.4</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="9.2.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#homocedasticidad"><i class="fa fa-check"></i><b>9.2.5</b> Homocedasticidad</a></li>
+<li class="chapter" data-level="9.2.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#pruebas"><i class="fa fa-check"></i><b>9.2.6</b> Pruebas</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-3-data.frameestudiantes"><i class="fa fa-check"></i><b>8.3</b> Base de datos n° 3: data.frame(estudiantes)</a>
+<li class="chapter" data-level="9.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-3-data.frameestudiantes"><i class="fa fa-check"></i><b>9.3</b> Base de datos n° 3: data.frame(estudiantes)</a>
 <ul>
-<li class="chapter" data-level="8.3.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>8.3.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
-<li class="chapter" data-level="8.3.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>8.3.2</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="8.3.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>8.3.3</b> Diferencia entre las medias</a></li>
-<li class="chapter" data-level="8.3.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>8.3.4</b> Tamaño del efecto</a></li>
+<li class="chapter" data-level="9.3.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>9.3.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
+<li class="chapter" data-level="9.3.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>9.3.2</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="9.3.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>9.3.3</b> Diferencia entre las medias</a></li>
+<li class="chapter" data-level="9.3.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>9.3.4</b> Tamaño del efecto</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-4-base-de-datos-del-paquete-openintro"><i class="fa fa-check"></i><b>8.4</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
+<li class="chapter" data-level="9.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-4-base-de-datos-del-paquete-openintro"><i class="fa fa-check"></i><b>9.4</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
 <ul>
-<li class="chapter" data-level="8.4.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>8.4.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
-<li class="chapter" data-level="8.4.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>8.4.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
-<li class="chapter" data-level="8.4.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.4.3</b> Verificar supuesto de normalidad</a></li>
-<li class="chapter" data-level="8.4.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#podemos-aplicar-shapiro-o-kolmogorov"><i class="fa fa-check"></i><b>8.4.4</b> Podemos aplicar shapiro o kolmogorov</a></li>
-<li class="chapter" data-level="8.4.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#kolmogorov-para-supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.4.5</b> Kolmogorov para supuesto de normalidad</a></li>
+<li class="chapter" data-level="9.4.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>9.4.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
+<li class="chapter" data-level="9.4.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>9.4.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
+<li class="chapter" data-level="9.4.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.4.3</b> Verificar supuesto de normalidad</a></li>
+<li class="chapter" data-level="9.4.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#podemos-aplicar-shapiro-o-kolmogorov"><i class="fa fa-check"></i><b>9.4.4</b> Podemos aplicar shapiro o kolmogorov</a></li>
+<li class="chapter" data-level="9.4.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#kolmogorov-para-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.4.5</b> Kolmogorov para supuesto de normalidad</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-5"><i class="fa fa-check"></i><b>8.5</b> Base de datos n° 5</a>
+<li class="chapter" data-level="9.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-5"><i class="fa fa-check"></i><b>9.5</b> Base de datos n° 5</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento"><i class="fa fa-check"></i><b>8.5.1</b> Caracterizar la percepcion del estudiante con respecto a la pregunta q1 segun el experimento</a></li>
-<li class="chapter" data-level="8.5.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.5.2</b> Supuesto de normalidad</a></li>
-<li class="chapter" data-level="8.5.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-experimento"><i class="fa fa-check"></i><b>8.5.3</b> Filtramos ‘Experimento’</a></li>
+<li class="chapter" data-level="9.5.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento"><i class="fa fa-check"></i><b>9.5.1</b> Caracterizar la percepcion del estudiante con respecto a la pregunta q1 segun el experimento</a></li>
+<li class="chapter" data-level="9.5.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.5.2</b> Supuesto de normalidad</a></li>
+<li class="chapter" data-level="9.5.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-experimento"><i class="fa fa-check"></i><b>9.5.3</b> Filtramos ‘Experimento’</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-6-data.frameempleados"><i class="fa fa-check"></i><b>8.6</b> Base de datos n° 6: ‘data.frame(Empleados)’</a>
+<li class="chapter" data-level="9.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-6-data.frameempleados"><i class="fa fa-check"></i><b>9.6</b> Base de datos n° 6: ‘data.frame(Empleados)’</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>8.6.1</b> Omitimos los datos faltantes</a></li>
-<li class="chapter" data-level="8.6.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>8.6.2</b> Promedio de cada grupo K</a></li>
-<li class="chapter" data-level="8.6.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>8.6.3</b> Hallamos promedio global</a></li>
-<li class="chapter" data-level="8.6.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-sst"><i class="fa fa-check"></i><b>8.6.4</b> Hallamos SST</a></li>
-<li class="chapter" data-level="8.6.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-ssa"><i class="fa fa-check"></i><b>8.6.5</b> Hallamos SSA</a></li>
-<li class="chapter" data-level="8.6.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallemos-sse"><i class="fa fa-check"></i><b>8.6.6</b> Hallemos SSE</a></li>
-<li class="chapter" data-level="8.6.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#msa-y-mse"><i class="fa fa-check"></i><b>8.6.7</b> MSA Y MSE</a></li>
-<li class="chapter" data-level="8.6.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#estadistico-f"><i class="fa fa-check"></i><b>8.6.8</b> Estadistico F</a></li>
-<li class="chapter" data-level="8.6.9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#f-tabulado"><i class="fa fa-check"></i><b>8.6.9</b> F tabulado</a></li>
-<li class="chapter" data-level="8.6.10" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#p-valor"><i class="fa fa-check"></i><b>8.6.10</b> p valor</a></li>
+<li class="chapter" data-level="9.6.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>9.6.1</b> Omitimos los datos faltantes</a></li>
+<li class="chapter" data-level="9.6.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>9.6.2</b> Promedio de cada grupo K</a></li>
+<li class="chapter" data-level="9.6.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>9.6.3</b> Hallamos promedio global</a></li>
+<li class="chapter" data-level="9.6.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-sst"><i class="fa fa-check"></i><b>9.6.4</b> Hallamos SST</a></li>
+<li class="chapter" data-level="9.6.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-ssa"><i class="fa fa-check"></i><b>9.6.5</b> Hallamos SSA</a></li>
+<li class="chapter" data-level="9.6.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallemos-sse"><i class="fa fa-check"></i><b>9.6.6</b> Hallemos SSE</a></li>
+<li class="chapter" data-level="9.6.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#msa-y-mse"><i class="fa fa-check"></i><b>9.6.7</b> MSA Y MSE</a></li>
+<li class="chapter" data-level="9.6.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#estadistico-f"><i class="fa fa-check"></i><b>9.6.8</b> Estadistico F</a></li>
+<li class="chapter" data-level="9.6.9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#f-tabulado"><i class="fa fa-check"></i><b>9.6.9</b> F tabulado</a></li>
+<li class="chapter" data-level="9.6.10" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#p-valor"><i class="fa fa-check"></i><b>9.6.10</b> p valor</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -268,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tarea de Estadistica paramétrica y no paramétrica</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing</a>
           </h1>
         </div>
 
@@ -276,28 +279,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ingeniería-de-caracterización-feature-engineering" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Ingeniería de Caracterización (feature engineering)<a href="ingeniería-de-caracterización-feature-engineering.html#ingenier%C3%ADa-de-caracterizaci%C3%B3n-feature-engineering" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>La ingeniería de características (feature engineering) es el proceso de
-crear nuevas variables a partir de las que ya tenemos, con el fin de que
-representen mejor la información del dataset. Esto es útil porque, como se
-vio en la sección anterior, varias variables (total_rooms, total_bedrooms,
-population y households) se mueven de forma muy parecida entre sí, ya que
-en el fondo todas miden el tamaño del bloque censal desde distintos
-ángulos. Usarlas tal cual en un modelo puede generar redundancia, así que
-en este caso la vamos a utilizar para crear variables de razón (ratios)
-que combinen esta información y que aporten un dato más claro, como por
-ejemplo cuántas habitaciones tiene un hogar en promedio, en lugar de
-manejar los totales por separado.</p>
-<div id="graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Graficos de variables para realizar la “Ingenieria de caracterizacion”<a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Elegimos estas gráficas guiándonos por lo que se observó en las 36 gráficas
-de la sección anterior, donde se comparó cada variable independiente con respecto a
-las demás. De alli seleccionamos las relaciones que mostraban el patrón más
-marcado entre sí (total_bedrooms, total_rooms, households y population, entre otras), ya
-que son las que presentan mayor riesgo de estar midiendo lo mismo.
-Esto nos sirve como base para justificar por qué vamos a crear variables
-nuevas en lugar de usar los totales originales.</p>
+<div id="ingeniería-de-caracterización-feature-engineering" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Ingeniería de Caracterización (feature engineering)<a href="ingeniería-de-caracterización-feature-engineering.html#ingenier%C3%ADa-de-caracterizaci%C3%B3n-feature-engineering" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La ingeniería de características (feature engineering) es el proceso de crear nuevas variables a partir de las que ya tenemos, con el fin de que representen mejor la información del dataset. Esto es útil porque, como se vio en la sección anterior, varias variables (total_rooms, total_bedrooms, population y households) se mueven de forma muy parecida entre sí, ya que en el fondo todas miden el tamaño del bloque censal desde distintos ángulos. Usarlas tal cual en un modelo puede generar redundancia, así que en este caso la vamos a utilizar para crear variables de razón (ratios) que combinen esta información y que aporten un dato más claro, como por ejemplo cuántas habitaciones tiene un hogar en promedio, en lugar de manejar los totales por separado.</p>
+<div id="graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Graficos de variables para realizar la “Ingenieria de caracterizacion”<a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Elegimos estas gráficas guiándonos por lo que se observó en las 36 gráficas de la sección anterior, donde se comparó cada variable independiente con respecto a las demás. De alli seleccionamos las relaciones que mostraban el patrón más marcado entre sí (total_bedrooms, total_rooms, households y population, entre otras), ya que son las que presentan mayor riesgo de estar midiendo lo mismo. Esto nos sirve como base para justificar por qué vamos a crear variables nuevas en lugar de usar los totales originales.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb29-1" tabindex="-1"></a><span class="co"># ---&#39;total_bedrooms&#39; vs &#39;households&#39;---</span></span>
 <span id="cb29-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb29-2" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="ingeniería-de-caracterización-feature-engineering.html#cb29-3" tabindex="-1"></a>g1<span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
@@ -361,46 +348,23 @@ nuevas en lugar de usar los totales originales.</p>
 <span id="cb29-61"><a href="ingeniería-de-caracterización-feature-engineering.html#cb29-61" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p>Veamos:</p>
 <p><img src="bookdown-demo_files/figure-html/block%201-1.png" alt="" width="672" /></p>
-<p><strong>total_bedrooms vs households: </strong></p>
-<p>De la grafica podemos observar que la cercania de los puntos pueden llegar a formar una linea recta. Sin embargo, también se debe recalcar el pequeño
-conjunto de puntos apilados verticalmente entre los 500-750 dormitorios. Podemos decir que este diagrama de dispersión nos señala que la relación es notoriamente creciente.</p>
-<p><strong>total_rooms vs total_bedrooms: </strong></p>
-<p>Acá también se aprecia una tendencia ascendente clara, aunque los puntos
-ya no se ajustan tanto a la línea como en el caso anterior; se van
-dispersando más a medida que aumentan los valores, formando algo así como
-un abanico. De todas formas, la tendencia de fondo se mantiene: a más
-habitaciones en total, más dormitorios, lo cual es coherente ya que los
-dormitorios forman parte de esas habitaciones.</p>
+<p><strong>total_bedrooms vs households:</strong></p>
+<p>De la grafica podemos observar que la cercania de los puntos pueden llegar a formar una linea recta. Sin embargo, también se debe recalcar el pequeño conjunto de puntos apilados verticalmente entre los 500-750 dormitorios. Podemos decir que este diagrama de dispersión nos señala que la relación es notoriamente creciente.</p>
+<p><strong>total_rooms vs total_bedrooms:</strong></p>
+<p>Acá también se aprecia una tendencia ascendente clara, aunque los puntos ya no se ajustan tanto a la línea como en el caso anterior; se van dispersando más a medida que aumentan los valores, formando algo así como un abanico. De todas formas, la tendencia de fondo se mantiene: a más habitaciones en total, más dormitorios, lo cual es coherente ya que los dormitorios forman parte de esas habitaciones.</p>
 <p><img src="bookdown-demo_files/figure-html/block%202-1.png" alt="" width="672" /></p>
-<p><strong>households vs population: </strong></p>
-<p>La gráfica muestra una tendencia ascendente, aunque con más dispersión que
-en g1, los puntos se van alejando de la línea conforme aumentan los
-valores, y se distinguen un par de casos que se despegan bastante del
-patrón general (bloques con una población muy alta en relación a su
-cantidad de hogares, cerca de los 30,000-35,000). Aun con eso, se mantiene
-la idea de que a más hogares corresponde mayor población.</p>
-<p><strong>total_rooms vs households: </strong></p>
-<p>En este grafico la tendencia es ascendente, pero la dispersión aumenta hacia los valores más altos.
-Esto va en línea con lo esperado, ya que un mayor número de hogares suele venir
-acompañado de un mayor número de habitaciones en total, siguiendo el mismo
-patrón de “tamaño del bloque” que se ha visto en las variables anteriores.</p>
+<p><strong>households vs population:</strong></p>
+<p>La gráfica muestra una tendencia ascendente, aunque con más dispersión que en g1, los puntos se van alejando de la línea conforme aumentan los valores, y se distinguen un par de casos que se despegan bastante del patrón general (bloques con una población muy alta en relación a su cantidad de hogares, cerca de los 30,000-35,000). Aun con eso, se mantiene la idea de que a más hogares corresponde mayor población.</p>
+<p><strong>total_rooms vs households:</strong></p>
+<p>En este grafico la tendencia es ascendente, pero la dispersión aumenta hacia los valores más altos. Esto va en línea con lo esperado, ya que un mayor número de hogares suele venir acompañado de un mayor número de habitaciones en total, siguiendo el mismo patrón de “tamaño del bloque” que se ha visto en las variables anteriores.</p>
 <p><img src="bookdown-demo_files/figure-html/block%203-1.png" alt="" width="672" /></p>
-<p><strong>total_bedrooms vs population: </strong></p>
-<p>Se observa una tendencia ascendente, con un comportamiento similar
-al de g3 y g4 en cuanto a la dispersión creciente, además de algunos
-valores atípicos aislados en la parte superior (bloques con una población
-considerablemente alta respecto a su cantidad de dormitorios). En términos
-generales, la tendencia sigue apuntando a que más dormitorios se asocian
-con mayor población.</p>
-<p><strong>total_rooms vs population: </strong></p>
-<p>Esta grafica muestra la dispersión aumentando de forma más notoria en los valores altos y un par de outliers
-que se alejan bastante de la línea (puntos con población cercana a los
-30,000-35,000). Esto confirma que esta variable también sigue el mismo
-patrón de tamaño y densidad del bloque censal, aunque en este caso la
-relación se ve algo menos ajustada que en g1.</p>
+<p><strong>total_bedrooms vs population:</strong></p>
+<p>Se observa una tendencia ascendente, con un comportamiento similar al de g3 y g4 en cuanto a la dispersión creciente, además de algunos valores atípicos aislados en la parte superior (bloques con una población considerablemente alta respecto a su cantidad de dormitorios). En términos generales, la tendencia sigue apuntando a que más dormitorios se asocian con mayor población.</p>
+<p><strong>total_rooms vs population:</strong></p>
+<p>Esta grafica muestra la dispersión aumentando de forma más notoria en los valores altos y un par de outliers que se alejan bastante de la línea (puntos con población cercana a los 30,000-35,000). Esto confirma que esta variable también sigue el mismo patrón de tamaño y densidad del bloque censal, aunque en este caso la relación se ve algo menos ajustada que en g1.</p>
 </div>
-<div id="realizamos-el-procedimiento-de-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Realizamos el procedimiento de ingenieria de caracterizacion<a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="realizamos-el-procedimiento-de-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Realizamos el procedimiento de ingenieria de caracterizacion<a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Elegimos estas variables para realizar este procedimiento debido a que son aquellas que probablemente nos esten mostrando la misma información. Por ejemplo, no se escogimos ‘total_bedrooms’ vs ‘population’ por la sencilla razón que es la misma informacion que obtenemos con ‘total_rooms’ vs ‘population’. De esta manera obtenemos 5 variables nuevas:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb30-1" tabindex="-1"></a>df_nuevo <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb30-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb30-2" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -410,10 +374,10 @@ relación se ve algo menos ajustada que en g1.</p>
 <span id="cb30-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb30-6" tabindex="-1"></a>    <span class="at">population_per_room =</span> population <span class="sc">/</span> total_rooms,        <span class="co">#densidad de personas por habitación (hacinamiento)</span></span>
 <span id="cb30-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb30-7" tabindex="-1"></a>    <span class="at">bedrooms_per_household =</span> total_bedrooms <span class="sc">/</span> households) <span class="co">#dormitorios promedio por hogar</span></span></code></pre></div>
 </div>
-<div id="analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Analisis exploratorio (EDA) con el nuevo data frame obtenido<a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="revisar-que-se-crearon-correctamente" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Revisar que se crearon correctamente:<a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Analisis exploratorio (EDA) con el nuevo data frame obtenido<a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="revisar-que-se-crearon-correctamente" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Revisar que se crearon correctamente:<a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table class="table table-striped table-hover table-condensed" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 (#tab:caracteristicas de las variables del nuevo df)(#tab:caracteristicas de las variables del nuevo df)Estructura de las variables del nuevo dataset (df_nuevo)
@@ -600,8 +564,8 @@ numeric
 </tbody>
 </table>
 </div>
-<div id="revisamos-si-hay-datos-faltantes-nuevamente" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Revisamos si hay datos faltantes nuevamente:<a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="revisamos-si-hay-datos-faltantes-nuevamente" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> Revisamos si hay datos faltantes nuevamente:<a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb31-1" tabindex="-1"></a>df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb31-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb31-2" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.)),<span class="at">.names=</span><span class="st">&quot;NA_{.col}&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb31-3"><a href="ingeniería-de-caracterización-feature-engineering.html#cb31-3" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&quot; Verificar exito del data frame nuevo&quot;</span>) <span class="sc">%&gt;%</span> </span>
@@ -714,8 +678,8 @@ NA_bedrooms_per_household
 </table>
 </div>
 </div>
-<div id="realizamos-el-resumen-estadistico" class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Realizamos el resumen estadistico<a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="realizamos-el-resumen-estadistico" class="section level3 hasAnchor" number="7.3.3">
+<h3><span class="header-section-number">7.3.3</span> Realizamos el resumen estadistico<a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb32-1" tabindex="-1"></a>df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb32-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb32-2" tabindex="-1"></a>  <span class="fu">select</span>(median_house_value, median_income, latitude, longitude, ocean_proximity, housing_median_age,       rooms_per_household, bedrooms_per_household, bedroom_ratio, population_per_household, population_per_room) <span class="sc">%&gt;%</span> </span>
 <span id="cb32-3"><a href="ingeniería-de-caracterización-feature-engineering.html#cb32-3" tabindex="-1"></a>  <span class="fu">summary</span>() <span class="sc">%&gt;%</span>  </span>
@@ -995,47 +959,40 @@ Max. :392.63158
 </div>
 </div>
 </div>
-<div id="veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas." class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.<a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas." class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.<a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><img src="bookdown-demo_files/figure-html/bloque%20a-1.png" alt="" width="672" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb33-1" tabindex="-1"></a>d6<span class="sc">+</span>d7<span class="sc">+</span>d8<span class="sc">+</span>d9<span class="sc">+</span>d10</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/bloque%20b-1.png" alt="" width="672" /></p>
 <p><img src="bookdown-demo_files/figure-html/variables%20nuevas%20(ocean_proximity)-1.png" alt="" width="672" /></p>
 <p><strong>Median_house_value:</strong></p>
 <p>El valor mediano de las viviendas es de $179.700, mientras que la media es de $206.856, lo que evidencia una asimetría positiva (0,978). El 50% de los valores se encuentra entre $119.600 y $264.725, con una variación considerable en los precios.</p>
-<p>-<strong>housing_median_age: </strong></p>
-<p>Media 28.6 y mediana 29, prácticamente iguales. Esto ya nos dice que la
-distribución es bastante simétrica, sin inclinarse mucho hacia edades muy
-altas ni muy bajas.</p>
-<p>-<strong>latitude: </strong></p>
-<p>Es una variable geográfica, no económica. El sd de 2.13 solo nos habla del
-rango de ubicación que cubren los datos, no hay que interpretarlo como
-asimetría o dispersión de un fenómeno real.</p>
-<p>-<strong>longitude: </strong></p>
-<p>Igual que la latitud, es una coordenada. Su dispersión (sd 2.0) muestra el
-rango geográfico del estudio, no algo estadístico relevante en sí mismo.</p>
-<p>-<strong>median_income: </strong></p>
-<p>Media 3.87 y mediana 3.53, bastante cercanas, o sea que la distribución es
-más o menos simétrica, aunque con una leve inclinación hacia valores más
-altos.</p>
+<p>-<strong>housing_median_age:</strong></p>
+<p>Media 28.6 y mediana 29, prácticamente iguales. Esto ya nos dice que la distribución es bastante simétrica, sin inclinarse mucho hacia edades muy altas ni muy bajas.</p>
+<p>-<strong>latitude:</strong></p>
+<p>Es una variable geográfica, no económica. El sd de 2.13 solo nos habla del rango de ubicación que cubren los datos, no hay que interpretarlo como asimetría o dispersión de un fenómeno real.</p>
+<p>-<strong>longitude:</strong></p>
+<p>Igual que la latitud, es una coordenada. Su dispersión (sd 2.0) muestra el rango geográfico del estudio, no algo estadístico relevante en sí mismo.</p>
+<p>-<strong>median_income:</strong></p>
+<p>Media 3.87 y mediana 3.53, bastante cercanas, o sea que la distribución es más o menos simétrica, aunque con una leve inclinación hacia valores más altos.</p>
 <p>-<strong>rooms_per_household:</strong></p>
 <p>Media de 5.43 y mediana de 5.23, bastante cercanas. Esto indica una distribución relativamente equilibrada, aunque existen algunos hogares con valores muy altos.</p>
 <p>-<strong>bedrooms_per_household:</strong></p>
 <p>Media de 1.10 y mediana de 1.05, valores muy similares. La distribución presenta poca asimetría, con algunos valores extremos.</p>
-<p>-<strong>bedroom_ratio: </strong></p>
+<p>-<strong>bedroom_ratio:</strong></p>
 <p>Media de 0.214 y mediana de 0.203, bastante cercanas. Esto indica que los dormitorios representan aproximadamente el 21 % de las habitaciones, con una ligera asimetría positiva.</p>
-<p>-<strong>population_per_household: </strong></p>
+<p>-<strong>population_per_household:</strong></p>
 <p>Media de 3.07 y mediana de 2.82. La diferencia muestra una asimetría positiva, debido a algunos valores extremadamente altos.</p>
-<p><strong>population_per_room: </strong></p>
+<p><strong>population_per_room:</strong></p>
 <p>Media de 0.620 y mediana de 0.516. La media está por encima de la mediana, indicando asimetría positiva y presencia de valores extremos.</p>
-<p><strong>Ocean_proximity: </strong></p>
+<p><strong>Ocean_proximity:</strong></p>
 <p>La mayoría de las viviendas están ubicadas a menos de una hora del océano (44,3%), seguida de las viviendas que están tierra adentro (31,7%). Las viviendas cerca del océano representan 12,9% y las cercanas a la bahía 11,1%. Por último, las ubicadas en islas son muy pocas, con apenas 0,02%.</p>
 </div>
-<div id="verificar-el-éxito-de-la-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Verificar el éxito de la ingenieria de caracterizacion<a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="verificar-el-éxito-de-la-ingenieria-de-caracterizacion" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Verificar el éxito de la ingenieria de caracterizacion<a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Comparamos las nuevas variables con respecto a nuestra variable respuesta ‘median_house_value’</p>
-<div id="diagramas-de-dispersión-de-las-nuevas-variables-vs-median_house_value" class="section level3 hasAnchor" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’<a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="diagramas-de-dispersión-de-las-nuevas-variables-vs-median_house_value" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’<a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Relación entre variables ‘rooms_per_household’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb34-1" tabindex="-1"></a>p_1<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span>   </span>
 <span id="cb34-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb34-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rooms_per_household,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1044,14 +1001,8 @@ altos.</p>
 <span id="cb34-5"><a href="ingeniería-de-caracterización-feature-engineering.html#cb34-5" tabindex="-1"></a>   <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersion entre el promedio de habitaciones por hogar con respecto al valor de la vivienda &#39;</span>)<span class="sc">+</span></span>
 <span id="cb34-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb34-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb34-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb34-7" tabindex="-1"></a>p_1</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/p_1-1.png" alt="" width="672" />
-Al revisar el resumen estadístico de <code>rooms_per_household</code> se confirma lo
-que se veía en la gráfica, la mitad de los datos está entre 4.4 y 6
-habitaciones promedio por hogar, y la media (5.43) y la mediana (5.23)
-están bastante cerca, así que el comportamiento normal es bien estable. Sin
-embargo, el máximo (141.9) está muy lejos de ese rango, lo que confirma que
-hay outliers extremos, y probablemente son esos los que están inflando la
-tendencia en el gráfico de dispersión.</p>
+<p><img src="bookdown-demo_files/figure-html/p_1-1.png" alt="" width="672" /></p>
+<p>Al revisar el resumen estadístico de <code>rooms_per_household</code> se confirma lo que se veía en la gráfica, la mitad de los datos está entre 4.4 y 6 habitaciones promedio por hogar, y la media (5.43) y la mediana (5.23) están bastante cerca, así que el comportamiento normal es bien estable. Sin embargo, el máximo (141.9) está muy lejos de ese rango, lo que confirma que hay outliers extremos, y probablemente son esos los que están inflando la tendencia en el gráfico de dispersión.</p>
 <p><strong>Relación entre variables ‘bedrooms_per_household’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb35-1" tabindex="-1"></a>p_2<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb35-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb35-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bedrooms_per_household,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1060,14 +1011,8 @@ tendencia en el gráfico de dispersión.</p>
 <span id="cb35-5"><a href="ingeniería-de-caracterización-feature-engineering.html#cb35-5" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersion entre el promedio de dormitorios y el valor de la vivienda&#39;</span>)<span class="sc">+</span></span>
 <span id="cb35-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb35-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb35-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb35-7" tabindex="-1"></a>p_2</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/p_2-1.png" alt="" width="672" />
-La mayoría de los puntos están entre 0 y 5 en el eje X, con una fila
-pegada arriba cerca de 500,000 (el mismo tope visto antes). Desde allí hasta
-arriba casi no hay datos, solo unos pocos puntos sueltos (atípicos) hasta 30-34. La nube
-de dispersion va bajando hasta valores
-negativos, lo cual no tiene sentido real para el precio de una vivienda,
-así que esa parte de la forma la están empujando muy pocos puntos
-extremos y no el comportamiento general de los datos.</p>
+<p><img src="bookdown-demo_files/figure-html/p_2-1.png" alt="" width="672" /></p>
+<p>La mayoría de los puntos están entre 0 y 5 en el eje X, con una fila pegada arriba cerca de 500,000 (el mismo tope visto antes). Desde allí hasta arriba casi no hay datos, solo unos pocos puntos sueltos (atípicos) hasta 30-34. La nube de dispersion va bajando hasta valores negativos, lo cual no tiene sentido real para el precio de una vivienda, así que esa parte de la forma la están empujando muy pocos puntos extremos y no el comportamiento general de los datos.</p>
 <p><strong>Relación entre variables ‘bedroom_ratio’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb36-1" tabindex="-1"></a>p_3<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb36-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb36-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>bedroom_ratio,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1076,13 +1021,8 @@ extremos y no el comportamiento general de los datos.</p>
 <span id="cb36-5"><a href="ingeniería-de-caracterización-feature-engineering.html#cb36-5" tabindex="-1"></a>   <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersion entre la proporcion de dormitorios en el hogar y el valor de la vivienda&#39;</span>)<span class="sc">+</span></span>
 <span id="cb36-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb36-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb36-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb36-7" tabindex="-1"></a>p_3</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/p_3-1.png" alt="" width="672" />
-En esta gráfica casi todo se concentra entre 0 y 0.5 en el eje X, y de ahí
-en adelante los datos prácticamente desaparecen, quedando solo unos pocos
-puntos aislados hasta 3.5. A diferencia de las anteriores, acá no hay una
-fila de puntos pegada arriba en el tope de 500,000, sino que la nube se ve
-más dispersa en distintos valores de vivienda y termina en valores negativos,
-algo que no es posible en la realidad.</p>
+<p><img src="bookdown-demo_files/figure-html/p_3-1.png" alt="" width="672" /></p>
+<p>En esta gráfica casi todo se concentra entre 0 y 0.5 en el eje X, y de ahí en adelante los datos prácticamente desaparecen, quedando solo unos pocos puntos aislados hasta 3.5. A diferencia de las anteriores, acá no hay una fila de puntos pegada arriba en el tope de 500,000, sino que la nube se ve más dispersa en distintos valores de vivienda y termina en valores negativos, algo que no es posible en la realidad.</p>
 <p><strong>Relación entre variables ‘population_per_household’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb37-1" tabindex="-1"></a>p_4<span class="ot">&lt;-</span>df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb37-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb37-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>population_per_household,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1091,9 +1031,8 @@ algo que no es posible en la realidad.</p>
 <span id="cb37-5"><a href="ingeniería-de-caracterización-feature-engineering.html#cb37-5" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersion entre el promedio de habitantes y el valor de la vivienda&#39;</span>)<span class="sc">+</span></span>
 <span id="cb37-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb37-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb37-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb37-7" tabindex="-1"></a>p_4</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/p_4-1.png" alt="" width="672" />
-Casi todos los puntos están pegados al 0 en el eje X, formando una franja
-vertical densa, y solo hay unos cuantos puntos sueltos hasta 1200.</p>
+<p><img src="bookdown-demo_files/figure-html/p_4-1.png" alt="" width="672" /></p>
+<p>Casi todos los puntos están pegados al 0 en el eje X, formando una franja vertical densa, y solo hay unos cuantos puntos sueltos hasta 1200.</p>
 <p><strong>Relación entre variables ‘population_per_room’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb38-1" tabindex="-1"></a>p_5<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb38-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb38-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>population_per_room,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1103,8 +1042,7 @@ vertical densa, y solo hay unos cuantos puntos sueltos hasta 1200.</p>
 <span id="cb38-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb38-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb38-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb38-7" tabindex="-1"></a>p_5</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_5-1.png" alt="" width="672" /></p>
-<p>Los puntos están pegados al 0 en el eje X, con solo un par de casos
-aislados que llegan hasta 400. No nos muestra informacion sobre la relacion que existe entre estas dos variables.</p>
+<p>Los puntos están pegados al 0 en el eje X, con solo un par de casos aislados que llegan hasta 400. No nos muestra informacion sobre la relacion que existe entre estas dos variables.</p>
 <p><strong>Relación entre variables ‘housing_median_age’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb39-1" tabindex="-1"></a>p_6<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span> </span>
 <span id="cb39-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb39-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>housing_median_age,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1114,13 +1052,7 @@ aislados que llegan hasta 400. No nos muestra informacion sobre la relacion que 
 <span id="cb39-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb39-6" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersión entre la edad media de la vivienda y el valor medio de la vivienda&#39;</span>)</span>
 <span id="cb39-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb39-7" tabindex="-1"></a>p_6</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_6-1.png" alt="" width="672" /></p>
-<p>Los puntos se distribuyen en columnas verticales a lo largo de todo el
-rango de edad (0 a 50 años), abarcando casi todos los valores de vivienda
-posibles en cada edad, o sea que no hay una relación clara entre la
-antigüedad de la vivienda y su valor. También se ve la línea densa en
-5e+05, confirmando otra vez el tope de 500,001, y hay una acumulación
-notable de puntos en la edad 52, probablemente porque esa categoría agrupa
-“52 años o más”.</p>
+<p>Los puntos se distribuyen en columnas verticales a lo largo de todo el rango de edad (0 a 50 años), abarcando casi todos los valores de vivienda posibles en cada edad, o sea que no hay una relación clara entre la antigüedad de la vivienda y su valor. También se ve la línea densa en 5e+05, confirmando otra vez el tope de 500,001, y hay una acumulación notable de puntos en la edad 52, probablemente porque esa categoría agrupa “52 años o más”.</p>
 <p><strong>Relación entre variables ‘latitude’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb40-1" tabindex="-1"></a>p_7<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span></span>
 <span id="cb40-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb40-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>latitude,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1130,12 +1062,7 @@ notable de puntos en la edad 52, probablemente porque esa categoría agrupa
 <span id="cb40-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb40-6" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersión entre latitud y el valor medio de la vivienda&#39;</span>)</span>
 <span id="cb40-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb40-7" tabindex="-1"></a>p_7</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_7-1.png" alt="" width="672" /></p>
-<p>Los valores de vivienda no se reparten parejo en todas las latitudes, sino
-que se concentran en franjas específicas (cerca de 34, 37.5 y en menor
-medida 33.9), que probablemente corresponden a zonas urbanas importantes
-de California. También se nota que a partir de la latitud 38 los precios
-tienden a bajar en general, y se mantiene la línea densa en 5e+05,
-concentrada sobre todo en esas zonas de mayor densidad (34 y 37.5).</p>
+<p>Los valores de vivienda no se reparten parejo en todas las latitudes, sino que se concentran en franjas específicas (cerca de 34, 37.5 y en menor medida 33.9), que probablemente corresponden a zonas urbanas importantes de California. También se nota que a partir de la latitud 38 los precios tienden a bajar en general, y se mantiene la línea densa en 5e+05, concentrada sobre todo en esas zonas de mayor densidad (34 y 37.5).</p>
 <p><strong>Relación entre variables ‘longitude’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb41-1" tabindex="-1"></a>p_8<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span></span>
 <span id="cb41-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb41-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>longitude,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1145,14 +1072,7 @@ concentrada sobre todo en esas zonas de mayor densidad (34 y 37.5).</p>
 <span id="cb41-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb41-6" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersión entre longitud y el valor medio de la vivienda&#39;</span>)</span>
 <span id="cb41-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb41-7" tabindex="-1"></a>p_8</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_8-1.png" alt="" width="672" /></p>
-<p>De igual modo que en el grafico anterior, tampoco se reparten parejo los valores de vivienda por longitud, se
-concentran en dos franjas principales (cerca de -122.3 y entre -118 y -117),
-que coinciden con las zonas de alta latitud que vimos antes, así que en
-conjunto probablemente sean las mismas ciudades importantes (San Francisco
-y Los Ángeles). Se mantiene otra vez la línea densa en 500,000, concentrada
-justo en esas dos franjas de mayor densidad urbana, mientras que en
-longitudes más alejadas (-115) tanto los precios como la cantidad de datos
-bajan bastante.</p>
+<p>De igual modo que en el grafico anterior, tampoco se reparten parejo los valores de vivienda por longitud, se concentran en dos franjas principales (cerca de -122.3 y entre -118 y -117), que coinciden con las zonas de alta latitud que vimos antes, así que en conjunto probablemente sean las mismas ciudades importantes (San Francisco y Los Ángeles). Se mantiene otra vez la línea densa en 500,000, concentrada justo en esas dos franjas de mayor densidad urbana, mientras que en longitudes más alejadas (-115) tanto los precios como la cantidad de datos bajan bastante.</p>
 <p><strong>Relación entre variables ‘median_income’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb42-1" tabindex="-1"></a>p_9<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span></span>
 <span id="cb42-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb42-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>median_income,<span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1162,13 +1082,7 @@ bajan bastante.</p>
 <span id="cb42-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb42-6" tabindex="-1"></a>  <span class="fu">facet_grid</span>(.<span class="sc">~</span><span class="st">&#39;Dispersión entre ingreso medio y el valor medio de la vivienda&#39;</span>)</span>
 <span id="cb42-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb42-7" tabindex="-1"></a>p_9</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_9-1.png" alt="" width="672" /></p>
-<p>Se observa una relación positiva y notoria: a medida que sube el ingreso
-medio, el valor de la vivienda también sube, formando una nube de puntos
-con una tendencia ascendente bien marcada. Esto sugiere que el ingreso
-medio es de las variables más importantes para explicar el precio de las
-viviendas. También se mantiene la línea densa en 500,000 en casi todo el
-rango de ingresos, o sea que ese límite artificial afecta tanto a viviendas
-de ingresos bajos como altos.</p>
+<p>Se observa una relación positiva y notoria: a medida que sube el ingreso medio, el valor de la vivienda también sube, formando una nube de puntos con una tendencia ascendente bien marcada. Esto sugiere que el ingreso medio es de las variables más importantes para explicar el precio de las viviendas. También se mantiene la línea densa en 500,000 en casi todo el rango de ingresos, o sea que ese límite artificial afecta tanto a viviendas de ingresos bajos como altos.</p>
 <p><strong>Relación entre variables ‘ocean_proximity’ y ‘median_house_value’</strong></p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ingeniería-de-caracterización-feature-engineering.html#cb43-1" tabindex="-1"></a>p_10<span class="ot">&lt;-</span> df_nuevo <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="ingeniería-de-caracterización-feature-engineering.html#cb43-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>ocean_proximity, <span class="at">y=</span>median_house_value))<span class="sc">+</span></span>
@@ -1178,16 +1092,7 @@ de ingresos bajos como altos.</p>
 <span id="cb43-6"><a href="ingeniería-de-caracterización-feature-engineering.html#cb43-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb43-7"><a href="ingeniería-de-caracterización-feature-engineering.html#cb43-7" tabindex="-1"></a>p_10</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/p_10-1.png" alt="" width="672" /></p>
-<p>Compara el valor de vivienda según qué tan cerca está del
-océano y se ven diferencias claaras entre categorías. INLAND tiene los
-precios más bajos y menos dispersión, aunque con varios outliers hacia
-arriba. ISLAND, a pesar de tener solo 5 registros, tiene la mediana más
-alta, cerca de los 425,000, aunque no es muy representativa por lo pequeña
-que es la muestra. Las categorías &lt;1H OCEAN, NEAR BAY y NEAR OCEAN tienen
-medianas y dispersiones parecidas entre sí, entre 200,000 y 230,000
-aproximadamente, lo que sugiere que estar cerca del mar directamente no
-marca tanta diferencia como la que sí hay entre estar en el interior
-(INLAND) o no.</p>
+<p>Compara el valor de vivienda según qué tan cerca está del océano y se ven diferencias claaras entre categorías. INLAND tiene los precios más bajos y menos dispersión, aunque con varios outliers hacia arriba. ISLAND, a pesar de tener solo 5 registros, tiene la mediana más alta, cerca de los 425,000, aunque no es muy representativa por lo pequeña que es la muestra. Las categorías &lt;1H OCEAN, NEAR BAY y NEAR OCEAN tienen medianas y dispersiones parecidas entre sí, entre 200,000 y 230,000 aproximadamente, lo que sugiere que estar cerca del mar directamente no marca tanta diferencia como la que sí hay entre estar en el interior (INLAND) o no.</p>
 </div>
 </div>
 </div>
@@ -1196,7 +1101,7 @@ marca tanta diferencia como la que sí hay entre estar en el interior
           </div>
         </div>
       </div>
-<a href="variable-categórica-ocean_proximity-convertida-en-factor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analisis-de-variables-independientes-x-variables-independientes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="conclusiones-generales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

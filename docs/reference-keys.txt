@@ -24,6 +24,7 @@ variable-categórica-ocean_proximity-convertida-en-factor
 diagrama-de-barras-para-variable-numérica-x-variable-categórica
 ahora-comparemos-el-valor-medio-de-la-vivienda-según-la-proximidad-al-oceano
 grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity
+analisis-de-variables-independientes-x-variables-independientes
 paquete-ggally
 graficos-de-variables-independientes-vs-variables-independientes
 ingeniería-de-caracterización-feature-engineering
