@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | 07-tarea°2</title>
+  <title>Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | Análisis exploratorio de datos del valor de vivienda en California</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | 07-tarea°2" />
+  <meta property="og:title" content="Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | Análisis exploratorio de datos del valor de vivienda en California" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | 07-tarea°2" />
+  <meta name="twitter:title" content="Chapter 8 Tarea de Estadistica paramétrica y no paramétrica | Análisis exploratorio de datos del valor de vivienda en California" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -263,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">07-tarea°2</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis exploratorio de datos del valor de vivienda en California</a>
           </h1>
         </div>
 
@@ -623,7 +623,6 @@ una distribución normal.</p>
 <span id="cb97-2"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb97-2" tabindex="-1"></a>  <span class="at">tiempo =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;antes&quot;</span>, <span class="st">&quot;despues&quot;</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
 <span id="cb97-3"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb97-3" tabindex="-1"></a>  <span class="at">valor =</span> <span class="fu">c</span>(datos<span class="sc">$</span>antes, datos<span class="sc">$</span>despues)</span>
 <span id="cb97-4"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb97-4" tabindex="-1"></a>)</span></code></pre></div>
-<p>####Boxplot</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb98-1" tabindex="-1"></a><span class="fu">ggplot</span>(datos_largo, <span class="fu">aes</span>(<span class="at">x =</span> tiempo, <span class="at">y =</span> valor, <span class="at">fill =</span> tiempo)) <span class="sc">+</span></span>
 <span id="cb98-2"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb98-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb98-3"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb98-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Comparación de tiempos antes y después&quot;</span>,</span>
@@ -640,8 +639,6 @@ tener valores más dispersos, con una caja un poco más amplia. No se
 observan diferencias muy marcadas entre ambos momentos a simple vista,
 lo cual sugiere que el efecto de la intervención, si existe, podría
 ser moderado más que drástico.</p>
-<div id="histograma-de-las-diferencias" class="section level4 hasAnchor" number="8.3.2.1">
-<h4><span class="header-section-number">8.3.2.1</span> Histograma de las diferencias<a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#histograma-de-las-diferencias" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb99-1" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> diferencia)) <span class="sc">+</span></span>
 <span id="cb99-2"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb99-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">8</span>, <span class="at">fill =</span> <span class="st">&quot;#4C72B0&quot;</span>, <span class="at">color =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb99-3"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb99-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribución de las diferencias (después - antes)&quot;</span>,</span>
@@ -650,7 +647,13 @@ ser moderado más que drástico.</p>
 <span id="cb99-6"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb99-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb99-7"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#cb99-7" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/unnamed-chunk-24-1.png" alt="" width="672" /></p>
-</div>
+<p>La distribución de las diferencias se concentra
+principalmente cerca de valores pequeños, tanto positivos como
+negativos, sin una asimetría muy pronunciada. Esto es un primer
+indicio visual de que las diferencias podrían comportarse de manera
+aproximadamente simétrica alrededor de cero, lo cual es consistente
+con un supuesto de normalidad que luego se verificará formalmente
+con el test de Shapiro-Wilk.</p>
 </div>
 <div id="verificamos-supuesto-de-normalidad-1" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> Verificamos supuesto de normalidad<a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>

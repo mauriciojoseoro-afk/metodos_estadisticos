@@ -60,7 +60,6 @@ tamaño-de-efecto
 base-de-datos-n-3-data.frameestudiantes
 datos-de-tiempos-antes-y-después-de-la-intervención-educativa
 visualización-comparacion-antes-vs-despues
-histograma-de-las-diferencias
 verificamos-supuesto-de-normalidad-1
 diferencia-entre-las-medias
 tamaño-del-efecto
