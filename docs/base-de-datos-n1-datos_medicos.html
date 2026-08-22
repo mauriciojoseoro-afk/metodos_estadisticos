@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica</title>
+  <title>Chapter 2 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta property="og:title" content="Chapter 2 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta name="twitter:title" content="Chapter 2 Base de datos n°1: ‘datos_medicos.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -29,7 +29,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conclusiones-generales.html"/>
+<link rel="prev" href="intro.html"/>
 <link rel="next" href="base-de-datos-n2-datos_economia.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -51,10 +51,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -155,103 +151,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#imputacion-de-datos-faltantes"><i class="fa fa-check"></i><b>1.1.2</b> Imputacion de datos faltantes</a></li>
 <li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#ver-si-hay-datos-faltantes-nuevamente-pero-en-esta-ocasion-en-nuestro-data-frame"><i class="fa fa-check"></i><b>1.1.3</b> Ver si hay datos faltantes nuevamente, pero en esta ocasion, en nuestro Data Frame</a></li>
 <li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#vamos-a-convertir-la-variable-cualitativa-ocean_proximity-en-un-factor"><i class="fa fa-check"></i><b>1.1.4</b> Vamos a convertir la variable cualitativa `ocean_proximity´ en un factor</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#realicemos-el-resumen-estadistico-de-la-variable"><i class="fa fa-check"></i><b>1.1.5</b> Realicemos el resumen estadistico de la variable:</a></li>
+<li class="chapter" data-level="1.1.6" data-path="intro.html"><a href="intro.html#gr%C3%A1fico-tipo-histograma-de-median_house_value"><i class="fa fa-check"></i><b>1.1.6</b> Gráfico tipo histograma de ‘median_house_value’</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html"><i class="fa fa-check"></i><b>2</b> Analisis exploratorio de median_hose_value (target)</a>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value"><i class="fa fa-check"></i><b>1.2</b> Gráfico de cajas y bigotes de ‘median_house_value’</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente"><i class="fa fa-check"></i><b>1.3</b> Veamos el análisis de cada variable independiente</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#graficos-de-las-variables-independientes"><i class="fa fa-check"></i><b>1.4</b> Graficos de las variables independientes</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#veamos-los-gr%C3%A1ficos."><i class="fa fa-check"></i><b>1.5</b> Veamos los gráficos.</a>
 <ul>
-<li class="chapter" data-level="2.0.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#realicemos-el-resumen-estadistico-de-la-variable"><i class="fa fa-check"></i><b>2.0.1</b> Realicemos el resumen estadistico de la variable:</a></li>
-<li class="chapter" data-level="2.0.2" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-tipo-histograma-de-median_house_value"><i class="fa fa-check"></i><b>2.0.2</b> Gráfico tipo histograma de ‘median_house_value’</a></li>
-<li class="chapter" data-level="2.1" data-path="analisis-exploratorio-de-median_hose_value-target.html"><a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value"><i class="fa fa-check"></i><b>2.1</b> Gráfico de cajas y bigotes de ‘median_house_value’</a></li>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#diagrama-de-barras-para-variable-num%C3%A9rica-x-variable-categ%C3%B3rica"><i class="fa fa-check"></i><b>1.5.1</b> Diagrama de barras para variable numérica x variable categórica</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html"><i class="fa fa-check"></i><b>3</b> Variables independientes (caracteristicas)</a>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>1.6</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#veamos-el-an%C3%A1lisis-de-cada-variable-independiente"><i class="fa fa-check"></i><b>3.1</b> Veamos el análisis de cada variable independiente</a></li>
-<li class="chapter" data-level="3.2" data-path="variables-independientes-caracteristicas.html"><a href="variables-independientes-caracteristicas.html#graficos-de-las-variables-independientes"><i class="fa fa-check"></i><b>3.2</b> Graficos de las variables independientes</a></li>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>1.6.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html"><i class="fa fa-check"></i><b>4</b> Analisis exploratorio bivariado</a>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#paquete-ggally"><i class="fa fa-check"></i><b>1.7</b> Paquete GGally</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>1.8</b> Graficos de variables independientes vs variables independientes</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>1.9</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>1.10</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
+<li class="chapter" data-level="1.11" data-path="intro.html"><a href="intro.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>1.11</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="analisis-exploratorio-bivariado.html"><a href="analisis-exploratorio-bivariado.html#veamos-los-gr%C3%A1ficos."><i class="fa fa-check"></i><b>4.1</b> Veamos los gráficos.</a></li>
+<li class="chapter" data-level="1.11.1" data-path="intro.html"><a href="intro.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>1.11.1</b> Revisar que se crearon correctamente:</a></li>
+<li class="chapter" data-level="1.11.2" data-path="intro.html"><a href="intro.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>1.11.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
+<li class="chapter" data-level="1.11.3" data-path="intro.html"><a href="intro.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>1.11.3</b> Realizamos el resumen estadistico</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html"><i class="fa fa-check"></i><b>5</b> Variable categórica ‘ocean_proximity’ (convertida en factor)</a>
+<li class="chapter" data-level="1.12" data-path="intro.html"><a href="intro.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>1.12</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
+<li class="chapter" data-level="1.13" data-path="intro.html"><a href="intro.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>1.13</b> Verificar el éxito de la ingenieria de caracterizacion</a>
 <ul>
-<li class="chapter" data-level="5.0.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#diagrama-de-barras-para-variable-num%C3%A9rica-x-variable-categ%C3%B3rica"><i class="fa fa-check"></i><b>5.0.1</b> Diagrama de barras para variable numérica x variable categórica</a></li>
-<li class="chapter" data-level="5.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#ahora-comparemos-el-valor-medio-de-la-vivienda-seg%C3%BAn-la-proximidad-al-oceano"><i class="fa fa-check"></i><b>5.1</b> Ahora comparemos el valor medio de la vivienda según la proximidad al oceano</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>5.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>5.2</b> Paquete GGally</a></li>
-<li class="chapter" data-level="5.3" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>5.3</b> Graficos de variables independientes vs variables independientes</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>6</b> Ingeniería de Caracterización (feature engineering)</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
-<li class="chapter" data-level="6.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
-<li class="chapter" data-level="6.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>6.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>6.3.1</b> Revisar que se crearon correctamente:</a></li>
-<li class="chapter" data-level="6.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>6.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
-<li class="chapter" data-level="6.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>6.3.3</b> Realizamos el resumen estadistico</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>6.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
-<li class="chapter" data-level="6.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>6.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
+<li class="chapter" data-level="1.13.1" data-path="intro.html"><a href="intro.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>1.13.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>7</b> Conclusiones generales</a></li>
-<li class="chapter" data-level="8" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html"><i class="fa fa-check"></i><b>8</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
+<li class="chapter" data-level="2" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html"><i class="fa fa-check"></i><b>2</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>8.1</b> Transformación</a></li>
-<li class="chapter" data-level="8.2" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>8.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
-<li class="chapter" data-level="8.3" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#resumen-exploratorio"><i class="fa fa-check"></i><b>8.3</b> Resumen exploratorio</a></li>
-<li class="chapter" data-level="8.4" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>8.4</b> Vaiables exstentes hasta el momento</a></li>
-<li class="chapter" data-level="8.5" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>8.5</b> Filtramos los tipos de ‘Presion’</a></li>
-<li class="chapter" data-level="8.6" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>8.6</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
-<li class="chapter" data-level="8.7" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#supuesto-de-homocedasticidad--"><i class="fa fa-check"></i><b>8.7</b> 2. Supuesto de homocedasticidad —-</a></li>
-<li class="chapter" data-level="8.8" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>8.8</b> Utilizamos t de student</a></li>
+<li class="chapter" data-level="2.1" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>2.1</b> Transformación</a></li>
+<li class="chapter" data-level="2.2" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>2.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
+<li class="chapter" data-level="2.3" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#resumen-exploratorio"><i class="fa fa-check"></i><b>2.3</b> Resumen exploratorio</a></li>
+<li class="chapter" data-level="2.4" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>2.4</b> Vaiables exstentes hasta el momento</a></li>
+<li class="chapter" data-level="2.5" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>2.5</b> Filtramos los tipos de ‘Presion’</a></li>
+<li class="chapter" data-level="2.6" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>2.6</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
+<li class="chapter" data-level="2.7" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#supuesto-de-homocedasticidad--"><i class="fa fa-check"></i><b>2.7</b> 2. Supuesto de homocedasticidad —-</a></li>
+<li class="chapter" data-level="2.8" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#verificar-la-salida-siguiente-verificar-que-t-de-student-converge-a-la-normal"><i class="fa fa-check"></i><b>2.8</b> Verificar la salida siguiente (verificar que t de student converge a la normal)</a></li>
+<li class="chapter" data-level="2.9" data-path="base-de-datos-n1-datos_medicos.html"><a href="base-de-datos-n1-datos_medicos.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>2.9</b> Utilizamos t de student</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html"><i class="fa fa-check"></i><b>9</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
+<li class="chapter" data-level="3" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html"><i class="fa fa-check"></i><b>3</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#transformacion"><i class="fa fa-check"></i><b>9.1</b> Transformacion</a></li>
-<li class="chapter" data-level="9.2" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>9.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
-<li class="chapter" data-level="9.3" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#analisis-exploratorio-tarea"><i class="fa fa-check"></i><b>9.3</b> Analisis exploratorio [tarea]</a></li>
-<li class="chapter" data-level="9.4" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.4</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="9.5" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#homocedasticidad"><i class="fa fa-check"></i><b>9.5</b> Homocedasticidad</a></li>
-<li class="chapter" data-level="9.6" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#pruebas"><i class="fa fa-check"></i><b>9.6</b> Pruebas</a>
+<li class="chapter" data-level="3.1" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#transformacion"><i class="fa fa-check"></i><b>3.1</b> Transformacion</a></li>
+<li class="chapter" data-level="3.2" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>3.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
+<li class="chapter" data-level="3.3" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>3.3</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="3.4" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#homocedasticidad"><i class="fa fa-check"></i><b>3.4</b> Homocedasticidad</a></li>
+<li class="chapter" data-level="3.5" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#pruebas"><i class="fa fa-check"></i><b>3.5</b> Pruebas</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#t.test-con-correci%C3%B3n-de-welch-el-tama%C3%B1o-de-los-datos-es-grande"><i class="fa fa-check"></i><b>9.6.1</b> t.test con correción de Welch (El tamaño de los datos es grande)</a></li>
-<li class="chapter" data-level="9.6.2" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#tama%C3%B1o-de-efecto-investigar-otros-tipos-de-prueba-de-efecto"><i class="fa fa-check"></i><b>9.6.2</b> tamaño de efecto (investigar otros tipos de prueba de efecto)</a></li>
+<li class="chapter" data-level="3.5.1" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#t.test-con-correci%C3%B3n-de-welch-el-tama%C3%B1o-de-los-datos-es-grande"><i class="fa fa-check"></i><b>3.5.1</b> t.test con correción de Welch (El tamaño de los datos es grande)</a></li>
+<li class="chapter" data-level="3.5.2" data-path="base-de-datos-n2-datos_economia.html"><a href="base-de-datos-n2-datos_economia.html#tama%C3%B1o-de-efecto"><i class="fa fa-check"></i><b>3.5.2</b> tamaño de efecto</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html"><i class="fa fa-check"></i><b>10</b> Base de datos n° 3: data.frame(estudiantes)</a>
+<li class="chapter" data-level="4" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html"><i class="fa fa-check"></i><b>4</b> Base de datos n° 3: data.frame(estudiantes)</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>10.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
-<li class="chapter" data-level="10.2" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>10.2</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="10.3" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>10.3</b> Diferencia entre las medias</a></li>
-<li class="chapter" data-level="10.4" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>10.4</b> Tamaño del efecto</a></li>
+<li class="chapter" data-level="4.1" data-path="base-de-datos-n-3-data.html"><a href="base-de-datos-n-3-data.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>4.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><i class="fa fa-check"></i><b>11</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
+<li class="chapter" data-level="5" data-path="visualización-comparacion-antes-vs-despues.html"><a href="visualización-comparacion-antes-vs-despues.html"><i class="fa fa-check"></i><b>5</b> Visualización: comparacion antes vs despues</a></li>
+<li class="chapter" data-level="6" data-path="histograma-de-las-diferencias.html"><a href="histograma-de-las-diferencias.html"><i class="fa fa-check"></i><b>6</b> Histograma de las diferencias</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>11.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
-<li class="chapter" data-level="11.2" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>11.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
-<li class="chapter" data-level="11.3" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>11.3</b> Verificar supuesto de normalidad</a></li>
-<li class="chapter" data-level="11.4" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#podemos-aplicar-shapiro-o-kolmogorov"><i class="fa fa-check"></i><b>11.4</b> Podemos aplicar shapiro o kolmogorov</a></li>
-<li class="chapter" data-level="11.5" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#kolmogorov-para-supuesto-de-normalidad"><i class="fa fa-check"></i><b>11.5</b> Kolmogorov para supuesto de normalidad</a></li>
-<li class="chapter" data-level="11.6" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento--"><i class="fa fa-check"></i><b>11.6</b> Caracterizar la percepcion del estudiante con respecto a: la pregunta q1 segun el experimento —-</a></li>
-<li class="chapter" data-level="11.7" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#filtramos-experimento"><i class="fa fa-check"></i><b>11.7</b> Filtramos ‘Experimento’</a></li>
+<li class="chapter" data-level="6.1" data-path="histograma-de-las-diferencias.html"><a href="histograma-de-las-diferencias.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>6.1</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="6.2" data-path="histograma-de-las-diferencias.html"><a href="histograma-de-las-diferencias.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>6.2</b> Diferencia entre las medias</a></li>
+<li class="chapter" data-level="6.3" data-path="histograma-de-las-diferencias.html"><a href="histograma-de-las-diferencias.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>6.3</b> Tamaño del efecto</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html"><i class="fa fa-check"></i><b>12</b> Base de datos n° 6: ‘data.frame(Empleados)’ ———————————————————</a>
+<li class="chapter" data-level="7" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><i class="fa fa-check"></i><b>7</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>12.1</b> Omitimos los datos faltantes</a></li>
-<li class="chapter" data-level="12.2" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>12.2</b> Promedio de cada grupo K</a></li>
-<li class="chapter" data-level="12.3" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>12.3</b> Hallamos promedio global</a></li>
-<li class="chapter" data-level="12.4" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-sst"><i class="fa fa-check"></i><b>12.4</b> Hallamos SST</a></li>
-<li class="chapter" data-level="12.5" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-ssa"><i class="fa fa-check"></i><b>12.5</b> Hallamos SSA</a></li>
-<li class="chapter" data-level="12.6" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallemos-sse"><i class="fa fa-check"></i><b>12.6</b> Hallemos SSE</a></li>
-<li class="chapter" data-level="12.7" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#msa-y-mse"><i class="fa fa-check"></i><b>12.7</b> MSA Y MSE</a></li>
-<li class="chapter" data-level="12.8" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#estadistico-f"><i class="fa fa-check"></i><b>12.8</b> Estadistico F</a></li>
-<li class="chapter" data-level="12.9" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#f-tabulado"><i class="fa fa-check"></i><b>12.9</b> F tabulado</a></li>
-<li class="chapter" data-level="12.10" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#p-valor"><i class="fa fa-check"></i><b>12.10</b> p valor</a></li>
+<li class="chapter" data-level="7.1" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>7.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
+<li class="chapter" data-level="7.2" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>7.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
+<li class="chapter" data-level="7.3" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>7.3</b> Verificar supuesto de normalidad</a></li>
+<li class="chapter" data-level="7.4" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento--"><i class="fa fa-check"></i><b>7.4</b> Caracterizar la percepcion del estudiante con respecto a: la pregunta q1 segun el experimento —-</a></li>
+<li class="chapter" data-level="7.5" data-path="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html"><a href="base-de-datos-n-4-base-de-datos-del-paquete-openintro.html#filtramos-experimento"><i class="fa fa-check"></i><b>7.5</b> Filtramos ‘Experimento’</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html"><i class="fa fa-check"></i><b>8</b> Base de datos n° 6: ‘data.frame(Empleados)’</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>8.1</b> Omitimos los datos faltantes</a></li>
+<li class="chapter" data-level="8.2" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>8.2</b> Promedio de cada grupo K</a></li>
+<li class="chapter" data-level="8.3" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>8.3</b> Hallamos promedio global</a></li>
+<li class="chapter" data-level="8.4" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-sst"><i class="fa fa-check"></i><b>8.4</b> Hallamos SST</a></li>
+<li class="chapter" data-level="8.5" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallamos-ssa"><i class="fa fa-check"></i><b>8.5</b> Hallamos SSA</a></li>
+<li class="chapter" data-level="8.6" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#hallemos-sse"><i class="fa fa-check"></i><b>8.6</b> Hallemos SSE</a></li>
+<li class="chapter" data-level="8.7" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#msa-y-mse"><i class="fa fa-check"></i><b>8.7</b> MSA Y MSE</a></li>
+<li class="chapter" data-level="8.8" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#estadistico-f"><i class="fa fa-check"></i><b>8.8</b> Estadistico F</a></li>
+<li class="chapter" data-level="8.9" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#f-tabulado"><i class="fa fa-check"></i><b>8.9</b> F tabulado</a></li>
+<li class="chapter" data-level="8.10" data-path="base-de-datos-n-6-data.html"><a href="base-de-datos-n-6-data.html#p-valor"><i class="fa fa-check"></i><b>8.10</b> p valor</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -273,74 +257,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="base-de-datos-n1-datos_medicos.xlsx" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Base de datos n°1: ‘datos_medicos.xlsx’<a href="base-de-datos-n1-datos_medicos.html#base-de-datos-n1-datos_medicos.xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="base-de-datos-n1-datos_medicos.html#cb45-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/datos_medicos.xlsx&quot;</span>)</span></code></pre></div>
-<div id="transformación" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Transformación<a href="base-de-datos-n1-datos_medicos.html#transformaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="base-de-datos-n1-datos_medicos.html#cb46-1" tabindex="-1"></a>df1<span class="sc">$</span>Presion <span class="ot">&lt;-</span> <span class="fu">factor</span>(df1<span class="sc">$</span>Presion)</span></code></pre></div>
+<div id="base-de-datos-n1-datos_medicos.xlsx" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Base de datos n°1: ‘datos_medicos.xlsx’<a href="base-de-datos-n1-datos_medicos.html#base-de-datos-n1-datos_medicos.xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="base-de-datos-n1-datos_medicos.html#cb27-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/datos_medicos.xlsx&quot;</span>)</span></code></pre></div>
+<div id="transformación" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Transformación<a href="base-de-datos-n1-datos_medicos.html#transformaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="base-de-datos-n1-datos_medicos.html#cb28-1" tabindex="-1"></a>df1<span class="sc">$</span>Presion <span class="ot">&lt;-</span> <span class="fu">factor</span>(df1<span class="sc">$</span>Presion)</span></code></pre></div>
 </div>
-<div id="revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)<a href="base-de-datos-n1-datos_medicos.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)<a href="base-de-datos-n1-datos_medicos.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="resumen-exploratorio" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Resumen exploratorio<a href="base-de-datos-n1-datos_medicos.html#resumen-exploratorio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="base-de-datos-n1-datos_medicos.html#cb47-1" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span></span>
-<span id="cb47-2"><a href="base-de-datos-n1-datos_medicos.html#cb47-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Presion) <span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="base-de-datos-n1-datos_medicos.html#cb47-3" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(Valores),</span>
-<span id="cb47-4"><a href="base-de-datos-n1-datos_medicos.html#cb47-4" tabindex="-1"></a>            <span class="at">prom=</span><span class="fu">mean</span>(Valores),</span>
-<span id="cb47-5"><a href="base-de-datos-n1-datos_medicos.html#cb47-5" tabindex="-1"></a>            <span class="at">ds=</span><span class="fu">sd</span>(Valores),</span>
-<span id="cb47-6"><a href="base-de-datos-n1-datos_medicos.html#cb47-6" tabindex="-1"></a>            <span class="at">mediana=</span><span class="fu">median</span>(Valores),</span>
-<span id="cb47-7"><a href="base-de-datos-n1-datos_medicos.html#cb47-7" tabindex="-1"></a>            <span class="at">RIC=</span><span class="fu">IQR</span>(Valores),</span>
-<span id="cb47-8"><a href="base-de-datos-n1-datos_medicos.html#cb47-8" tabindex="-1"></a>            <span class="at">min=</span><span class="fu">min</span>(Valores),</span>
-<span id="cb47-9"><a href="base-de-datos-n1-datos_medicos.html#cb47-9" tabindex="-1"></a>            <span class="at">max=</span><span class="fu">max</span>(Valores))</span></code></pre></div>
+<div id="resumen-exploratorio" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Resumen exploratorio<a href="base-de-datos-n1-datos_medicos.html#resumen-exploratorio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="base-de-datos-n1-datos_medicos.html#cb29-1" tabindex="-1"></a>df1 <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="base-de-datos-n1-datos_medicos.html#cb29-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Presion) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="base-de-datos-n1-datos_medicos.html#cb29-3" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n=</span><span class="fu">length</span>(Valores),</span>
+<span id="cb29-4"><a href="base-de-datos-n1-datos_medicos.html#cb29-4" tabindex="-1"></a>            <span class="at">prom=</span><span class="fu">mean</span>(Valores),</span>
+<span id="cb29-5"><a href="base-de-datos-n1-datos_medicos.html#cb29-5" tabindex="-1"></a>            <span class="at">ds=</span><span class="fu">sd</span>(Valores),</span>
+<span id="cb29-6"><a href="base-de-datos-n1-datos_medicos.html#cb29-6" tabindex="-1"></a>            <span class="at">mediana=</span><span class="fu">median</span>(Valores),</span>
+<span id="cb29-7"><a href="base-de-datos-n1-datos_medicos.html#cb29-7" tabindex="-1"></a>            <span class="at">RIC=</span><span class="fu">IQR</span>(Valores),</span>
+<span id="cb29-8"><a href="base-de-datos-n1-datos_medicos.html#cb29-8" tabindex="-1"></a>            <span class="at">min=</span><span class="fu">min</span>(Valores),</span>
+<span id="cb29-9"><a href="base-de-datos-n1-datos_medicos.html#cb29-9" tabindex="-1"></a>            <span class="at">max=</span><span class="fu">max</span>(Valores))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 8
 ##   Presion               n  prom    ds mediana   RIC   min   max
 ##   &lt;fct&gt;             &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 PresionDiastolica   100  78.9  9.48    77.8  12.4  59.9  112.
 ## 2 PresionSistolica    100 121.   9.13   121.   11.9  96.9  142.</code></pre>
 </div>
-<div id="vaiables-exstentes-hasta-el-momento" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> Vaiables exstentes hasta el momento<a href="base-de-datos-n1-datos_medicos.html#vaiables-exstentes-hasta-el-momento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="base-de-datos-n1-datos_medicos.html#cb49-1" tabindex="-1"></a><span class="fu">names</span>(df1)</span></code></pre></div>
+<div id="vaiables-exstentes-hasta-el-momento" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Vaiables exstentes hasta el momento<a href="base-de-datos-n1-datos_medicos.html#vaiables-exstentes-hasta-el-momento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="base-de-datos-n1-datos_medicos.html#cb31-1" tabindex="-1"></a><span class="fu">names</span>(df1)</span></code></pre></div>
 <pre><code>## [1] &quot;Presion&quot; &quot;Valores&quot;</code></pre>
 </div>
-<div id="filtramos-los-tipos-de-presion" class="section level2 hasAnchor" number="8.5">
-<h2><span class="header-section-number">8.5</span> Filtramos los tipos de ‘Presion’<a href="base-de-datos-n1-datos_medicos.html#filtramos-los-tipos-de-presion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="base-de-datos-n1-datos_medicos.html#cb51-1" tabindex="-1"></a>dfs<span class="ot">&lt;-</span>df1 <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="base-de-datos-n1-datos_medicos.html#cb51-2" tabindex="-1"></a>  <span class="fu">filter</span>(Presion <span class="sc">==</span> <span class="st">&#39;PresionSistolica&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a href="base-de-datos-n1-datos_medicos.html#cb51-3" tabindex="-1"></a>  <span class="fu">pull</span>(Valores)</span>
-<span id="cb51-4"><a href="base-de-datos-n1-datos_medicos.html#cb51-4" tabindex="-1"></a></span>
-<span id="cb51-5"><a href="base-de-datos-n1-datos_medicos.html#cb51-5" tabindex="-1"></a>dfd<span class="ot">&lt;-</span>df1 <span class="sc">%&gt;%</span></span>
-<span id="cb51-6"><a href="base-de-datos-n1-datos_medicos.html#cb51-6" tabindex="-1"></a>  <span class="fu">filter</span>(Presion <span class="sc">==</span> <span class="st">&#39;PresionDiastolica&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-7"><a href="base-de-datos-n1-datos_medicos.html#cb51-7" tabindex="-1"></a>  <span class="fu">pull</span>(Valores)</span></code></pre></div>
+<div id="filtramos-los-tipos-de-presion" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Filtramos los tipos de ‘Presion’<a href="base-de-datos-n1-datos_medicos.html#filtramos-los-tipos-de-presion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="base-de-datos-n1-datos_medicos.html#cb33-1" tabindex="-1"></a>dfs<span class="ot">&lt;-</span>df1 <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="base-de-datos-n1-datos_medicos.html#cb33-2" tabindex="-1"></a>  <span class="fu">filter</span>(Presion <span class="sc">==</span> <span class="st">&#39;PresionSistolica&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="base-de-datos-n1-datos_medicos.html#cb33-3" tabindex="-1"></a>  <span class="fu">pull</span>(Valores)</span>
+<span id="cb33-4"><a href="base-de-datos-n1-datos_medicos.html#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="base-de-datos-n1-datos_medicos.html#cb33-5" tabindex="-1"></a>dfd<span class="ot">&lt;-</span>df1 <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="base-de-datos-n1-datos_medicos.html#cb33-6" tabindex="-1"></a>  <span class="fu">filter</span>(Presion <span class="sc">==</span> <span class="st">&#39;PresionDiastolica&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href="base-de-datos-n1-datos_medicos.html#cb33-7" tabindex="-1"></a>  <span class="fu">pull</span>(Valores)</span></code></pre></div>
 </div>
-<div id="supuesto-de-normalidad-con-kolmogorov---smirnov" class="section level2 hasAnchor" number="8.6">
-<h2><span class="header-section-number">8.6</span> 1. Supuesto de normalidad con Kolmogorov - Smirnov<a href="base-de-datos-n1-datos_medicos.html#supuesto-de-normalidad-con-kolmogorov---smirnov" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="base-de-datos-n1-datos_medicos.html#cb52-1" tabindex="-1"></a><span class="co">#Prueba de kolmogorov estandarizando</span></span>
-<span id="cb52-2"><a href="base-de-datos-n1-datos_medicos.html#cb52-2" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfs),<span class="st">&#39;pnorm&#39;</span>) </span></code></pre></div>
+<div id="supuesto-de-normalidad-con-kolmogorov---smirnov" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> 1. Supuesto de normalidad con Kolmogorov - Smirnov<a href="base-de-datos-n1-datos_medicos.html#supuesto-de-normalidad-con-kolmogorov---smirnov" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="base-de-datos-n1-datos_medicos.html#cb34-1" tabindex="-1"></a><span class="co">#Prueba de kolmogorov estandarizando</span></span>
+<span id="cb34-2"><a href="base-de-datos-n1-datos_medicos.html#cb34-2" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfs),<span class="st">&#39;pnorm&#39;</span>) </span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  scale(dfs)
 ## D = 0.058097, p-value = 0.8884
 ## alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="base-de-datos-n1-datos_medicos.html#cb54-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfd),<span class="st">&#39;pnorm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="base-de-datos-n1-datos_medicos.html#cb36-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfd),<span class="st">&#39;pnorm&#39;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  scale(dfd)
 ## D = 0.057927, p-value = 0.8905
 ## alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="base-de-datos-n1-datos_medicos.html#cb56-1" tabindex="-1"></a><span class="co">#sin estandarizar:</span></span>
-<span id="cb56-2"><a href="base-de-datos-n1-datos_medicos.html#cb56-2" tabindex="-1"></a><span class="fu">ks.test</span>(dfs, <span class="st">&#39;pnorm&#39;</span>, <span class="at">mean=</span><span class="fu">mean</span>(dfs), <span class="at">sd=</span><span class="fu">sd</span>(dfs))</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="base-de-datos-n1-datos_medicos.html#cb38-1" tabindex="-1"></a><span class="co">#sin estandarizar:</span></span>
+<span id="cb38-2"><a href="base-de-datos-n1-datos_medicos.html#cb38-2" tabindex="-1"></a><span class="fu">ks.test</span>(dfs, <span class="st">&#39;pnorm&#39;</span>, <span class="at">mean=</span><span class="fu">mean</span>(dfs), <span class="at">sd=</span><span class="fu">sd</span>(dfs))</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
 ## data:  dfs
 ## D = 0.058097, p-value = 0.8884
 ## alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="base-de-datos-n1-datos_medicos.html#cb58-1" tabindex="-1"></a><span class="fu">ks.test</span>(dfd, <span class="st">&#39;pnorm&#39;</span>, <span class="at">mean=</span><span class="fu">mean</span>(dfd), <span class="at">sd=</span><span class="fu">sd</span>(dfd))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="base-de-datos-n1-datos_medicos.html#cb40-1" tabindex="-1"></a><span class="fu">ks.test</span>(dfd, <span class="st">&#39;pnorm&#39;</span>, <span class="at">mean=</span><span class="fu">mean</span>(dfd), <span class="at">sd=</span><span class="fu">sd</span>(dfd))</span></code></pre></div>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
@@ -348,9 +332,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## D = 0.057927, p-value = 0.8905
 ## alternative hypothesis: two-sided</code></pre>
 </div>
-<div id="supuesto-de-homocedasticidad--" class="section level2 hasAnchor" number="8.7">
-<h2><span class="header-section-number">8.7</span> 2. Supuesto de homocedasticidad —-<a href="base-de-datos-n1-datos_medicos.html#supuesto-de-homocedasticidad--" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="base-de-datos-n1-datos_medicos.html#cb60-1" tabindex="-1"></a><span class="fu">var.test</span>(dfs,dfd)</span></code></pre></div>
+<div id="supuesto-de-homocedasticidad--" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> 2. Supuesto de homocedasticidad —-<a href="base-de-datos-n1-datos_medicos.html#supuesto-de-homocedasticidad--" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="base-de-datos-n1-datos_medicos.html#cb42-1" tabindex="-1"></a><span class="fu">var.test</span>(dfs,dfd)</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -362,17 +346,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## ratio of variances 
 ##          0.9278405</code></pre>
-<p>tarea, hacer paso a paso con el teorema de p valor e intervalo de confianza, la comprobacion de los resultados anteriores.</p>
-<p>tarea, verificar la salida siguiente (verificar que t de student converge a la normal: —-</p>
+<p>Paso a paso con el teorema de p valor e intervalo de confianza, la comprobacion de los resultados anteriores.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="base-de-datos-n1-datos_medicos.html#cb44-1" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">var</span>(dfs); s2 <span class="ot">&lt;-</span> <span class="fu">var</span>(dfd)</span>
+<span id="cb44-2"><a href="base-de-datos-n1-datos_medicos.html#cb44-2" tabindex="-1"></a>Fobs <span class="ot">&lt;-</span> s1<span class="sc">/</span>s2</span>
+<span id="cb44-3"><a href="base-de-datos-n1-datos_medicos.html#cb44-3" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(dfs); n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(dfd)</span>
+<span id="cb44-4"><a href="base-de-datos-n1-datos_medicos.html#cb44-4" tabindex="-1"></a>pval <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">pf</span>(Fobs, n1<span class="dv">-1</span>, n2<span class="dv">-1</span>), <span class="dv">1</span><span class="sc">-</span><span class="fu">pf</span>(Fobs, n1<span class="dv">-1</span>, n2<span class="dv">-1</span>))</span>
+<span id="cb44-5"><a href="base-de-datos-n1-datos_medicos.html#cb44-5" tabindex="-1"></a>IC <span class="ot">&lt;-</span> <span class="fu">c</span>(Fobs<span class="sc">/</span><span class="fu">qf</span>(<span class="fl">0.975</span>, n1<span class="dv">-1</span>, n2<span class="dv">-1</span>), Fobs<span class="sc">*</span><span class="fu">qf</span>(<span class="fl">0.975</span>, n1<span class="dv">-1</span>, n2<span class="dv">-1</span>))</span>
+<span id="cb44-6"><a href="base-de-datos-n1-datos_medicos.html#cb44-6" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="base-de-datos-n1-datos_medicos.html#cb44-7" tabindex="-1"></a>resultado_var <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb44-8"><a href="base-de-datos-n1-datos_medicos.html#cb44-8" tabindex="-1"></a>  <span class="at">F_observado =</span> Fobs,</span>
+<span id="cb44-9"><a href="base-de-datos-n1-datos_medicos.html#cb44-9" tabindex="-1"></a>  <span class="at">gl1 =</span> n1<span class="dv">-1</span>,</span>
+<span id="cb44-10"><a href="base-de-datos-n1-datos_medicos.html#cb44-10" tabindex="-1"></a>  <span class="at">gl2 =</span> n2<span class="dv">-1</span>,</span>
+<span id="cb44-11"><a href="base-de-datos-n1-datos_medicos.html#cb44-11" tabindex="-1"></a>  <span class="at">p_valor =</span> pval,</span>
+<span id="cb44-12"><a href="base-de-datos-n1-datos_medicos.html#cb44-12" tabindex="-1"></a>  <span class="at">IC_inf =</span> IC[<span class="dv">1</span>], <span class="co">#Intervalos de confianza inferior y superior</span></span>
+<span id="cb44-13"><a href="base-de-datos-n1-datos_medicos.html#cb44-13" tabindex="-1"></a>  <span class="at">IC_sup =</span> IC[<span class="dv">2</span>]</span>
+<span id="cb44-14"><a href="base-de-datos-n1-datos_medicos.html#cb44-14" tabindex="-1"></a>)</span>
+<span id="cb44-15"><a href="base-de-datos-n1-datos_medicos.html#cb44-15" tabindex="-1"></a><span class="fu">print</span>(resultado_var)</span></code></pre></div>
+<pre><code>##   F_observado gl1 gl2   p_valor    IC_inf   IC_sup
+## 1   0.9278405  99  99 0.7101778 0.6242897 1.378988</code></pre>
+<p>Al calcular manualmente el estadístico F, los grados de libertad, el p-valor
+y el intervalo de confianza, se obtienen los mismos resultados que arroja
+var.test() en R. Esto confirma que la función está siendo aplicada
+correctamente y que existe evidencia de que las varianzas de la presión
+sistólica y la presión diastólica no son iguales, es decir, no se cumple
+el supuesto de homocedasticidad.</p>
 </div>
-<div id="utilizamos-t-de-student" class="section level2 hasAnchor" number="8.8">
-<h2><span class="header-section-number">8.8</span> Utilizamos t de student<a href="base-de-datos-n1-datos_medicos.html#utilizamos-t-de-student" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="base-de-datos-n1-datos_medicos.html#cb62-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>dfs, <span class="at">y=</span>dfd, <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div id="verificar-la-salida-siguiente-verificar-que-t-de-student-converge-a-la-normal" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Verificar la salida siguiente (verificar que t de student converge a la normal)<a href="base-de-datos-n1-datos_medicos.html#verificar-la-salida-siguiente-verificar-que-t-de-student-converge-a-la-normal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="base-de-datos-n1-datos_medicos.html#cb46-1" tabindex="-1"></a>gl <span class="ot">&lt;-</span> <span class="dv">198</span></span>
+<span id="cb46-2"><a href="base-de-datos-n1-datos_medicos.html#cb46-2" tabindex="-1"></a>niveles <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.975</span>, <span class="fl">0.99</span>)</span>
+<span id="cb46-3"><a href="base-de-datos-n1-datos_medicos.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="base-de-datos-n1-datos_medicos.html#cb46-4" tabindex="-1"></a>comparacion <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb46-5"><a href="base-de-datos-n1-datos_medicos.html#cb46-5" tabindex="-1"></a>  <span class="at">nivel =</span> niveles,</span>
+<span id="cb46-6"><a href="base-de-datos-n1-datos_medicos.html#cb46-6" tabindex="-1"></a>  <span class="at">t_student =</span> <span class="fu">qt</span>(niveles, <span class="at">df =</span> gl),</span>
+<span id="cb46-7"><a href="base-de-datos-n1-datos_medicos.html#cb46-7" tabindex="-1"></a>  <span class="at">normal    =</span> <span class="fu">qnorm</span>(niveles)</span>
+<span id="cb46-8"><a href="base-de-datos-n1-datos_medicos.html#cb46-8" tabindex="-1"></a>)</span>
+<span id="cb46-9"><a href="base-de-datos-n1-datos_medicos.html#cb46-9" tabindex="-1"></a>comparacion</span></code></pre></div>
+<pre><code>##   nivel t_student   normal
+## 1 0.900  1.285842 1.281552
+## 2 0.950  1.652586 1.644854
+## 3 0.975  1.972017 1.959964
+## 4 0.990  2.345328 2.326348</code></pre>
+<p>Al comparar los cuantiles de la distribución t de Student
+con 198 grados de libertad frente a los de una distribución Normal(0,1),
+se observa que son prácticamente iguales. Esto confirma el teorema según
+el cual la t de Student converge a la Normal a medida que aumentan los
+grados de libertad. En este caso, al tener muestras grandes (n=100 por
+grupo), se puede concluir que el resultado del t.test() es confiable, ya
+que el estadístico se comporta de forma muy similar a como lo haría bajo
+una distribución normal.</p>
+</div>
+<div id="utilizamos-t-de-student" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Utilizamos t de student<a href="base-de-datos-n1-datos_medicos.html#utilizamos-t-de-student" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="base-de-datos-n1-datos_medicos.html#cb48-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x=</span>dfs, <span class="at">y=</span>dfd, <span class="at">var.equal =</span> <span class="cn">TRUE</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
 ## data:  dfs and dfd
-## t = 31.888, df = 198, p-value &lt; 0.00000000000000022
+## t = 31.888, df = 198, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  39.36328 44.55275
@@ -386,7 +417,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="conclusiones-generales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="base-de-datos-n2-datos_economia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

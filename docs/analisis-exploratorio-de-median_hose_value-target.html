@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Analisis exploratorio de median_hose_value (target) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing</title>
+  <title>Chapter 2 Analisis exploratorio de median_hose_value (target) | 07-tarea°2</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing" />
+  <meta property="og:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | 07-tarea°2" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing" />
+  <meta name="twitter:title" content="Chapter 2 Analisis exploratorio de median_hose_value (target) | 07-tarea°2" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -179,84 +179,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1.1" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#grafico-de-cajas-y-bigotes-para-comparar-median_house_value-y-ocean_proximity"><i class="fa fa-check"></i><b>5.1.1</b> Grafico de cajas y bigotes para comparar ‘median_house_value’ y ‘ocean_proximity’</a></li>
 </ul></li>
+<li class="chapter" data-level="5.2" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#paquete-ggally"><i class="fa fa-check"></i><b>5.2</b> Paquete GGally</a></li>
+<li class="chapter" data-level="5.3" data-path="variable-categórica-ocean_proximity-convertida-en-factor.html"><a href="variable-categórica-ocean_proximity-convertida-en-factor.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>5.3</b> Graficos de variables independientes vs variables independientes</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html"><i class="fa fa-check"></i><b>6</b> Analisis de variables independientes x variables independientes</a>
+<li class="chapter" data-level="6" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>6</b> Ingeniería de Caracterización (feature engineering)</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html#paquete-ggally"><i class="fa fa-check"></i><b>6.1</b> Paquete GGally</a></li>
-<li class="chapter" data-level="6.2" data-path="analisis-de-variables-independientes-x-variables-independientes.html"><a href="analisis-de-variables-independientes-x-variables-independientes.html#graficos-de-variables-independientes-vs-variables-independientes"><i class="fa fa-check"></i><b>6.2</b> Graficos de variables independientes vs variables independientes</a></li>
+<li class="chapter" data-level="6.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
+<li class="chapter" data-level="6.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
+<li class="chapter" data-level="6.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>6.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>6.3.1</b> Revisar que se crearon correctamente:</a></li>
+<li class="chapter" data-level="6.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>6.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
+<li class="chapter" data-level="6.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>6.3.3</b> Realizamos el resumen estadistico</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html"><i class="fa fa-check"></i><b>7</b> Ingeniería de Caracterización (feature engineering)</a>
+<li class="chapter" data-level="6.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>6.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
+<li class="chapter" data-level="6.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>6.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#graficos-de-variables-para-realizar-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.1</b> Graficos de variables para realizar la “Ingenieria de caracterizacion”</a></li>
-<li class="chapter" data-level="7.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-procedimiento-de-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.2</b> Realizamos el procedimiento de ingenieria de caracterizacion</a></li>
-<li class="chapter" data-level="7.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#analisis-exploratorio-eda-con-el-nuevo-data-frame-obtenido"><i class="fa fa-check"></i><b>7.3</b> Analisis exploratorio (EDA) con el nuevo data frame obtenido</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisar-que-se-crearon-correctamente"><i class="fa fa-check"></i><b>7.3.1</b> Revisar que se crearon correctamente:</a></li>
-<li class="chapter" data-level="7.3.2" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#revisamos-si-hay-datos-faltantes-nuevamente"><i class="fa fa-check"></i><b>7.3.2</b> Revisamos si hay datos faltantes nuevamente:</a></li>
-<li class="chapter" data-level="7.3.3" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#realizamos-el-resumen-estadistico"><i class="fa fa-check"></i><b>7.3.3</b> Realizamos el resumen estadistico</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#veamos-los-graficos-de-cada-variable-de-nuestro-data-frame-nuevo-incluyendo-las-variables-que-no-fueron-eliminadas."><i class="fa fa-check"></i><b>7.4</b> Veamos los graficos de cada variable de nuestro data frame nuevo, incluyendo las variables que no fueron eliminadas.</a></li>
-<li class="chapter" data-level="7.5" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#verificar-el-%C3%A9xito-de-la-ingenieria-de-caracterizacion"><i class="fa fa-check"></i><b>7.5</b> Verificar el éxito de la ingenieria de caracterizacion</a>
-<ul>
-<li class="chapter" data-level="7.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>7.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
+<li class="chapter" data-level="6.5.1" data-path="ingeniería-de-caracterización-feature-engineering.html"><a href="ingeniería-de-caracterización-feature-engineering.html#diagramas-de-dispersi%C3%B3n-de-las-nuevas-variables-vs-median_house_value"><i class="fa fa-check"></i><b>6.5.1</b> Diagramas de dispersión de las nuevas variables vs ‘median_house_value’</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>8</b> Conclusiones generales</a></li>
-<li class="chapter" data-level="9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><i class="fa fa-check"></i><b>9</b> Tarea de Estadistica paramétrica y no paramétrica</a>
+<li class="chapter" data-level="7" data-path="conclusiones-generales.html"><a href="conclusiones-generales.html"><i class="fa fa-check"></i><b>7</b> Conclusiones generales</a></li>
+<li class="chapter" data-level="8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><i class="fa fa-check"></i><b>8</b> Tarea de Estadistica paramétrica y no paramétrica</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n1-datos_medicos.xlsx"><i class="fa fa-check"></i><b>9.1</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
+<li class="chapter" data-level="8.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n1-datos_medicos.xlsx"><i class="fa fa-check"></i><b>8.1</b> Base de datos n°1: ‘datos_medicos.xlsx’</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>9.1.1</b> Transformación</a></li>
-<li class="chapter" data-level="9.1.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>9.1.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
-<li class="chapter" data-level="9.1.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#resumen-exploratorio"><i class="fa fa-check"></i><b>9.1.3</b> Resumen exploratorio</a></li>
-<li class="chapter" data-level="9.1.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>9.1.4</b> Vaiables exstentes hasta el momento</a></li>
-<li class="chapter" data-level="9.1.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>9.1.5</b> Filtramos los tipos de ‘Presion’</a></li>
-<li class="chapter" data-level="9.1.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>9.1.6</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
-<li class="chapter" data-level="9.1.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-homocedasticidad"><i class="fa fa-check"></i><b>9.1.7</b> 2. Supuesto de homocedasticidad</a></li>
-<li class="chapter" data-level="9.1.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>9.1.8</b> Utilizamos t de student</a></li>
+<li class="chapter" data-level="8.1.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformaci%C3%B3n"><i class="fa fa-check"></i><b>8.1.1</b> Transformación</a></li>
+<li class="chapter" data-level="8.1.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#revisaremos-diferencias-estadisticas-en-el-promedio-de-la-presion-sistolica-y-la-presion-diastolica-psist-pdiast"><i class="fa fa-check"></i><b>8.1.2</b> Revisaremos diferencias estadisticas en el promedio de la presion sistolica y la presion diastolica (psist, pdiast)</a></li>
+<li class="chapter" data-level="8.1.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#vaiables-exstentes-hasta-el-momento"><i class="fa fa-check"></i><b>8.1.3</b> Vaiables exstentes hasta el momento</a></li>
+<li class="chapter" data-level="8.1.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-presion"><i class="fa fa-check"></i><b>8.1.4</b> Filtramos los tipos de ‘Presion’</a></li>
+<li class="chapter" data-level="8.1.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad-con-kolmogorov---smirnov"><i class="fa fa-check"></i><b>8.1.5</b> 1. Supuesto de normalidad con Kolmogorov - Smirnov</a></li>
+<li class="chapter" data-level="8.1.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-homocedasticidad--"><i class="fa fa-check"></i><b>8.1.6</b> 2. Supuesto de homocedasticidad —-</a></li>
+<li class="chapter" data-level="8.1.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificar-la-salida-siguiente-verificar-que-t-de-student-converge-a-la-normal"><i class="fa fa-check"></i><b>8.1.7</b> Verificar la salida siguiente (verificar que t de student converge a la normal)</a></li>
+<li class="chapter" data-level="8.1.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#utilizamos-t-de-student"><i class="fa fa-check"></i><b>8.1.8</b> Utilizamos t de student</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n2-datos_economia.xlsx"><i class="fa fa-check"></i><b>9.2</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
+<li class="chapter" data-level="8.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n2-datos_economia.xlsx"><i class="fa fa-check"></i><b>8.2</b> Base de datos n°2: ‘datos_economia.xlsx’</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformacion"><i class="fa fa-check"></i><b>9.2.1</b> Transformacion</a></li>
-<li class="chapter" data-level="9.2.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>9.2.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
-<li class="chapter" data-level="9.2.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#analisis-exploratorio-tarea"><i class="fa fa-check"></i><b>9.2.3</b> Analisis exploratorio [tarea]</a></li>
-<li class="chapter" data-level="9.2.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.2.4</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="9.2.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#homocedasticidad"><i class="fa fa-check"></i><b>9.2.5</b> Homocedasticidad</a></li>
-<li class="chapter" data-level="9.2.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#pruebas"><i class="fa fa-check"></i><b>9.2.6</b> Pruebas</a></li>
+<li class="chapter" data-level="8.2.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#transformacion"><i class="fa fa-check"></i><b>8.2.1</b> Transformacion</a></li>
+<li class="chapter" data-level="8.2.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-los-tipos-de-tipo-de-cuenta"><i class="fa fa-check"></i><b>8.2.2</b> Filtramos los tipos de ‘Tipo de cuenta’</a></li>
+<li class="chapter" data-level="8.2.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.2.3</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="8.2.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#homocedasticidad"><i class="fa fa-check"></i><b>8.2.4</b> Homocedasticidad</a></li>
+<li class="chapter" data-level="8.2.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#pruebas"><i class="fa fa-check"></i><b>8.2.5</b> Pruebas</a></li>
+<li class="chapter" data-level="8.2.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#tama%C3%B1o-de-efecto"><i class="fa fa-check"></i><b>8.2.6</b> tamaño de efecto</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-3-data.frameestudiantes"><i class="fa fa-check"></i><b>9.3</b> Base de datos n° 3: data.frame(estudiantes)</a>
+<li class="chapter" data-level="8.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-3-data.frameestudiantes"><i class="fa fa-check"></i><b>8.3</b> Base de datos n° 3: data.frame(estudiantes)</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>9.3.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
-<li class="chapter" data-level="9.3.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>9.3.2</b> Verificamos supuesto de normalidad</a></li>
-<li class="chapter" data-level="9.3.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>9.3.3</b> Diferencia entre las medias</a></li>
-<li class="chapter" data-level="9.3.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>9.3.4</b> Tamaño del efecto</a></li>
+<li class="chapter" data-level="8.3.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#datos-de-tiempos-antes-y-despu%C3%A9s-de-la-intervenci%C3%B3n-educativa"><i class="fa fa-check"></i><b>8.3.1</b> Datos de tiempos antes y después de la intervención educativa</a></li>
+<li class="chapter" data-level="8.3.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#visualizaci%C3%B3n-comparacion-antes-vs-despues"><i class="fa fa-check"></i><b>8.3.2</b> Visualización: comparacion antes vs despues</a></li>
+<li class="chapter" data-level="8.3.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificamos-supuesto-de-normalidad-1"><i class="fa fa-check"></i><b>8.3.3</b> Verificamos supuesto de normalidad</a></li>
+<li class="chapter" data-level="8.3.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-entre-las-medias"><i class="fa fa-check"></i><b>8.3.4</b> Diferencia entre las medias</a></li>
+<li class="chapter" data-level="8.3.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#tama%C3%B1o-del-efecto"><i class="fa fa-check"></i><b>8.3.5</b> Tamaño del efecto</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-4-base-de-datos-del-paquete-openintro"><i class="fa fa-check"></i><b>9.4</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
+<li class="chapter" data-level="8.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-4-base-de-datos-del-paquete-openintro"><i class="fa fa-check"></i><b>8.4</b> Base de datos n° 4: base de datos del paquete ‘openintro’</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>9.4.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
-<li class="chapter" data-level="9.4.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>9.4.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
-<li class="chapter" data-level="9.4.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.4.3</b> Verificar supuesto de normalidad</a></li>
-<li class="chapter" data-level="9.4.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#podemos-aplicar-shapiro-o-kolmogorov"><i class="fa fa-check"></i><b>9.4.4</b> Podemos aplicar shapiro o kolmogorov</a></li>
-<li class="chapter" data-level="9.4.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#kolmogorov-para-supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.4.5</b> Kolmogorov para supuesto de normalidad</a></li>
+<li class="chapter" data-level="8.4.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#diferencia-de-medianas-con-estadistica-no-parametrica"><i class="fa fa-check"></i><b>8.4.1</b> Diferencia de medianas con estadistica no parametrica</a></li>
+<li class="chapter" data-level="8.4.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-el-peso-del-bebe-segun-si-la-madre-fuma-o-no."><i class="fa fa-check"></i><b>8.4.2</b> Caracterizar el peso del bebe segun si la madre fuma o no.</a></li>
+<li class="chapter" data-level="8.4.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#verificar-supuesto-de-normalidad"><i class="fa fa-check"></i><b>8.4.3</b> Verificar supuesto de normalidad</a></li>
+<li class="chapter" data-level="8.4.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento--"><i class="fa fa-check"></i><b>8.4.4</b> Caracterizar la percepcion del estudiante con respecto a: la pregunta q1 segun el experimento —-</a></li>
+<li class="chapter" data-level="8.4.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-experimento"><i class="fa fa-check"></i><b>8.4.5</b> Filtramos ‘Experimento’</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-5"><i class="fa fa-check"></i><b>9.5</b> Base de datos n° 5</a>
+<li class="chapter" data-level="8.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-6-data.frameempleados"><i class="fa fa-check"></i><b>8.5</b> Base de datos n° 6: ‘data.frame(Empleados)’</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#caracterizar-la-percepcion-del-estudiante-con-respecto-a-la-pregunta-q1-segun-el-experimento"><i class="fa fa-check"></i><b>9.5.1</b> Caracterizar la percepcion del estudiante con respecto a la pregunta q1 segun el experimento</a></li>
-<li class="chapter" data-level="9.5.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#supuesto-de-normalidad"><i class="fa fa-check"></i><b>9.5.2</b> Supuesto de normalidad</a></li>
-<li class="chapter" data-level="9.5.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#filtramos-experimento"><i class="fa fa-check"></i><b>9.5.3</b> Filtramos ‘Experimento’</a></li>
-</ul></li>
-<li class="chapter" data-level="9.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#base-de-datos-n-6-data.frameempleados"><i class="fa fa-check"></i><b>9.6</b> Base de datos n° 6: ‘data.frame(Empleados)’</a>
-<ul>
-<li class="chapter" data-level="9.6.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>9.6.1</b> Omitimos los datos faltantes</a></li>
-<li class="chapter" data-level="9.6.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>9.6.2</b> Promedio de cada grupo K</a></li>
-<li class="chapter" data-level="9.6.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>9.6.3</b> Hallamos promedio global</a></li>
-<li class="chapter" data-level="9.6.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-sst"><i class="fa fa-check"></i><b>9.6.4</b> Hallamos SST</a></li>
-<li class="chapter" data-level="9.6.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-ssa"><i class="fa fa-check"></i><b>9.6.5</b> Hallamos SSA</a></li>
-<li class="chapter" data-level="9.6.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallemos-sse"><i class="fa fa-check"></i><b>9.6.6</b> Hallemos SSE</a></li>
-<li class="chapter" data-level="9.6.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#msa-y-mse"><i class="fa fa-check"></i><b>9.6.7</b> MSA Y MSE</a></li>
-<li class="chapter" data-level="9.6.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#estadistico-f"><i class="fa fa-check"></i><b>9.6.8</b> Estadistico F</a></li>
-<li class="chapter" data-level="9.6.9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#f-tabulado"><i class="fa fa-check"></i><b>9.6.9</b> F tabulado</a></li>
-<li class="chapter" data-level="9.6.10" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#p-valor"><i class="fa fa-check"></i><b>9.6.10</b> p valor</a></li>
+<li class="chapter" data-level="8.5.1" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#omitimos-los-datos-faltantes"><i class="fa fa-check"></i><b>8.5.1</b> Omitimos los datos faltantes</a></li>
+<li class="chapter" data-level="8.5.2" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#promedio-de-cada-grupo-k"><i class="fa fa-check"></i><b>8.5.2</b> Promedio de cada grupo K</a></li>
+<li class="chapter" data-level="8.5.3" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-promedio-global"><i class="fa fa-check"></i><b>8.5.3</b> Hallamos promedio global</a></li>
+<li class="chapter" data-level="8.5.4" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-sst"><i class="fa fa-check"></i><b>8.5.4</b> Hallamos SST</a></li>
+<li class="chapter" data-level="8.5.5" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallamos-ssa"><i class="fa fa-check"></i><b>8.5.5</b> Hallamos SSA</a></li>
+<li class="chapter" data-level="8.5.6" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#hallemos-sse"><i class="fa fa-check"></i><b>8.5.6</b> Hallemos SSE</a></li>
+<li class="chapter" data-level="8.5.7" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#msa-y-mse"><i class="fa fa-check"></i><b>8.5.7</b> MSA Y MSE</a></li>
+<li class="chapter" data-level="8.5.8" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#estadistico-f"><i class="fa fa-check"></i><b>8.5.8</b> Estadistico F</a></li>
+<li class="chapter" data-level="8.5.9" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#f-tabulado"><i class="fa fa-check"></i><b>8.5.9</b> F tabulado</a></li>
+<li class="chapter" data-level="8.5.10" data-path="tarea-de-estadistica-paramétrica-y-no-paramétrica.html"><a href="tarea-de-estadistica-paramétrica-y-no-paramétrica.html#p-valor"><i class="fa fa-check"></i><b>8.5.10</b> p valor</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -271,7 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analisis Exploratorio de datos (Exploratory Data Analysis) de California Housing</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">07-tarea°2</a>
           </h1>
         </div>
 
@@ -381,14 +373,36 @@ Curtosis
 </div>
 <div id="podemos-clasificar-cada-una-de-estas-medidas-según-su-tipo" class="section level4 hasAnchor" number="2.0.1.1">
 <h4><span class="header-section-number">2.0.1.1</span> Podemos clasificar cada una de estas medidas según su tipo:<a href="analisis-exploratorio-de-median_hose_value-target.html#podemos-clasificar-cada-una-de-estas-medidas-seg%C3%BAn-su-tipo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>1. Medidas de tendencia central:</strong> Media = 206,855.8 | Mediana = 179,700</p>
-<p>Esto básicamente responde a la pregunta de cuál es el valor “típico” de los datos, el número que mejor representa al conjunto. Acá ya se nota algo raro: la media es bastante más alta que la mediana, y eso de una vez nos está avisando que la distribución no es simétrica.</p>
-<p><strong>2. Medidas de dispersión:</strong> SD = 115,395.6 | RIC = 145,125</p>
-<p>Con la tendencia central sola no alcanza, porque dos distribuciones pueden tener la misma media y comportarse totalmente distinto. Acá la desviación estándar es enorme, más de la mitad del valor de la media, así que ya sabemos que los precios de las viviendas varían muchísimo entre sí.</p>
-<p><strong>3. Medidas de posición:</strong> Q1 = 119,600 | Q3 = 264,725 | Mínimo = 14,999 | Máximo = 500,001 (Mediana = Q2)</p>
-<p>Esto nos dice dónde queda ubicado un dato específico respecto al resto, dividiendo el conjunto ordenado en partes. La mediana en realidad también es una medida de posición (Q2), por eso la repetimos acá: es el punto donde queda el 50% de los datos por debajo y el 50% por encima.</p>
-<p><strong>4. Medidas de forma:</strong> Asimetría = 0.9776 | Curtosis = 3.3275</p>
-<p>Esto habla de qué forma tiene la distribución, no de dónde está el centro ni de cuánto se dispersa, sino de cómo se reparten los datos alrededor de ese centro. Asimetría (0.9776): es positiva y bastante notoria, o sea que hay una cola larga hacia la derecha, lo cual concuerda con lo que ya vimos de que la media es mayor que la mediana. Curtosis (3.3275): está casi pegada al 3, que es el valor de una distribución normal. Esto es curioso porque contradice un poco lo que dice la asimetría: aunque la distribución no es simétrica, lo “puntiaguda” o “aplanada” que es se parece bastante a la de una normal.</p>
+<p><strong>1. Medidas de tendencia central:</strong>
+Media = 206,855.8 | Mediana = 179,700</p>
+<p>Esto básicamente responde a la pregunta de cuál es el valor “típico” de los
+datos, el número que mejor representa al conjunto. Acá ya se nota algo raro:
+la media es bastante más alta que la mediana, y eso de una vez nos está
+avisando que la distribución no es simétrica.</p>
+<p><strong>2. Medidas de dispersión:</strong>
+SD = 115,395.6 | RIC = 145,125</p>
+<p>Con la tendencia central sola no alcanza, porque dos distribuciones pueden
+tener la misma media y comportarse totalmente distinto. Acá la desviación
+estándar es enorme, más de la mitad del valor de la media, así que ya sabemos
+que los precios de las viviendas varían muchísimo entre sí.</p>
+<p><strong>3. Medidas de posición:</strong>
+Q1 = 119,600 | Q3 = 264,725 | Mínimo = 14,999 | Máximo = 500,001 (Mediana = Q2)</p>
+<p>Esto nos dice dónde queda ubicado un dato específico respecto al resto,
+dividiendo el conjunto ordenado en partes. La mediana en realidad también es
+una medida de posición (Q2), por eso la repetimos acá: es el punto donde
+queda el 50% de los datos por debajo y el 50% por encima.</p>
+<p><strong>4. Medidas de forma:</strong>
+Asimetría = 0.9776 | Curtosis = 3.3275</p>
+<p>Esto habla de qué forma tiene la distribución, no de dónde está el centro
+ni de cuánto se dispersa, sino de cómo se reparten los datos alrededor de
+ese centro.
+Asimetría (0.9776): es positiva y bastante notoria, o sea que hay una cola
+larga hacia la derecha, lo cual concuerda con lo que ya vimos de que la
+media es mayor que la mediana.
+Curtosis (3.3275): está casi pegada al 3, que es el valor de una distribución
+normal. Esto es curioso porque contradice un poco lo que dice la asimetría:
+aunque la distribución no es simétrica, lo “puntiaguda” o “aplanada” que es
+se parece bastante a la de una normal.</p>
 </div>
 </div>
 <div id="gráfico-tipo-histograma-de-median_house_value" class="section level3 hasAnchor" number="2.0.2">
@@ -405,8 +419,13 @@ Curtosis
 <span id="cb12-10"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-10" tabindex="-1"></a>       <span class="at">x=</span><span class="st">&#39;valor medio de la casa (USD)&#39;</span>,</span>
 <span id="cb12-11"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-11" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&#39;densidad&#39;</span>)<span class="sc">+</span></span>
 <span id="cb12-12"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb12-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/Histograma-1.png" alt="" width="672" /></p>
-<p>La mayoría de las viviendas están entre 100K y 250K USD, con una concentración cerca de los 150K, y después se ve una cola larga hacia la derecha que confirma lo que ya habíamos visto en la tabla (media 206,855 &gt; mediana 179,700, asimetría de 0.97). También se nota una acumulación rara cerca de los 500K, lo que probablemente sea un tope que le pusieron a los datos originales, y coincide justo con el máximo de 500,001 que vimos antes.</p>
+<p><img src="bookdown-demo_files/figure-html/Histograma-1.png" alt="" width="672" />
+La mayoría de las viviendas están entre 100K y 250K USD, con una
+concentración cerca de los 150K, y después se ve una cola larga hacia la
+derecha que confirma lo que ya habíamos visto en la tabla (media 206,855 &gt;
+mediana 179,700, asimetría de 0.97). También se nota una acumulación rara
+cerca de los 500K, lo que probablemente sea un tope que le pusieron a los
+datos originales, y coincide justo con el máximo de 500,001 que vimos antes.</p>
 </div>
 <div id="gráfico-de-cajas-y-bigotes-de-median_house_value" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Gráfico de cajas y bigotes de ‘median_house_value’<a href="analisis-exploratorio-de-median_hose_value-target.html#gr%C3%A1fico-de-cajas-y-bigotes-de-median_house_value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -419,8 +438,13 @@ Curtosis
 <span id="cb13-7"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb13-8"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-8" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb13-9"><a href="analisis-exploratorio-de-median_hose_value-target.html#cb13-9" tabindex="-1"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/Boxplot-1.png" alt="" width="672" /></p>
-<p>El boxplot confirma la asimetría que pudimos notar: la mediana (línea azul) está más pegada al Q1 que al Q3, y el bigote de arriba es más largo que el de abajo, o sea que hay cola hacia la derecha. Los puntos rojos que se ven arriba (entre 480K y 500K aprox) son outliers, y coinciden con el tope de 500,001 que ya habíamos detectado. El punto verde marca la media (unos 207K), y se ve claramente por encima de la mediana.</p>
+<p><img src="bookdown-demo_files/figure-html/Boxplot-1.png" alt="" width="672" />
+El boxplot confirma la asimetría que pudimos notar: la mediana (línea azul)
+está más pegada al Q1 que al Q3, y el bigote de arriba es más largo que el de
+abajo, o sea que hay cola hacia la derecha. Los puntos rojos que se ven arriba
+(entre 480K y 500K aprox) son outliers, y coinciden con el tope de 500,001 que
+ya habíamos detectado. El punto verde marca la media (unos 207K), y se ve
+claramente por encima de la mediana.</p>
 </div>
 </div>
             </section>

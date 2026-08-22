@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Base de datos n°2: ‘datos_economia.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica</title>
+  <title>Chapter 5 Visualización: comparacion antes vs despues | Tarea de Estadistica paramétrica y no paramétrica</title>
   <meta name="description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="generator" content="bookdown 0.47 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Base de datos n°2: ‘datos_economia.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta property="og:title" content="Chapter 5 Visualización: comparacion antes vs despues | Tarea de Estadistica paramétrica y no paramétrica" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Base de datos n°2: ‘datos_economia.xlsx’ | Tarea de Estadistica paramétrica y no paramétrica" />
+  <meta name="twitter:title" content="Chapter 5 Visualización: comparacion antes vs despues | Tarea de Estadistica paramétrica y no paramétrica" />
   
   <meta name="twitter:description" content="Este trabajo presenta un Análisis Exploratorio de Datos (EDA) sobre el conjunto de datos California Housing, correspondiente al censo de California de 1990, compuesto por 20,640 observaciones y 10 variables socioeconómicas y geográficas. El objetivo es caracterizar la distribución de la variable median_house_value (valor medio de las viviendas), explorar sus variables predictoras (numéricas y categóricas), identificar relaciones bivariadas y patrones geográficos relevantes, así como aplicar técnicas de ingeniería de características para mitigar problemas de multicolinealidad detectados entre variables. Este análisis fue desarrollado como parte del curso de Métodos Estadísticos." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="base-de-datos-n1-datos_medicos.html"/>
-<link rel="next" href="base-de-datos-n-3-data.html"/>
+<link rel="prev" href="base-de-datos-n-3-data.html"/>
+<link rel="next" href="histograma-de-las-diferencias.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -257,120 +257,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="base-de-datos-n2-datos_economia.xlsx" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Base de datos n°2: ‘datos_economia.xlsx’<a href="base-de-datos-n2-datos_economia.html#base-de-datos-n2-datos_economia.xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="transformacion" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Transformacion<a href="base-de-datos-n2-datos_economia.html#transformacion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="base-de-datos-n2-datos_economia.html#cb50-1" tabindex="-1"></a>df2<span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/datos_economia.xlsx&quot;</span>)</span></code></pre></div>
-</div>
-<div id="filtramos-los-tipos-de-tipo-de-cuenta" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Filtramos los tipos de ‘Tipo de cuenta’<a href="base-de-datos-n2-datos_economia.html#filtramos-los-tipos-de-tipo-de-cuenta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="base-de-datos-n2-datos_economia.html#cb51-1" tabindex="-1"></a>df2<span class="sc">$</span><span class="st">`</span><span class="at">Tipo de cuenta</span><span class="st">`</span><span class="ot">&lt;-</span> <span class="fu">factor</span>(df2<span class="sc">$</span><span class="st">`</span><span class="at">Tipo de cuenta</span><span class="st">`</span>)</span>
-<span id="cb51-2"><a href="base-de-datos-n2-datos_economia.html#cb51-2" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="base-de-datos-n2-datos_economia.html#cb51-3" tabindex="-1"></a>dfi <span class="ot">&lt;-</span> df2 <span class="sc">%&gt;%</span></span>
-<span id="cb51-4"><a href="base-de-datos-n2-datos_economia.html#cb51-4" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Tipo de cuenta</span><span class="st">`</span><span class="sc">==</span> <span class="st">&#39;Inversion&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-5"><a href="base-de-datos-n2-datos_economia.html#cb51-5" tabindex="-1"></a>  <span class="fu">pull</span>(Precio)</span>
-<span id="cb51-6"><a href="base-de-datos-n2-datos_economia.html#cb51-6" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="base-de-datos-n2-datos_economia.html#cb51-7" tabindex="-1"></a>dfg <span class="ot">&lt;-</span> df2 <span class="sc">%&gt;%</span></span>
-<span id="cb51-8"><a href="base-de-datos-n2-datos_economia.html#cb51-8" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">Tipo de cuenta</span><span class="st">`</span><span class="sc">==</span> <span class="st">&#39;Ganancia&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-9"><a href="base-de-datos-n2-datos_economia.html#cb51-9" tabindex="-1"></a>  <span class="fu">pull</span>(Precio)</span></code></pre></div>
-<p>analisis exploratorio</p>
-</div>
-<div id="verificamos-supuesto-de-normalidad" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Verificamos supuesto de normalidad<a href="base-de-datos-n2-datos_economia.html#verificamos-supuesto-de-normalidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="base-de-datos-n2-datos_economia.html#cb52-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfi),<span class="st">&#39;pnorm&#39;</span>)</span></code></pre></div>
-<pre><code>## 
-##  Asymptotic one-sample Kolmogorov-Smirnov test
-## 
-## data:  scale(dfi)
-## D = 0.058097, p-value = 0.8884
-## alternative hypothesis: two-sided</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="base-de-datos-n2-datos_economia.html#cb54-1" tabindex="-1"></a><span class="fu">ks.test</span>(<span class="fu">scale</span>(dfg),<span class="st">&#39;pnorm&#39;</span>)</span></code></pre></div>
-<pre><code>## 
-##  Asymptotic one-sample Kolmogorov-Smirnov test
-## 
-## data:  scale(dfg)
-## D = 0.057927, p-value = 0.8905
-## alternative hypothesis: two-sided</code></pre>
-</div>
-<div id="homocedasticidad" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Homocedasticidad<a href="base-de-datos-n2-datos_economia.html#homocedasticidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="base-de-datos-n2-datos_economia.html#cb56-1" tabindex="-1"></a><span class="fu">var.test</span>(dfi,dfg) <span class="co">#uso f de fisher</span></span></code></pre></div>
-<pre><code>## 
-##  F test to compare two variances
-## 
-## data:  dfi and dfg
-## F = 22.277, num df = 99, denom df = 99, p-value &lt; 2.2e-16
-## alternative hypothesis: true ratio of variances is not equal to 1
-## 95 percent confidence interval:
-##  14.9892 33.1095
-## sample estimates:
-## ratio of variances 
-##           22.27745</code></pre>
-</div>
-<div id="pruebas" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Pruebas<a href="base-de-datos-n2-datos_economia.html#pruebas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="t.test-con-correción-de-welch-el-tamaño-de-los-datos-es-grande" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> t.test con correción de Welch (El tamaño de los datos es grande)<a href="base-de-datos-n2-datos_economia.html#t.test-con-correci%C3%B3n-de-welch-el-tama%C3%B1o-de-los-datos-es-grande" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="base-de-datos-n2-datos_economia.html#cb58-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> dfi, <span class="at">y=</span> dfg, <span class="at">var.equal =</span> <span class="cn">FALSE</span>, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## 
-##  Welch Two Sample t-test
-## 
-## data:  dfi and dfg
-## t = 46.212, df = 107.87, p-value &lt; 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  4126960 4496870
-## sample estimates:
-## mean of x mean of y 
-## 5090405.9  778490.6</code></pre>
-<div id="verificar-el-estadistico-grados-de-libertad-con-la-correccion-de-welch" class="section level4 hasAnchor" number="3.5.1.1">
-<h4><span class="header-section-number">3.5.1.1</span> Verificar el estadistico, grados de libertad (con la correccion de Welch)<a href="base-de-datos-n2-datos_economia.html#verificar-el-estadistico-grados-de-libertad-con-la-correccion-de-welch" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="base-de-datos-n2-datos_economia.html#cb60-1" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">var</span>(dfi); s2 <span class="ot">&lt;-</span> <span class="fu">var</span>(dfg)</span>
-<span id="cb60-2"><a href="base-de-datos-n2-datos_economia.html#cb60-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(dfi); n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(dfg)</span>
-<span id="cb60-3"><a href="base-de-datos-n2-datos_economia.html#cb60-3" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(dfi); m2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(dfg)</span>
-<span id="cb60-4"><a href="base-de-datos-n2-datos_economia.html#cb60-4" tabindex="-1"></a></span>
-<span id="cb60-5"><a href="base-de-datos-n2-datos_economia.html#cb60-5" tabindex="-1"></a><span class="co"># Estadístico t de Welch</span></span>
-<span id="cb60-6"><a href="base-de-datos-n2-datos_economia.html#cb60-6" tabindex="-1"></a>t_welch <span class="ot">&lt;-</span> (m1 <span class="sc">-</span> m2) <span class="sc">/</span> <span class="fu">sqrt</span>(s1<span class="sc">/</span>n1 <span class="sc">+</span> s2<span class="sc">/</span>n2)</span>
-<span id="cb60-7"><a href="base-de-datos-n2-datos_economia.html#cb60-7" tabindex="-1"></a></span>
-<span id="cb60-8"><a href="base-de-datos-n2-datos_economia.html#cb60-8" tabindex="-1"></a><span class="co"># Grados de libertad-Welch</span></span>
-<span id="cb60-9"><a href="base-de-datos-n2-datos_economia.html#cb60-9" tabindex="-1"></a>gl_welch <span class="ot">&lt;-</span> (s1<span class="sc">/</span>n1 <span class="sc">+</span> s2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span></span>
-<span id="cb60-10"><a href="base-de-datos-n2-datos_economia.html#cb60-10" tabindex="-1"></a>  ( (s1<span class="sc">/</span>n1)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n1<span class="dv">-1</span>) <span class="sc">+</span> (s2<span class="sc">/</span>n2)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(n2<span class="dv">-1</span>) )</span>
-<span id="cb60-11"><a href="base-de-datos-n2-datos_economia.html#cb60-11" tabindex="-1"></a></span>
-<span id="cb60-12"><a href="base-de-datos-n2-datos_economia.html#cb60-12" tabindex="-1"></a><span class="co"># p-valor</span></span>
-<span id="cb60-13"><a href="base-de-datos-n2-datos_economia.html#cb60-13" tabindex="-1"></a>p_welch <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="sc">-</span><span class="fu">abs</span>(t_welch), <span class="at">df =</span> gl_welch)</span>
-<span id="cb60-14"><a href="base-de-datos-n2-datos_economia.html#cb60-14" tabindex="-1"></a></span>
-<span id="cb60-15"><a href="base-de-datos-n2-datos_economia.html#cb60-15" tabindex="-1"></a><span class="co"># Resultado </span></span>
-<span id="cb60-16"><a href="base-de-datos-n2-datos_economia.html#cb60-16" tabindex="-1"></a>resultado_welch <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb60-17"><a href="base-de-datos-n2-datos_economia.html#cb60-17" tabindex="-1"></a>  <span class="at">t_estadistico =</span> t_welch,</span>
-<span id="cb60-18"><a href="base-de-datos-n2-datos_economia.html#cb60-18" tabindex="-1"></a>  <span class="at">gl =</span> gl_welch,</span>
-<span id="cb60-19"><a href="base-de-datos-n2-datos_economia.html#cb60-19" tabindex="-1"></a>  <span class="at">p_valor =</span> p_welch</span>
-<span id="cb60-20"><a href="base-de-datos-n2-datos_economia.html#cb60-20" tabindex="-1"></a>)</span>
-<span id="cb60-21"><a href="base-de-datos-n2-datos_economia.html#cb60-21" tabindex="-1"></a>resultado_welch</span></code></pre></div>
-<pre><code>##   t_estadistico     gl      p_valor
-## 1      46.21171 107.87 6.432654e-73</code></pre>
-</div>
-</div>
-<div id="tamaño-de-efecto" class="section level3 hasAnchor" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> tamaño de efecto<a href="base-de-datos-n2-datos_economia.html#tama%C3%B1o-de-efecto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="base-de-datos-n2-datos_economia.html#cb62-1" tabindex="-1"></a><span class="fu">cohen.d</span>(dfi, dfg, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## 
-## Cohen&#39;s d
-## 
-## d estimate: 6.535323 (large)
-## 95 percent confidence interval:
-##    lower    upper 
-## 5.833174 7.237472</code></pre>
-</div>
-</div>
+<div id="visualización-comparacion-antes-vs-despues" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Visualización: comparacion antes vs despues<a href="visualización-comparacion-antes-vs-despues.html#visualizaci%C3%B3n-comparacion-antes-vs-despues" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="visualización-comparacion-antes-vs-despues.html#cb79-1" tabindex="-1"></a>datos_largo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb79-2"><a href="visualización-comparacion-antes-vs-despues.html#cb79-2" tabindex="-1"></a>  <span class="at">tiempo =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;antes&quot;</span>, <span class="st">&quot;despues&quot;</span>), <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb79-3"><a href="visualización-comparacion-antes-vs-despues.html#cb79-3" tabindex="-1"></a>  <span class="at">valor =</span> <span class="fu">c</span>(datos<span class="sc">$</span>antes, datos<span class="sc">$</span>despues)</span>
+<span id="cb79-4"><a href="visualización-comparacion-antes-vs-despues.html#cb79-4" tabindex="-1"></a>)</span></code></pre></div>
+<p>#Boxplot</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="visualización-comparacion-antes-vs-despues.html#cb80-1" tabindex="-1"></a><span class="fu">ggplot</span>(datos_largo, <span class="fu">aes</span>(<span class="at">x =</span> tiempo, <span class="at">y =</span> valor, <span class="at">fill =</span> tiempo)) <span class="sc">+</span></span>
+<span id="cb80-2"><a href="visualización-comparacion-antes-vs-despues.html#cb80-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb80-3"><a href="visualización-comparacion-antes-vs-despues.html#cb80-3" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;antes&quot;</span> <span class="ot">=</span> <span class="st">&quot;#F8766D&quot;</span>, <span class="st">&quot;despues&quot;</span> <span class="ot">=</span> <span class="st">&quot;#00BFC4&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb80-4"><a href="visualización-comparacion-antes-vs-despues.html#cb80-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Comparación de tiempos antes y después&quot;</span>,</span>
+<span id="cb80-5"><a href="visualización-comparacion-antes-vs-despues.html#cb80-5" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Tiempo&quot;</span>) <span class="sc">+</span></span>
+<span id="cb80-6"><a href="visualización-comparacion-antes-vs-despues.html#cb80-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb80-7"><a href="visualización-comparacion-antes-vs-despues.html#cb80-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb80-8"><a href="visualización-comparacion-antes-vs-despues.html#cb80-8" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb80-9"><a href="visualización-comparacion-antes-vs-despues.html#cb80-9" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-23-1.png" alt="" width="672" /></p>
+<p>Boxplot (antes vs. despues):</p>
+<p>Al comparar ambos grupos se observa que las medianas son bastante
+similares, aunque el grupo “después” muestra una ligera tendencia a
+tener valores más dispersos, con una caja un poco más amplia. No se
+observan diferencias muy marcadas entre ambos momentos a simple vista,
+lo cual sugiere que el efecto de la intervención, si existe, podría
+ser moderado más que drástico.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="base-de-datos-n1-datos_medicos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="base-de-datos-n-3-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="base-de-datos-n-3-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="histograma-de-las-diferencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
