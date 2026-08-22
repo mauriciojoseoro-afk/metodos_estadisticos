@@ -34,6 +34,9 @@ El conjunto de datos utilizado corresponde a California Housing (housing.csv), c
 
 ## Enlace para visualizar el documento:
 
+## Por favor, presione "2EDA" para poder visualizar el proyecto y la tarea.
+
+<img width="290" height="186" alt="image" src="https://github.com/user-attachments/assets/bd11c3b6-de9e-405c-a084-9492e2612e4a" />
 
 https://mauriciojoseoro-afk.github.io/metodos_estadisticos/
 
